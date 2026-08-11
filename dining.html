@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dining — Coral Cloud Resorts</title>
+<meta name="description" content="Twelve dining venues at Coral Cloud Resorts — overwater omakase, beachfront grills, a limestone wine cellar and private dune dinners under the stars.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#0B2E2A;
+    --teal-900:#0A3D39;
+    --teal-700:#0F5C56;
+    --teal-600:#146B62;
+    --teal-500:#1C8478;
+    --foam:#E7F3EF;
+    --sand:#FBF4E8;
+    --sand-deep:#F3E7D3;
+    --coral:#F2734B;
+    --coral-deep:#DD5A34;
+    --coral-soft:#F8AF8E;
+    --gold:#C79A3C;
+    --white:#FFFFFF;
+    --shadow: 0 20px 50px -20px rgba(10,61,57,0.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  .eyebrow{
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--coral);
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.1;
+    color:var(--teal-900);
+  }
+  .italic{font-style:italic; font-weight:400;}
+  .container{width:100%; max-width:1240px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  .wave-rule{width:120px; height:20px; margin:18px 0 0; overflow:visible;}
+  .wave-rule path{
+    fill:none; stroke:var(--coral); stroke-width:3; stroke-linecap:round;
+    stroke-dasharray:180; stroke-dashoffset:180;
+    transition:stroke-dashoffset 1.1s var(--ease);
+  }
+  .reveal.is-visible .wave-rule path{stroke-dashoffset:0;}
+
+  /* ================= NAV (shared) ================= */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:14px 0;
+    background:rgba(251,244,232,0.94);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 30px -18px rgba(10,46,42,0.25);
+  }
+  .nav .container{display:flex; align-items:center; justify-content:space-between;}
+  .brand img{height:46px; width:auto; filter:drop-shadow(0 4px 10px rgba(10,46,42,0.18));}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{
+    font-size:0.86rem; font-weight:600; letter-spacing:0.03em; color:var(--teal-900);
+    position:relative; padding:6px 8px; transition:color .3s;
+  }
+  .nav-links a.current{color:var(--coral);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--coral); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-links .tag{font-size:0.68rem; letter-spacing:0.08em; color:var(--coral); text-transform:uppercase; margin-left:6px; font-weight:700;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:700; font-size:0.82rem; letter-spacing:0.03em;
+    padding:13px 26px; border-radius:999px; border:1.5px solid transparent; cursor:pointer;
+    transition:transform .35s var(--ease), background .35s, color .35s, border-color .35s;
+  }
+  .btn-coral{background:var(--coral); color:var(--white); box-shadow:0 14px 30px -12px rgba(242,115,75,0.55);}
+  .btn-coral:hover{background:var(--coral-deep); transform:translateY(-2px);}
+  .btn-outline{border-color:var(--teal-700); color:var(--teal-700);}
+  .btn-outline:hover{background:var(--teal-700); color:var(--white);}
+  .btn-sm{padding:10px 20px; font-size:0.76rem;}
+  .btn-full{width:100%; justify-content:center;}
+
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:120;}
+  .hamburger span{width:26px; height:2px; background:var(--teal-900);}
+
+  /* ================= PAGE HERO — full-bleed dining scene ================= */
+  .page-hero{
+    position:relative;
+    min-height:min(88vh, 780px);
+    overflow:hidden;
+  }
+  .hero-bg{position:absolute; inset:0; z-index:0;}
+  .hero-bg img{width:100%; height:100%; object-fit:cover;}
+  .hero-scrim{
+    position:absolute; inset:0; z-index:1;
+    background:
+      linear-gradient(180deg, rgba(8,32,29,0.75) 0%, rgba(8,32,29,0.35) 38%, rgba(8,32,29,0.55) 78%, rgba(8,32,29,0.92) 100%),
+      linear-gradient(90deg, rgba(8,32,29,0.55) 0%, rgba(8,32,29,0.1) 55%);
+  }
+
+  .hero-inner{position:relative; z-index:2; padding:172px 0 240px;}
+  .page-hero .eyebrow{color:var(--coral-soft); display:flex; align-items:center; gap:12px;}
+  .page-hero .eyebrow::before{
+    content:''; display:inline-block; width:34px; height:1.5px; background:var(--coral-soft);
+  }
+  .page-hero h1{
+    font-size:clamp(2.6rem, 5.2vw, 4.4rem); margin-top:18px; max-width:660px; color:var(--white);
+  }
+  .page-hero h1 .italic{color:var(--coral-soft);}
+  .page-hero p{margin-top:22px; max-width:520px; color:rgba(255,255,255,0.78); font-size:1.05rem; font-weight:300;}
+
+  /* jump chips — glass pills on dark scene */
+  .jump-nav{display:flex; gap:14px; flex-wrap:wrap; margin-top:36px;}
+  .jump-nav a{
+    padding:11px 20px; border-radius:999px; border:1.5px solid rgba(255,255,255,0.35);
+    font-size:0.82rem; font-weight:600; color:var(--white);
+    background:rgba(255,255,255,0.06); backdrop-filter:blur(6px);
+    transition:background .3s, color .3s, border-color .3s;
+  }
+  .jump-nav a:hover{background:var(--coral); color:var(--white); border-color:var(--coral);}
+
+  /* reservation ticket — signature element */
+  .hero-ticket{
+    position:absolute; z-index:3; right:8%; bottom:118px;
+    width:252px; background:var(--white); border-radius:8px;
+    padding:26px 22px 20px; box-shadow:0 40px 70px -20px rgba(0,0,0,0.55);
+    transform:rotate(-4deg);
+  }
+  .hero-ticket::before{
+    content:''; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+    width:18px; height:18px; border-radius:50%;
+    background:var(--coral); box-shadow:0 4px 10px rgba(0,0,0,0.35), 0 0 0 3px var(--white);
+  }
+  .hero-ticket .ticket-eyebrow{
+    font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color:var(--coral);
+  }
+  .hero-ticket h4{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.3rem; color:var(--teal-900); margin-top:6px; line-height:1.15;
+  }
+  .hero-ticket .ticket-divider{
+    margin:16px 0; border:none; border-top:1.5px dashed rgba(10,61,57,0.25);
+  }
+  .hero-ticket .ticket-row{
+    display:flex; justify-content:space-between; font-size:0.78rem; color:var(--teal-900); margin-bottom:9px;
+  }
+  .hero-ticket .ticket-row span:first-child{color:#5C7B76; font-weight:600;}
+  .hero-ticket .ticket-row span:last-child{font-weight:700;}
+  .hero-ticket .ticket-barcode{
+    margin-top:16px; height:26px; border-radius:2px;
+    background:repeating-linear-gradient(90deg, var(--teal-900) 0 2px, transparent 2px 5px, var(--teal-900) 5px 7px, transparent 7px 11px, var(--teal-900) 11px 12px, transparent 12px 16px);
+    opacity:0.85;
+  }
+
+  /* stat strip — glass bar anchoring the hero base */
+  .hero-stats-bar{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    background:rgba(8,32,29,0.78); backdrop-filter:blur(10px);
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stats{display:flex; flex-wrap:wrap;}
+  .hero-stats div{
+    flex:1 1 auto; min-width:150px; padding:26px 28px;
+    border-right:1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stats div:last-child{border-right:none;}
+  .hero-stats b{
+    display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.5rem; color:var(--white);
+  }
+  .hero-stats span{
+    display:block; margin-top:4px; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.6); font-weight:600;
+  }
+
+  @media (max-width:980px){
+    .page-hero{min-height:auto;}
+    .hero-inner{padding:150px 0 40px;}
+    .hero-ticket{
+      position:static; margin:32px auto 0; transform:rotate(-2deg); width:100%; max-width:280px;
+    }
+    .hero-stats-bar{position:static;}
+  }
+  @media (max-width:560px){
+    .hero-inner{padding-top:126px;}
+    .hero-stats div{flex:1 1 50%; padding:20px 18px;}
+    .hero-stats div:nth-child(2){border-right:none;}
+  }
+
+  
+  /* ================= COLLECTION SECTION ================= */
+  .collection-block{padding:80px 0 20px; scroll-margin-top:100px;}
+  .collection-block:nth-of-type(even){background:var(--foam);}
+  .collection-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap;
+    margin-bottom:48px;
+  }
+  .collection-head .eyebrow{color:var(--coral);}
+  .collection-head h2{font-size:clamp(1.8rem, 3vw, 2.5rem); margin-top:12px;}
+  .collection-head p{max-width:420px; color:#3B5A55; font-weight:300; font-size:0.96rem;}
+  .collection-count{
+    font-family:'Fraunces', serif; font-style:italic; color:var(--coral); font-size:1.05rem;
+  }
+
+  .venue-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+    padding-bottom:90px;
+  }
+
+  .venue-card{
+    background:var(--white);
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    box-shadow:0 26px 55px -32px rgba(10,46,42,0.3);
+    display:flex; flex-direction:column;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .venue-card:hover{transform:translateY(-8px); box-shadow:0 36px 70px -30px rgba(10,46,42,0.4);}
+
+  .venue-media{position:relative; height:230px; overflow:hidden;}
+  .venue-media img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease);}
+  .venue-card:hover .venue-media img{transform:scale(1.07);}
+  .venue-id{
+    position:absolute; top:16px; left:16px;
+    background:rgba(10,46,42,0.72); color:var(--white);
+    font-size:0.66rem; font-weight:700; letter-spacing:0.06em;
+    padding:6px 11px; border-radius:999px;
+  }
+  .venue-price-tag{
+    position:absolute; bottom:16px; right:16px;
+    background:var(--coral); color:var(--white);
+    font-size:0.78rem; font-weight:700;
+    padding:8px 14px; border-radius:999px;
+    box-shadow:0 10px 24px -8px rgba(242,115,75,0.7);
+  }
+  .venue-price-tag span{font-weight:400; opacity:0.85; font-size:0.68rem;}
+
+  .venue-body{padding:26px 26px 28px; display:flex; flex-direction:column; flex:1;}
+  .venue-type{font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .venue-body h3{font-size:1.32rem; margin-top:8px; line-height:1.2;}
+  .venue-tagline{font-style:italic; color:#5C7B76; font-size:0.88rem; margin-top:6px; font-weight:400; font-family:'Fraunces', serif;}
+
+  .venue-stats{
+    display:flex; flex-wrap:wrap; gap:14px 18px;
+    margin-top:18px; padding-top:16px; border-top:1px dashed rgba(10,61,57,0.16);
+    font-size:0.78rem; color:var(--teal-900);
+  }
+  .venue-stats div{display:flex; align-items:center; gap:6px;}
+  .venue-stats svg{width:15px; height:15px; stroke:var(--coral); flex-shrink:0;}
+
+  .venue-setting{
+    margin-top:14px; font-size:0.84rem; color:#3B5A55;
+  }
+  .venue-setting b{color:var(--teal-900); font-weight:700;}
+
+  .amenity-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .amenity-chips span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.7rem; font-weight:600; padding:6px 11px; border-radius:999px;
+  }
+
+  .venue-footer{
+    margin-top:auto; padding-top:22px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .venue-footer .btn{flex:1;}
+/* ================= CLOSING CTA ================= */
+  .rooms-cta{
+    padding:120px 0;
+    text-align:center;
+    background:var(--teal-900);
+    color:var(--white);
+  }
+  .rooms-cta .eyebrow{color:var(--coral-soft);}
+  .rooms-cta h2{color:var(--white); font-size:clamp(2rem, 4vw, 3rem); margin-top:16px;}
+  .rooms-cta p{max-width:460px; margin:22px auto 0; color:rgba(255,255,255,0.75); font-weight:300;}
+  .rooms-cta .btn{margin-top:36px;}
+
+  /* ================= FOOTER (shared) ================= */
+  footer{background:var(--ink); color:rgba(255,255,255,0.78); padding:80px 0 30px;}
+  .footer-top{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:48px; padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,0.12);}
+  .footer-brand img{height:46px; margin-bottom:18px; filter:brightness(0) invert(1) opacity(0.95);}
+  .footer-brand p{max-width:280px; font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.6);}
+  .footer-col h4{color:var(--white); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin-bottom:20px;}
+  .footer-col li{margin-bottom:12px; font-size:0.92rem;}
+  .footer-col a:hover{color:var(--coral-soft);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:0.8rem; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:12px;}
+
+  
+  /* ================= VENUE MODAL ================= */
+  body.modal-open{overflow:hidden;}
+
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(10,46,42,0.55);
+    backdrop-filter:blur(4px);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding:60px 20px;
+    opacity:0; visibility:hidden;
+    transition:opacity .35s var(--ease), visibility .35s var(--ease);
+    overflow-y:auto;
+  }
+  .modal-overlay.open{opacity:1; visibility:visible;}
+
+  .modal-box{
+    background:var(--white);
+    width:100%; max-width:880px;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 40px 90px -30px rgba(10,46,42,0.55);
+    transform:translateY(30px) scale(0.98);
+    opacity:0;
+    transition:transform .4s var(--ease), opacity .4s var(--ease);
+    margin:auto;
+  }
+  .modal-overlay.open .modal-box{transform:translateY(0) scale(1); opacity:1;}
+
+  .modal-media{position:relative; height:360px;}
+  .modal-media img{width:100%; height:100%; object-fit:cover;}
+  .modal-media .venue-id{position:absolute; top:20px; left:20px;}
+  .modal-media .venue-price-tag{position:absolute; bottom:20px; right:20px; font-size:0.9rem; padding:10px 18px;}
+
+  .modal-close{
+    position:absolute; top:16px; right:16px;
+    width:40px; height:40px; border-radius:50%;
+    background:rgba(11,46,42,0.55); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .3s, transform .3s;
+  }
+  .modal-close:hover{background:var(--coral); transform:rotate(90deg);}
+  .modal-close svg{width:18px; height:18px; stroke:var(--white); stroke-width:2.4;}
+
+  .modal-body{padding:36px 40px 44px;}
+  .modal-type{font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .modal-body h2{font-size:clamp(1.6rem, 3vw, 2.1rem); margin-top:8px;}
+  .modal-tagline{font-style:italic; color:#5C7B76; font-size:1rem; margin-top:8px; font-family:'Fraunces', serif;}
+
+  .modal-stats{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px;
+    margin-top:26px; padding:20px; background:var(--foam); border-radius:14px;
+  }
+  .modal-stats div{font-size:0.82rem; color:var(--teal-900);}
+  .modal-stats b{display:block; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal-500); font-weight:700; margin-bottom:4px;}
+
+  .modal-section{margin-top:28px;}
+  .modal-section h4{font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--coral); font-weight:700; margin-bottom:10px;}
+  .modal-section p{color:#3B5A55; font-size:0.94rem; font-weight:300; line-height:1.7;}
+
+  .modal-highlight-list{margin:0; padding:0;}
+  .modal-highlight-list li{
+    list-style:none; position:relative; padding-left:22px; margin-bottom:10px;
+    color:#3B5A55; font-size:0.92rem; font-weight:400; line-height:1.5;
+  }
+  .modal-highlight-list li::before{
+    content:''; position:absolute; left:0; top:8px; width:8px; height:8px;
+    background:var(--coral); border-radius:50%;
+  }
+
+  .modal-amenity-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .modal-amenity-list span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.76rem; font-weight:600; padding:8px 14px; border-radius:999px;
+  }
+
+  .modal-footer{
+    margin-top:34px; padding-top:26px; border-top:1px dashed rgba(10,61,57,0.16);
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .modal-footer .modal-price{font-family:'Fraunces', serif; font-size:1.4rem; color:var(--teal-900);}
+  .modal-footer .modal-price span{font-size:0.78rem; font-weight:400; color:#5C7B76; font-family:'Manrope',sans-serif;}
+
+  @media (max-width:600px){
+    .modal-overlay{padding:0;}
+    .modal-box{max-width:100%; border-radius:0; min-height:100vh;}
+    .modal-media{height:240px;}
+    .modal-body{padding:26px 22px 32px;}
+    .modal-footer{flex-direction:column; align-items:stretch;}
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1080px){
+    .venue-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:980px){
+    .footer-top{grid-template-columns:1fr 1fr; row-gap:36px;}
+  }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; inset:0 0 0 auto; width:78%; height:100vh;
+      background:var(--teal-900); flex-direction:column; align-items:flex-start; justify-content:center;
+      padding:0 40px; gap:26px; transform:translateX(100%); transition:transform .45s var(--ease);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--white) !important; font-size:1.1rem;}
+    .nav-links a.current{color:var(--coral-soft) !important;}
+    .hamburger{display:flex;}
+    .nav .btn-coral{display:none;}
+    .nav-links .btn-coral{display:inline-flex; margin-top:10px;}
+    .venue-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .container{padding:0 22px;}
+    .venue-footer{flex-direction:column; align-items:stretch;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="siteNav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Coral_Cloud_Resort%20Logo.webp" alt="Coral Cloud Resorts">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Accommodations</a></li>
+      <li><a href="dining.html" class="current">Dining</a></li>
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="index.html#experiences">Experiences<span class="tag">Soon</span></a></li>
+      <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= PAGE HERO ================= -->
+<header class="page-hero">
+  <div class="hero-bg">
+    <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Ember%20&%20Tide.png" alt="Ember & Tide, Coral Cloud's flagship oceanfront restaurant">
+  </div>
+  <div class="hero-scrim"></div>
+
+  <div class="container hero-inner">
+    <div class="eyebrow reveal">Twelve Venues · One Table</div>
+    <h1 class="reveal">Every meal has <span class="italic">a view</span>.</h1>
+    <p class="reveal">From a $15 morning croissant to a $650 private dinner on the dunes, Coral Cloud's kitchens are scattered across the atoll — over the lagoon, on the sand, and after dark in places you'll need a reservation to find.</p>
+    <div class="jump-nav reveal">
+      <a href="#on-water">On the Water</a>
+      <a href="#shoreline">Shoreline &amp; Poolside</a>
+      <a href="#all-day">All-Day &amp; Casual</a>
+      <a href="#after-dark">After Dark &amp; Private</a>
+    </div>
+  </div>
+
+  <div class="hero-ticket reveal">
+    <div class="ticket-eyebrow">Tonight's Table</div>
+    <h4>Ember &amp; Tide</h4>
+    <hr class="ticket-divider">
+    <div class="ticket-row"><span>Party</span><span>2 Guests</span></div>
+    <div class="ticket-row"><span>Seating</span><span>7:30 PM</span></div>
+    <div class="ticket-row"><span>Setting</span><span>Oceanfront Deck</span></div>
+    <div class="ticket-barcode"></div>
+  </div>
+
+  <div class="hero-stats-bar">
+    <div class="container">
+      <div class="hero-stats reveal">
+        <div><b>12</b><span>Venues</span></div>
+        <div><b>4</b><span>Collections</span></div>
+        <div><b>$15–650</b><span>Per Person</span></div>
+        <div><b>100+</b><span>Vintage Rums</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ON THE WATER ================= -->
+<section class="collection-block" id="on-water">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">01 · On the Water</div>
+        <h2>On the Water</h2>
+        <p>Glass floors, floating jetties, and a bar built straight into the lagoon.</p>
+      </div>
+      <span class="collection-count">3 venues</span>
+    </div>
+
+    <div class="venue-grid">
+
+      <!-- Atelier Cloud -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-003">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Atelier%20Cloud.png" alt="Atelier Cloud">
+          <span class="venue-id">CCR-DIN-003</span>
+          <span class="venue-price-tag">$250–350 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Overwater Fine Dining &amp; Molecular Coastal Gastronomy</div>
+          <h3>Atelier Cloud</h3>
+          <div class="venue-tagline">&quot;An avant-garde culinary journey suspended over the turquoise lagoon.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>36 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>7–11PM (Tue–Sun)</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Formal Resort / Elegant Attire</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Floating Overwater Glass Pavilion</div>
+          <div class="amenity-chips">
+            <span>7-course chef's tasting menu</span><span>Floor-to-ceiling ocean views</span><span>Private sommelier tableside pairings</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nori &amp; Shell -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-005">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Nori%20&%20Shell.png" alt="Nori &amp; Shell">
+          <span class="venue-id">CCR-DIN-005</span>
+          <span class="venue-price-tag">$220–280 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Overwater Japanese Omakase &amp; Izakaya</div>
+          <h3>Nori &amp; Shell</h3>
+          <div class="venue-tagline">&quot;Hyper-fresh marine delicacies crafted with Japanese precision.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>16 Seats (12 Bar + 1 Private Room)</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>6 &amp; 8:30PM Seatings</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Smart Casual</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Secluded Overwater Jetty</div>
+          <div class="amenity-chips">
+            <span>Interactive Hinoki wood sushi bar</span><span>Master chef storytelling</span><span>Private 4-person dining room</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aqua Swim-Up Bar -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-008">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Aqua%20Swim-Up%20Bar.png" alt="Aqua Swim-Up Bar">
+          <span class="venue-id">CCR-DIN-008</span>
+          <span class="venue-price-tag">$20–45 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Submerged Pool Bar &amp; Tropical Hydration Lounge</div>
+          <h3>Aqua Swim-Up Bar</h3>
+          <div class="venue-tagline">&quot;Cool down without ever stepping out of the water.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>24 Submerged Stools</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>10AM–6:30PM</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Swimwear</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Central Lagoon Pool (In-Water)</div>
+          <div class="amenity-chips">
+            <span>Submerged bar seating</span><span>Waterproof payment access</span><span>Live mixology</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHORELINE &AMP; POOLSIDE ================= -->
+<section class="collection-block" id="shoreline">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">02 · Shoreline & Poolside</div>
+        <h2>Shoreline &amp; Poolside</h2>
+        <p>Open-fire flagship dining, poolside sharing plates, and a lounge that runs from breakfast to last call.</p>
+      </div>
+      <span class="collection-count">3 venues</span>
+    </div>
+
+    <div class="venue-grid">
+
+      <!-- Ember &amp; Tide -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-001">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Ember%20&%20Tide.png" alt="Ember &amp; Tide">
+          <span class="venue-id">CCR-DIN-001</span>
+          <span class="venue-price-tag">$120–180 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Signature Open-Fire Coastal Gastronomy &amp; Wood-Fired Seafood</div>
+          <h3>Ember &amp; Tide</h3>
+          <div class="venue-tagline">&quot;Where ocean-fresh catch meets the smoky warmth of citrus wood fires.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>75 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>6–10:30PM Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Resort Elegant / Smart Casual</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Oceanfront Barefoot Deck &amp; Open-Air Pavilion</div>
+          <div class="amenity-chips">
+            <span>Open-fire cooking theater</span><span>Sommelier wine pairing</span><span>Beachfront ambient torchlight</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spice Route Beach Club -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-006">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Spice%20Route%20Beach%20Club.png" alt="Spice Route Beach Club">
+          <span class="venue-id">CCR-DIN-006</span>
+          <span class="venue-price-tag">$40–75 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Pan-Asian &amp; Mediterranean Poolside Tapas</div>
+          <h3>Spice Route Beach Club</h3>
+          <div class="venue-tagline">&quot;Vibrant coastal street food meets Mediterranean sun-kissed pool relaxation.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>100 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>11AM–7PM Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Swimwear / Resort Cover-up</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Main Infinity Poolside &amp; Cabana Deck</div>
+          <div class="amenity-chips">
+            <span>Direct cabana service</span><span>Poolside mobile app ordering</span><span>Live DJ sets on weekends</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Driftwood Lounge -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-002">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/The%20Driftwood%20Lounge.png" alt="The Driftwood Lounge">
+          <span class="venue-id">CCR-DIN-002</span>
+          <span class="venue-price-tag">$45–85 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Casual Chic Beach Club, Tapas &amp; Craft Cocktails</div>
+          <h3>The Driftwood Lounge</h3>
+          <div class="venue-tagline">&quot;Sun-dappled daytime relaxation transforming into sultry nighttime vinyl sessions.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>90 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>10AM–Midnight</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Island Casual / Beachwear with Cover-up</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Beachfront Shoreline Deck &amp; Sunken Lounge</div>
+          <div class="amenity-chips">
+            <span>Daybed lounge seating</span><span>Live acoustic &amp; vinyl DJ sets</span><span>Craft cocktail lab</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALL-DAY &AMP; CASUAL ================= -->
+<section class="collection-block" id="all-day">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">03 · All-Day & Casual</div>
+        <h2>All-Day &amp; Casual</h2>
+        <p>Breakfast buffets, wellness bowls, and morning pastries for the hours between the big meals.</p>
+      </div>
+      <span class="collection-count">3 venues</span>
+    </div>
+
+    <div class="venue-grid">
+
+      <!-- Laguna Terrace -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-004">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Laguna%20Terrace.png" alt="Laguna Terrace">
+          <span class="venue-id">CCR-DIN-004</span>
+          <span class="venue-price-tag">$35–70 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">All-Day International, Breakfast Pavilion &amp; Artisan Bakery</div>
+          <h3>Laguna Terrace</h3>
+          <div class="venue-tagline">&quot;Vibrant morning sunshine, floating platforms, and fresh global flavors.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>120 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>6:30AM–4PM</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Resort Casual</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Overlooking Central Freshwater Lagoon</div>
+          <div class="amenity-chips">
+            <span>Interactive live cooking stations</span><span>Floating deck seating</span><span>Organic gluten-free bakery section</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sol Wellness Café -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-009">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Sol%20Wellness%20Caf%C3%A9.png" alt="Sol Wellness Café">
+          <span class="venue-id">CCR-DIN-009</span>
+          <span class="venue-price-tag">$25–50 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Plant-Based, Organic &amp; Adaptogenic Superfood Dining</div>
+          <h3>Sol Wellness Café</h3>
+          <div class="venue-tagline">&quot;Clean, nutrient-dense culinary creations designed to nourish body and mind.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>40 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>7AM–5PM Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Casual / Spa Robes Permitted</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Adjacent to the Solace Spa Gardens</div>
+          <div class="amenity-chips">
+            <span>Organic garden-to-table ingredients</span><span>Nutritionist consultation option</span><span>Outdoor zen deck seating</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Salt &amp; Timber Bakery &amp; Coffee House -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-011">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/The%20Salt%20&%20Timber%20Bakery%20&%20Coffee%20House.png" alt="The Salt &amp; Timber Bakery &amp; Coffee House">
+          <span class="venue-id">CCR-DIN-011</span>
+          <span class="venue-price-tag">$15–30 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Artisanal Bakery, Pastry Shop &amp; Specialty Coffee Bar</div>
+          <h3>The Salt &amp; Timber Bakery &amp; Coffee House</h3>
+          <div class="venue-tagline">&quot;Freshly baked morning viennoiserie and single-origin specialty roasts.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>30 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>6AM–6PM Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Resort Casual</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Main Plaza Village Square</div>
+          <div class="amenity-chips">
+            <span>On-site coffee roastery</span><span>Grab-and-go picnic boxes</span><span>Daily baking demonstration</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= AFTER DARK &AMP; PRIVATE ================= -->
+<section class="collection-block" id="after-dark">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">04 · After Dark & Private</div>
+        <h2>After Dark &amp; Private</h2>
+        <p>Rooftop rum, a subterranean wine cellar, and a table set for two on a private dune.</p>
+      </div>
+      <span class="collection-count">3 venues</span>
+    </div>
+
+    <div class="venue-grid">
+
+      <!-- Breeze Rooftop Grill &amp; Rum Lounge -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-012">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Breeze%20Rooftop%20Grill%20&%20Rum%20Lounge.png" alt="Breeze Rooftop Grill &amp; Rum Lounge">
+          <span class="venue-id">CCR-DIN-012</span>
+          <span class="venue-price-tag">$80–140 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Open-Air Caribbean Coastal BBQ &amp; Vintage Rum Tasting</div>
+          <h3>Breeze Rooftop Grill &amp; Rum Lounge</h3>
+          <div class="venue-tagline">&quot;Panoramic sunset vistas, Caribbean spices, and rare aged rums.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>65 Guests</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>5–11PM Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Smart Casual</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> High-Elevation Rooftop Terrace</div>
+          <div class="amenity-chips">
+            <span>360-degree sunset views</span><span>Rum sommelier</span><span>Fire pit lounge seating</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Cellar at Coral Cloud -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-007">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/The%20Cellar%20at%20Coral%20Cloud.png" alt="The Cellar at Coral Cloud">
+          <span class="venue-id">CCR-DIN-007</span>
+          <span class="venue-price-tag">$300–500 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Private Wine Tasting &amp; Gourmet Charcuterie</div>
+          <h3>The Cellar at Coral Cloud</h3>
+          <div class="venue-tagline">&quot;An underground sanctuary for world-class vintages and rare pairings.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>12 Guests (Private Booking Only)</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>6:30–11PM By Res.</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Elegant Attire</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Subterranean Limestone Cave</div>
+          <div class="amenity-chips">
+            <span>Climate-controlled limestone cave</span><span>Private master sommelier</span><span>Custom menu design</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Starlight Dunes -->
+      <div class="venue-card reveal" data-venue="CCR-DIN-010">
+        <div class="venue-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Starlight%20Dunes.png" alt="Starlight Dunes">
+          <span class="venue-id">CCR-DIN-010</span>
+          <span class="venue-price-tag">$400–650 <span>/ person</span></span>
+        </div>
+        <div class="venue-body">
+          <div class="venue-type">Private Custom Beach Pop-Up &amp; Candlelit Barbecue</div>
+          <h3>Starlight Dunes</h3>
+          <div class="venue-tagline">&quot;An intimate private dining experience carved into the quiet sands under the stars.&quot;</div>
+          <div class="venue-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>2 to 6 Guests per Setup</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>7–10:30PM By Res.</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.82 0l4.36-4.36a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Barefoot Luxury</div>
+          </div>
+          <div class="venue-setting"><b>Setting:</b> Secluded Private Sand Dune</div>
+          <div class="amenity-chips">
+            <span>Private personal chef &amp; butler</span><span>Live acoustic musician available</span><span>Custom firepit</span>
+          </div>
+          <div class="venue-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="rooms-cta">
+  <div class="container">
+    <span class="eyebrow reveal">Can't Decide Where to Eat?</span>
+    <h2 class="reveal">Our concierge team keeps a running list of tonight's tables.</h2>
+    <p class="reveal">Tell us your party size, the occasion, and any cravings — we'll book the right seat, from the sushi counter to the sand dune.</p>
+    <a href="#" class="btn btn-coral reveal">Talk to Reservations</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Coral Cloud Resorts">
+        <p>A private coral atoll resort with fifteen residences, set between open ocean and still lagoon water.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Stay</h4>
+        <ul>
+          <li><a href="rooms.html#overwater">Overwater &amp; Lagoon</a></li>
+          <li><a href="rooms.html#beachfront">Beachfront &amp; Garden</a></li>
+          <li><a href="rooms.html#penthouse">Penthouse &amp; Wellness</a></li>
+          <li><a href="rooms.html#estates">Grand Estates</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Dine</h4>
+        <ul>
+          <li><a href="dining.html#on-water">On the Water</a></li>
+          <li><a href="dining.html#shoreline">Shoreline &amp; Poolside</a></li>
+          <li><a href="dining.html#all-day">All-Day &amp; Casual</a></li>
+          <li><a href="dining.html#after-dark">After Dark &amp; Private</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">reservations@coralcloudresorts.com</a></li>
+          <li><a href="#">+1 (800) 555-0142</a></li>
+          <li><a href="#">Coral Cloud Atoll, South Pacific</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Coral Cloud Resorts. All rights reserved.</span>
+      <span>A fictitious resort brand, built for demonstration purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= VENUE DETAIL MODAL ================= -->
+<div class="modal-overlay" id="venueModal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+      <span class="venue-id" id="modalVenueId"></span>
+      <span class="venue-price-tag" id="modalPriceTag"></span>
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-type" id="modalType"></div>
+      <h2 id="modalName"></h2>
+      <div class="modal-tagline" id="modalTagline"></div>
+
+      <div class="modal-stats">
+        <div><b>Setting</b><span id="modalSetting"></span></div>
+        <div><b>Seating Capacity</b><span id="modalSeating"></span></div>
+        <div><b>Operating Hours</b><span id="modalHours"></span></div>
+        <div><b>Dress Code</b><span id="modalDress"></span></div>
+      </div>
+
+      <div class="modal-section">
+        <h4>About This Venue</h4>
+        <p id="modalDescription"></p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Signature Highlights</h4>
+        <ul class="modal-highlight-list" id="modalHighlights"></ul>
+      </div>
+
+      <div class="modal-section">
+        <h4>Key Features &amp; Services</h4>
+        <div class="modal-amenity-list" id="modalFeatures"></div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-price" id="modalFullPrice"></div>
+        <a href="#" class="btn btn-coral">Reserve a Table</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ================= VENUE DETAIL DATA ================= */
+  const venueData = {
+    "CCR-DIN-003": {
+      name: "Atelier Cloud",
+      type: "Overwater Fine Dining & Molecular Coastal Gastronomy",
+      tagline: "An avant-garde culinary journey suspended over the turquoise lagoon.",
+      setting: "Floating Overwater Glass Pavilion",
+      seating: "36 Guests",
+      hours: "Dinner: 7:00 PM – 11:00 PM (Tues – Sun)",
+      dress: "Formal Resort / Elegant Attire",
+      price: "$250 – $350 USD per person (7-Course Tasting Menu)",
+      description: "Suspended high above the water, Atelier Cloud offers an exclusive 7-course seasonal tasting menu inspired by ocean currents and marine flora. Featuring glass floor cutouts and modern molecular techniques, each dish tells a story of sustainable coastal gastronomy.",
+      highlights: ["Deconstructed Coral Crab Bisque with Seafoam", "A5 Wagyu Tenderloin with Sea-Smoked Truffle Glaze", "Rare Vintage Champagne Tasting Flight"],
+      features: ["7-course chef's tasting menu", "Floor-to-ceiling ocean views", "Private sommelier tableside pairings"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Atelier%20Cloud.png"
+    },
+    "CCR-DIN-005": {
+      name: "Nori & Shell",
+      type: "Overwater Japanese Omakase & Izakaya",
+      tagline: "Hyper-fresh marine delicacies crafted with Japanese precision.",
+      setting: "Secluded Overwater Jetty",
+      seating: "16 Seats (12 Bar + 1 Private Room)",
+      hours: "Dinner: 6:00 PM – 10:30 PM (Two Seatings: 6:00 PM & 8:30 PM)",
+      dress: "Smart Casual",
+      price: "$220 – $280 USD per person (14-Course Omakase)",
+      description: "A 16-seat intimate Japanese sushi sanctuary built over the lagoon. Master chefs prepare air-flown seafood alongside hyper-local ocean catches, serving a 14-course omakase journey paired with rare Japanese sakes and whiskies.",
+      highlights: ["14-Course Chef's Daily Omakase Journey", "Smoked Uni & Caviar Tartlet", "Aged Junmai Daiginjo Sake Pairing"],
+      features: ["Interactive Hinoki wood sushi bar", "Master chef storytelling", "Private 4-person dining room"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Nori%20&%20Shell.png"
+    },
+    "CCR-DIN-008": {
+      name: "Aqua Swim-Up Bar",
+      type: "Submerged Pool Bar & Tropical Hydration Lounge",
+      tagline: "Cool down without ever stepping out of the water.",
+      setting: "Central Lagoon Pool (In-Water)",
+      seating: "24 Submerged Stools",
+      hours: "10:00 AM – 6:30 PM (Daily)",
+      dress: "Swimwear",
+      price: "$20 – $45 USD per person",
+      description: "Submerged seating built directly into the central infinity pool allows guests to order ice-cold tropical craft cocktails, frozen smoothies, and light chilled bites without leaving the water.",
+      highlights: ["Chilled Watermelon, Mint & Feta Skewers", "Frozen Coconut-Pineapple Daiquiri in Fresh Coconut", "Smoked Sea-Salt Edamame"],
+      features: ["Submerged bar seating", "Waterproof payment access", "Live mixology"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Aqua%20Swim-Up%20Bar.png"
+    },
+    "CCR-DIN-001": {
+      name: "Ember & Tide",
+      type: "Signature Open-Fire Coastal Gastronomy & Wood-Fired Seafood",
+      tagline: "Where ocean-fresh catch meets the smoky warmth of citrus wood fires.",
+      setting: "Oceanfront Barefoot Deck & Open-Air Pavilion",
+      seating: "75 Guests",
+      hours: "Dinner: 6:00 PM – 10:30 PM (Daily)",
+      dress: "Resort Elegant / Smart Casual",
+      price: "$120 – $180 USD per person",
+      description: "Ember & Tide is Coral Cloud's flagship oceanfront dinner destination. Centered around an open-hearth kitchen fueled by native citrus woods and coconut charcoal, chefs craft hyper-local ocean catches paired with harvested sea herbs and low-intervention coastal wines.",
+      highlights: ["Salt-Crusted Wild Snapper with Smoked Sea-Herb Butter", "Charred Octopus with Squid Ink Emulsion & Citrus Crisp", "Smoked Mezcal & Hibiscus Paloma"],
+      features: ["Open-fire cooking theater", "Sommelier wine pairing", "Beachfront ambient torchlight"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Ember%20&%20Tide.png"
+    },
+    "CCR-DIN-006": {
+      name: "Spice Route Beach Club",
+      type: "Pan-Asian & Mediterranean Poolside Tapas",
+      tagline: "Vibrant coastal street food meets Mediterranean sun-kissed pool relaxation.",
+      setting: "Main Infinity Poolside & Cabana Deck",
+      seating: "100 Guests",
+      hours: "11:00 AM – 7:00 PM (Daily)",
+      dress: "Swimwear / Resort Cover-up",
+      price: "$40 – $75 USD per person",
+      description: "Serving the main pool area and beach cabanas, Spice Route brings together aromatic herbs of Southeast Asia and fresh Mediterranean flavors. Features small sharing plates, wood-fired flatbreads, and large punch bowls for groups.",
+      highlights: ["Thai Crab & Lemongrass Cakes with Chili Lime Dip", "Truffle, Burrata & Fresh Fig Wood-Fired Flatbread", "Passionfruit & Dragonfruit Sangria Pitcher"],
+      features: ["Direct cabana service", "Poolside mobile app ordering", "Live DJ sets on weekends"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Spice%20Route%20Beach%20Club.png"
+    },
+    "CCR-DIN-002": {
+      name: "The Driftwood Lounge",
+      type: "Casual Chic Beach Club, Tapas & Craft Cocktails",
+      tagline: "Sun-dappled daytime relaxation transforming into sultry nighttime vinyl sessions.",
+      setting: "Beachfront Shoreline Deck & Sunken Lounge",
+      seating: "90 Guests",
+      hours: "10:00 AM – Midnight (Daily)",
+      dress: "Island Casual / Beachwear with Cover-up",
+      price: "$45 – $85 USD per person",
+      description: "Built from bleached teak wood and soft limestone, The Driftwood Lounge transitions effortlessly from a relaxed daytime lounge serving cold-pressed juices and ceviches to a lively twilight cocktail bar featuring artisanal spirits, low-fi beats, and wood-fired small plates.",
+      highlights: ["Ahi Tuna & Mango Tacos with Lime Cream", "Chilled King Crab & Avocado Crostini", "Pressed Hibiscus Spritz with Botanical Gin"],
+      features: ["Daybed lounge seating", "Live acoustic & vinyl DJ sets", "Craft cocktail lab"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/The%20Driftwood%20Lounge.png"
+    },
+    "CCR-DIN-004": {
+      name: "Laguna Terrace",
+      type: "All-Day International, Breakfast Pavilion & Artisan Bakery",
+      tagline: "Vibrant morning sunshine, floating platforms, and fresh global flavors.",
+      setting: "Overlooking Central Freshwater Lagoon",
+      seating: "120 Guests",
+      hours: "Breakfast: 6:30 AM – 11:00 AM | Lunch: 12:00 PM – 4:00 PM",
+      dress: "Resort Casual",
+      price: "$35 – $70 USD per person",
+      description: "Positioned over the resort's central freshwater lagoon, Laguna Terrace serves lavish breakfast buffets, cold-pressed juice bars, and live cooking stations. Guests dine on floating timber decks surrounded by koi ponds and tropical palms.",
+      highlights: ["Coconut & Pandan Soufflé Pancakes", "Local Reef Lobster Benedict with Yuzu Hollandaise", "Cold-Pressed Green Algae & Fresh Ginger Tonic"],
+      features: ["Interactive live cooking stations", "Floating deck seating", "Organic gluten-free bakery section"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Laguna%20Terrace.png"
+    },
+    "CCR-DIN-009": {
+      name: "Sol Wellness Café",
+      type: "Plant-Based, Organic & Adaptogenic Superfood Dining",
+      tagline: "Clean, nutrient-dense culinary creations designed to nourish body and mind.",
+      setting: "Adjacent to the Solace Spa Gardens",
+      seating: "40 Guests",
+      hours: "7:00 AM – 5:00 PM (Daily)",
+      dress: "Casual / Spa Robes Permitted",
+      price: "$25 – $50 USD per person",
+      description: "Situated inside the peaceful spa gardens, Sol Wellness Café focuses on farm-to-table plant-based cuisine, cold-pressed raw juices, adaptogenic teas, and probiotic superfood bowls tailored to support detox and wellness journeys.",
+      highlights: ["Blue Spirulina, Mango & Dragonfruit Smoothie Bowl", "Kelp Noodle & Edamame Salad with Sesame-Tofu Dressing", "Iced Golden Milk Latte with Ashwagandha & Oat Milk"],
+      features: ["Organic garden-to-table ingredients", "Nutritionist consultation option", "Outdoor zen deck seating"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Sol%20Wellness%20Caf%C3%A9.png"
+    },
+    "CCR-DIN-011": {
+      name: "The Salt & Timber Bakery & Coffee House",
+      type: "Artisanal Bakery, Pastry Shop & Specialty Coffee Bar",
+      tagline: "Freshly baked morning viennoiserie and single-origin specialty roasts.",
+      setting: "Main Plaza Village Square",
+      seating: "30 Guests",
+      hours: "6:00 AM – 6:00 PM (Daily)",
+      dress: "Resort Casual",
+      price: "$15 – $30 USD per person",
+      description: "The resort's cozy morning hub, featuring in-house pastry chefs baking artisan sourdough, croissants, and tropical fruit tarts every morning at dawn. Paired with custom single-origin coffee beans roasted on-site.",
+      highlights: ["Salted Caramel & Macadamia Croissant", "Passionfruit Cream Tartlet", "Cold Brew Coffee with Vanilla Coconut Foam"],
+      features: ["On-site coffee roastery", "Grab-and-go picnic boxes", "Daily baking demonstration"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/The%20Salt%20&%20Timber%20Bakery%20&%20Coffee%20House.png"
+    },
+    "CCR-DIN-012": {
+      name: "Breeze Rooftop Grill & Rum Lounge",
+      type: "Open-Air Caribbean Coastal BBQ & Vintage Rum Tasting",
+      tagline: "Panoramic sunset vistas, Caribbean spices, and rare aged rums.",
+      setting: "High-Elevation Rooftop Terrace",
+      seating: "65 Guests",
+      hours: "5:00 PM – 11:00 PM (Daily)",
+      dress: "Smart Casual",
+      price: "$80 – $140 USD per person",
+      description: "Located on the highest rooftop of the central pavilion, Breeze offers 360-degree views of the island and ocean. Specializing in jerk-spiced meats, slow-roasted seafood, and an extensive library of over 100 vintage Caribbean and South American rums.",
+      highlights: ["Jerk-Spiced Smoked Pork Ribs with Mango Slaw", "Grilled Banana-Leaf Wrapped Snapper", "Aged 20-Year Rum Flight with Artisanal Dark Chocolate"],
+      features: ["360-degree sunset views", "Rum sommelier", "Fire pit lounge seating"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Breeze%20Rooftop%20Grill%20&%20Rum%20Lounge.png"
+    },
+    "CCR-DIN-007": {
+      name: "The Cellar at Coral Cloud",
+      type: "Private Wine Tasting & Gourmet Charcuterie",
+      tagline: "An underground sanctuary for world-class vintages and rare pairings.",
+      setting: "Subterranean Limestone Cave",
+      seating: "12 Guests (Private Booking Only)",
+      hours: "6:30 PM – 11:00 PM (By Reservation)",
+      dress: "Elegant Attire",
+      price: "$300 – $500 USD per person",
+      description: "Carved into natural coastal limestone beneath the main lodge, The Cellar houses over 3,500 bottles of world-renowned wines. Guests enjoy private multi-course dinners hosted by the Master Sommelier alongside bespoke charcuterie and artisan cheese pairings.",
+      highlights: ["5-Course Sommelier-Paired Wine Dinner", "Aged Vintage Champagne & Siberian Caviar Flight", "Artisan Truffle Cheese & Cured Meat Board"],
+      features: ["Climate-controlled limestone cave", "Private master sommelier", "Custom menu design"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/The%20Cellar%20at%20Coral%20Cloud.png"
+    },
+    "CCR-DIN-010": {
+      name: "Starlight Dunes",
+      type: "Private Custom Beach Pop-Up & Candlelit Barbecue",
+      tagline: "An intimate private dining experience carved into the quiet sands under the stars.",
+      setting: "Secluded Private Sand Dune",
+      seating: "2 to 6 Guests per Setup",
+      hours: "Dinner: 7:00 PM – 10:30 PM (By Reservation)",
+      dress: "Barefoot Luxury",
+      price: "$400 – $650 USD per person",
+      description: "A pop-up dining setup arranged on a private sand dune. Guests are welcomed with carpet-draped dune seating, glowing tiki torches, a personal chef grilling live, and a dedicated private butler under the clear night sky.",
+      highlights: ["Grilled Lobster Tail & Wagyu Sirloin Surf-and-Turf", "Flame-Roasted Pineapple with Coconut Gelato", "Chilled Dom Pérignon Champagne"],
+      features: ["Private personal chef & butler", "Live acoustic musician available", "Custom firepit"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Dining%20Images/Starlight%20Dunes.png"
+    },
+  };
+
+  /* ================= MODAL LOGIC ================= */
+  const venueModal = document.getElementById('venueModal');
+  const modalClose = document.getElementById('modalClose');
+
+  function openVenueModal(id) {
+    const v = venueData[id];
+    if (!v) return;
+    document.getElementById('modalImg').src = v.image;
+    document.getElementById('modalImg').alt = v.name;
+    document.getElementById('modalVenueId').textContent = id;
+    document.getElementById('modalPriceTag').innerHTML = v.price.split(' USD')[0] + ' <span>/ person</span>';
+    document.getElementById('modalType').textContent = v.type;
+    document.getElementById('modalName').textContent = v.name;
+    document.getElementById('modalTagline').textContent = '"' + v.tagline + '"';
+    document.getElementById('modalSetting').textContent = v.setting;
+    document.getElementById('modalSeating').textContent = v.seating;
+    document.getElementById('modalHours').textContent = v.hours;
+    document.getElementById('modalDress').textContent = v.dress;
+    document.getElementById('modalDescription').textContent = v.description;
+    document.getElementById('modalFullPrice').innerHTML = v.price + '<span> · average per person</span>';
+
+    const highlightWrap = document.getElementById('modalHighlights');
+    highlightWrap.innerHTML = '';
+    v.highlights.forEach(h => {
+      const li = document.createElement('li');
+      li.textContent = h;
+      highlightWrap.appendChild(li);
+    });
+
+    const featureWrap = document.getElementById('modalFeatures');
+    featureWrap.innerHTML = '';
+    v.features.forEach(f => {
+      const span = document.createElement('span');
+      span.textContent = f;
+      featureWrap.appendChild(span);
+    });
+
+    venueModal.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeVenueModal() {
+    venueModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.venue-card[data-venue]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.venue-footer a')) return;
+      openVenueModal(card.getAttribute('data-venue'));
+    });
+  });
+
+  modalClose.addEventListener('click', closeVenueModal);
+  venueModal.addEventListener('click', (e) => {
+    if (e.target === venueModal) closeVenueModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVenueModal();
+  });
+</script>
+</body>
+</html>

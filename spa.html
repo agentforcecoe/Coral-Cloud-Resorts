@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spa & Wellness — Coral Cloud Resorts</title>
+<meta name="description" content="Ten spa rituals at Coral Cloud Resorts — overwater massage cabanas, a subterranean hydrotherapy circuit, and a private couples' immersion over the lagoon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#0B2E2A;
+    --teal-900:#0A3D39;
+    --teal-700:#0F5C56;
+    --teal-600:#146B62;
+    --teal-500:#1C8478;
+    --foam:#E7F3EF;
+    --sand:#FBF4E8;
+    --sand-deep:#F3E7D3;
+    --coral:#F2734B;
+    --coral-deep:#DD5A34;
+    --coral-soft:#F8AF8E;
+    --gold:#C79A3C;
+    --white:#FFFFFF;
+    --shadow: 0 20px 50px -20px rgba(10,61,57,0.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  .eyebrow{
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--coral);
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.1;
+    color:var(--teal-900);
+  }
+  .italic{font-style:italic; font-weight:400;}
+  .container{width:100%; max-width:1240px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  .wave-rule{width:120px; height:20px; margin:18px 0 0; overflow:visible;}
+  .wave-rule path{
+    fill:none; stroke:var(--coral); stroke-width:3; stroke-linecap:round;
+    stroke-dasharray:180; stroke-dashoffset:180;
+    transition:stroke-dashoffset 1.1s var(--ease);
+  }
+  .reveal.is-visible .wave-rule path{stroke-dashoffset:0;}
+
+  /* ================= NAV (shared) ================= */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:14px 0;
+    background:rgba(251,244,232,0.94);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 30px -18px rgba(10,46,42,0.25);
+  }
+  .nav .container{display:flex; align-items:center; justify-content:space-between;}
+  .brand img{height:46px; width:auto; filter:drop-shadow(0 4px 10px rgba(10,46,42,0.18));}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{
+    font-size:0.86rem; font-weight:600; letter-spacing:0.03em; color:var(--teal-900);
+    position:relative; padding:6px 8px; transition:color .3s;
+  }
+  .nav-links a.current{color:var(--coral);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--coral); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-links .tag{font-size:0.68rem; letter-spacing:0.08em; color:var(--coral); text-transform:uppercase; margin-left:6px; font-weight:700;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:700; font-size:0.82rem; letter-spacing:0.03em;
+    padding:13px 26px; border-radius:999px; border:1.5px solid transparent; cursor:pointer;
+    transition:transform .35s var(--ease), background .35s, color .35s, border-color .35s;
+  }
+  .btn-coral{background:var(--coral); color:var(--white); box-shadow:0 14px 30px -12px rgba(242,115,75,0.55);}
+  .btn-coral:hover{background:var(--coral-deep); transform:translateY(-2px);}
+  .btn-outline{border-color:var(--teal-700); color:var(--teal-700);}
+  .btn-outline:hover{background:var(--teal-700); color:var(--white);}
+  .btn-sm{padding:10px 20px; font-size:0.76rem;}
+  .btn-full{width:100%; justify-content:center;}
+
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:120;}
+  .hamburger span{width:26px; height:2px; background:var(--teal-900);}
+
+  /* ================= PAGE HERO — full-bleed sanctuary ================= */
+  .page-hero{
+    position:relative;
+    min-height:min(90vh, 800px);
+    overflow:hidden;
+  }
+  .hero-bg{position:absolute; inset:0; z-index:0;}
+  .hero-bg img{width:100%; height:100%; object-fit:cover; transform:scale(1.04);}
+  .hero-scrim{
+    position:absolute; inset:0; z-index:1;
+    background:
+      linear-gradient(180deg, rgba(9,43,40,0.68) 0%, rgba(9,43,40,0.22) 30%, rgba(9,43,40,0.3) 62%, rgba(9,43,40,0.8) 100%),
+      linear-gradient(100deg, rgba(9,43,40,0.55) 0%, rgba(9,43,40,0.05) 52%),
+      radial-gradient(ellipse at 82% 20%, rgba(242,115,75,0.20), transparent 45%);
+  }
+
+  /* ambient breathing glow behind the copy — subtle, on brand */
+  .hero-glow{
+    position:absolute; z-index:1; top:8%; left:-6%;
+    width:480px; height:480px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,0.10), transparent 68%);
+    animation:glow-breathe 7s ease-in-out infinite;
+  }
+  @keyframes glow-breathe{
+    0%,100%{transform:scale(0.94); opacity:0.6;}
+    50%{transform:scale(1.05); opacity:1;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-glow{animation:none;}
+  }
+
+  .hero-inner{position:relative; z-index:2; padding:172px 0 250px; max-width:620px;}
+  .page-hero .eyebrow{color:var(--coral-soft); display:flex; align-items:center; gap:12px;}
+  .page-hero .eyebrow::before{
+    content:''; display:inline-block; width:34px; height:1.5px; background:var(--coral-soft);
+  }
+  .page-hero h1{font-size:clamp(2.6rem, 5vw, 4.2rem); margin-top:18px; color:var(--white);}
+  .page-hero h1 .italic{color:var(--coral-soft);}
+  .page-hero p{margin-top:22px; max-width:500px; color:rgba(255,255,255,0.8); font-size:1.05rem; font-weight:300;}
+
+  .jump-nav{display:flex; gap:14px; flex-wrap:wrap; margin-top:38px;}
+  .jump-nav a{
+    padding:11px 20px; border-radius:999px; border:1.5px solid rgba(255,255,255,0.35);
+    font-size:0.82rem; font-weight:600; color:var(--white);
+    background:rgba(255,255,255,0.06); backdrop-filter:blur(6px);
+    transition:background .3s, color .3s, border-color .3s;
+  }
+  .jump-nav a:hover{background:var(--coral); color:var(--white); border-color:var(--coral);}
+
+  /* glass stat panel — floats within the copy column */
+  .hero-stats{
+    display:flex; flex-wrap:wrap; margin-top:44px;
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.16); border-radius:16px;
+  }
+  .hero-stats div{flex:1 1 auto; min-width:110px; padding:20px 22px; border-right:1px solid rgba(255,255,255,0.14);}
+  .hero-stats div:last-child{border-right:none;}
+  .hero-stats b{display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.35rem; color:var(--white);}
+  .hero-stats span{display:block; margin-top:4px; font-size:0.66rem; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.65); font-weight:600;}
+
+  /* appointment card — signature element */
+  .hero-card{
+    position:absolute; z-index:3; right:7%; bottom:64px;
+    width:260px; background:var(--white); border-radius:16px;
+    padding:26px 24px 24px; box-shadow:0 40px 80px -20px rgba(0,0,0,0.5);
+    transform:rotate(2.5deg);
+  }
+  .hero-card .card-icon{
+    width:40px; height:40px; border-radius:50%; background:var(--foam);
+    display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+    position:relative;
+  }
+  .hero-card .card-icon svg{width:20px; height:20px; stroke:var(--teal-600);}
+  .hero-card .card-icon .pulse-ring{
+    position:absolute; inset:-6px; border-radius:50%; border:1.5px solid rgba(28,132,120,0.4);
+    animation:card-pulse 3.2s ease-out infinite;
+  }
+  @keyframes card-pulse{
+    0%{transform:scale(0.85); opacity:0.7;}
+    100%{transform:scale(1.35); opacity:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-card .pulse-ring{animation:none; display:none;}
+  }
+  .hero-card .card-eyebrow{
+    font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color:var(--coral);
+  }
+  .hero-card h4{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.22rem; color:var(--teal-900); margin-top:6px; line-height:1.2;
+  }
+  .hero-card .card-divider{margin:16px 0; border:none; border-top:1.5px dashed rgba(10,61,57,0.22);}
+  .hero-card .card-row{display:flex; justify-content:space-between; font-size:0.78rem; color:var(--teal-900); margin-bottom:9px;}
+  .hero-card .card-row span:first-child{color:#5C7B76; font-weight:600;}
+  .hero-card .card-row span:last-child{font-weight:700; text-align:right;}
+
+  @media (max-width:980px){
+    .page-hero{min-height:auto;}
+    .hero-inner{padding:150px 0 40px; max-width:none;}
+    .hero-card{
+      position:static; margin:32px auto 0; transform:rotate(-1.5deg); width:100%; max-width:280px;
+    }
+    .hero-glow{display:none;}
+  }
+  @media (max-width:560px){
+    .hero-inner{padding-top:126px;}
+    .hero-stats{border-radius:14px;}
+    .hero-stats div{flex:1 1 50%; padding:16px 16px; border-bottom:1px solid rgba(255,255,255,0.14);}
+    .hero-stats div:nth-child(2){border-right:none;}
+    .hero-stats div:nth-child(3),.hero-stats div:nth-child(4){border-bottom:none;}
+  }
+
+
+  /* ================= COLLECTION SECTION ================= */
+  .collection-block{padding:80px 0 20px; scroll-margin-top:100px;}
+  .collection-block:nth-of-type(even){background:var(--foam);}
+  .collection-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap;
+    margin-bottom:48px;
+  }
+  .collection-head .eyebrow{color:var(--coral);}
+  .collection-head h2{font-size:clamp(1.8rem, 3vw, 2.5rem); margin-top:12px;}
+  .collection-head p{max-width:440px; color:#3B5A55; font-weight:300; font-size:0.96rem;}
+  .collection-count{font-family:'Fraunces', serif; font-style:italic; color:var(--coral); font-size:1.05rem;}
+
+  .ritual-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+    padding-bottom:90px;
+  }
+
+  .ritual-card{
+    background:var(--white); border-radius:20px; overflow:hidden; cursor:pointer;
+    box-shadow:0 26px 55px -32px rgba(10,46,42,0.3);
+    display:flex; flex-direction:column;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .ritual-card:hover{transform:translateY(-8px); box-shadow:0 36px 70px -30px rgba(10,46,42,0.4);}
+
+  .ritual-media{position:relative; height:230px; overflow:hidden;}
+  .ritual-media img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease);}
+  .ritual-card:hover .ritual-media img{transform:scale(1.07);}
+  .ritual-id{
+    position:absolute; top:16px; left:16px;
+    background:rgba(10,46,42,0.72); color:var(--white);
+    font-size:0.66rem; font-weight:700; letter-spacing:0.06em;
+    padding:6px 11px; border-radius:999px;
+  }
+  .ritual-price-tag{
+    position:absolute; bottom:16px; right:16px;
+    background:var(--coral); color:var(--white);
+    font-size:0.78rem; font-weight:700; padding:8px 14px; border-radius:999px;
+    box-shadow:0 10px 24px -8px rgba(242,115,75,0.7);
+  }
+  .ritual-price-tag span{font-weight:400; opacity:0.85; font-size:0.68rem;}
+
+  .ritual-body{padding:26px 26px 28px; display:flex; flex-direction:column; flex:1;}
+  .ritual-type{font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .ritual-body h3{font-size:1.28rem; margin-top:8px; line-height:1.2;}
+  .ritual-tagline{font-style:italic; color:#5C7B76; font-size:0.88rem; margin-top:6px; font-weight:400; font-family:'Fraunces', serif;}
+
+  .ritual-stats{
+    display:flex; flex-wrap:wrap; gap:14px 18px;
+    margin-top:18px; padding-top:16px; border-top:1px dashed rgba(10,61,57,0.16);
+    font-size:0.78rem; color:var(--teal-900);
+  }
+  .ritual-stats div{display:flex; align-items:center; gap:6px;}
+  .ritual-stats svg{width:15px; height:15px; stroke:var(--coral); flex-shrink:0;}
+
+  .ritual-setting{margin-top:14px; font-size:0.84rem; color:#3B5A55;}
+  .ritual-setting b{color:var(--teal-900); font-weight:700;}
+
+  .amenity-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .amenity-chips span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.7rem; font-weight:600; padding:6px 11px; border-radius:999px;
+  }
+
+  .ritual-footer{margin-top:auto; padding-top:22px; display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .ritual-footer .btn{flex:1;}
+
+  /* single wide feature card — Signature Journey */
+  .feature-card{
+    display:grid; grid-template-columns:1fr 1fr; background:var(--white);
+    border-radius:22px; overflow:hidden; margin-bottom:90px; cursor:pointer;
+    box-shadow:0 30px 65px -30px rgba(10,46,42,0.32);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .feature-card:hover{transform:translateY(-6px); box-shadow:0 40px 80px -28px rgba(10,46,42,0.4);}
+  .feature-media{position:relative; min-height:340px;}
+  .feature-media img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .feature-media .ritual-id{position:absolute; top:20px; left:20px;}
+  .feature-body{padding:44px 44px 40px; display:flex; flex-direction:column;}
+  .feature-body h3{font-size:1.7rem; margin-top:8px;}
+  .feature-body .ritual-tagline{font-size:1rem; margin-top:10px;}
+  .feature-desc{margin-top:20px; color:#3B5A55; font-size:0.94rem; font-weight:300; line-height:1.7;}
+  .feature-inclusions{margin:20px 0 0; padding:0;}
+  .feature-inclusions li{
+    list-style:none; position:relative; padding-left:22px; margin-bottom:9px;
+    color:#3B5A55; font-size:0.9rem; line-height:1.5;
+  }
+  .feature-inclusions li::before{
+    content:''; position:absolute; left:0; top:8px; width:8px; height:8px;
+    background:var(--coral); border-radius:50%;
+  }
+  .feature-footer{
+    margin-top:auto; padding-top:26px; display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .feature-price{font-family:'Fraunces', serif; font-size:1.3rem; color:var(--teal-900);}
+
+  @media (max-width:900px){
+    .feature-card{grid-template-columns:1fr;}
+    .feature-media{min-height:260px;}
+    .feature-body{padding:32px 26px 34px;}
+  }
+/* ================= CLOSING CTA ================= */
+  .rooms-cta{
+    padding:120px 0;
+    text-align:center;
+    background:var(--teal-900);
+    color:var(--white);
+  }
+  .rooms-cta .eyebrow{color:var(--coral-soft);}
+  .rooms-cta h2{color:var(--white); font-size:clamp(2rem, 4vw, 3rem); margin-top:16px;}
+  .rooms-cta p{max-width:460px; margin:22px auto 0; color:rgba(255,255,255,0.75); font-weight:300;}
+  .rooms-cta .btn{margin-top:36px;}
+
+  /* ================= FOOTER (shared) ================= */
+  footer{background:var(--ink); color:rgba(255,255,255,0.78); padding:80px 0 30px;}
+  .footer-top{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:48px; padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,0.12);}
+  .footer-brand img{height:46px; margin-bottom:18px; filter:brightness(0) invert(1) opacity(0.95);}
+  .footer-brand p{max-width:280px; font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.6);}
+  .footer-col h4{color:var(--white); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin-bottom:20px;}
+  .footer-col li{margin-bottom:12px; font-size:0.92rem;}
+  .footer-col a:hover{color:var(--coral-soft);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:0.8rem; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:12px;}
+
+  
+  /* ================= RITUAL MODAL ================= */
+  body.modal-open{overflow:hidden;}
+
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(10,46,42,0.55); backdrop-filter:blur(4px);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding:60px 20px; opacity:0; visibility:hidden;
+    transition:opacity .35s var(--ease), visibility .35s var(--ease);
+    overflow-y:auto;
+  }
+  .modal-overlay.open{opacity:1; visibility:visible;}
+
+  .modal-box{
+    background:var(--white); width:100%; max-width:880px; border-radius:22px; overflow:hidden;
+    box-shadow:0 40px 90px -30px rgba(10,46,42,0.55);
+    transform:translateY(30px) scale(0.98); opacity:0;
+    transition:transform .4s var(--ease), opacity .4s var(--ease); margin:auto;
+  }
+  .modal-overlay.open .modal-box{transform:translateY(0) scale(1); opacity:1;}
+
+  .modal-media{position:relative; height:360px;}
+  .modal-media img{width:100%; height:100%; object-fit:cover;}
+  .modal-media .ritual-id{position:absolute; top:20px; left:20px;}
+  .modal-media .ritual-price-tag{position:absolute; bottom:20px; right:20px; font-size:0.9rem; padding:10px 18px;}
+
+  .modal-close{
+    position:absolute; top:16px; right:16px; width:40px; height:40px; border-radius:50%;
+    background:rgba(11,46,42,0.55); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .3s, transform .3s;
+  }
+  .modal-close:hover{background:var(--coral); transform:rotate(90deg);}
+  .modal-close svg{width:18px; height:18px; stroke:var(--white); stroke-width:2.4;}
+
+  .modal-body{padding:36px 40px 44px;}
+  .modal-type{font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .modal-body h2{font-size:clamp(1.6rem, 3vw, 2.1rem); margin-top:8px;}
+  .modal-tagline{font-style:italic; color:#5C7B76; font-size:1rem; margin-top:8px; font-family:'Fraunces', serif;}
+
+  .modal-stats{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px;
+    margin-top:26px; padding:20px; background:var(--foam); border-radius:14px;
+  }
+  .modal-stats div{font-size:0.82rem; color:var(--teal-900);}
+  .modal-stats b{display:block; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal-500); font-weight:700; margin-bottom:4px;}
+
+  .modal-section{margin-top:28px;}
+  .modal-section h4{font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--coral); font-weight:700; margin-bottom:10px;}
+  .modal-section p{color:#3B5A55; font-size:0.94rem; font-weight:300; line-height:1.7;}
+
+  .modal-highlight-list{margin:0; padding:0;}
+  .modal-highlight-list li{
+    list-style:none; position:relative; padding-left:22px; margin-bottom:10px;
+    color:#3B5A55; font-size:0.92rem; font-weight:400; line-height:1.5;
+  }
+  .modal-highlight-list li::before{
+    content:''; position:absolute; left:0; top:8px; width:8px; height:8px;
+    background:var(--coral); border-radius:50%;
+  }
+
+  .modal-amenity-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .modal-amenity-list span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.76rem; font-weight:600; padding:8px 14px; border-radius:999px;
+  }
+
+  .modal-footer{
+    margin-top:34px; padding-top:26px; border-top:1px dashed rgba(10,61,57,0.16);
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .modal-footer .modal-price{font-family:'Fraunces', serif; font-size:1.4rem; color:var(--teal-900);}
+  .modal-footer .modal-price span{font-size:0.78rem; font-weight:400; color:#5C7B76; font-family:'Manrope',sans-serif;}
+
+  @media (max-width:600px){
+    .modal-overlay{padding:0;}
+    .modal-box{max-width:100%; border-radius:0; min-height:100vh;}
+    .modal-media{height:240px;}
+    .modal-body{padding:26px 22px 32px;}
+    .modal-footer{flex-direction:column; align-items:stretch;}
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1080px){
+    .ritual-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:980px){
+    .footer-top{grid-template-columns:1fr 1fr; row-gap:36px;}
+  }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; inset:0 0 0 auto; width:78%; height:100vh;
+      background:var(--teal-900); flex-direction:column; align-items:flex-start; justify-content:center;
+      padding:0 40px; gap:26px; transform:translateX(100%); transition:transform .45s var(--ease);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--white) !important; font-size:1.1rem;}
+    .nav-links a.current{color:var(--coral-soft) !important;}
+    .hamburger{display:flex;}
+    .nav .btn-coral{display:none;}
+    .nav-links .btn-coral{display:inline-flex; margin-top:10px;}
+    .ritual-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .container{padding:0 22px;}
+    .ritual-footer{flex-direction:column; align-items:stretch;}
+  }
+
+  @media (max-width:420px){
+    .hero-stats div{flex:1 1 100%; padding-right:0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="siteNav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Coral_Cloud_Resort%20Logo.webp" alt="Coral Cloud Resorts">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Accommodations</a></li>
+      <li><a href="dining.html">Dining</a></li>
+      <li><a href="spa.html" class="current">Spa</a></li>
+      <li><a href="index.html#experiences">Experiences<span class="tag">Soon</span></a></li>
+      <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= PAGE HERO ================= -->
+<header class="page-hero">
+  <div class="hero-bg">
+    <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Coral%20Cloud%20Hydrotherapy%20Thermal%20Circuit.png" alt="Coral Cloud Hydrotherapy Thermal Circuit">
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-glow"></div>
+
+  <div class="container hero-inner">
+    <div class="eyebrow reveal">Ten Rituals · One Breath</div>
+    <h1 class="reveal">Slow down until <span class="italic">you</span> can hear the tide.</h1>
+    <p class="reveal">From a 45-minute rain-shower scrub to a 150-minute couples' immersion over the lagoon, every ritual below is built around one idea: give the body enough quiet to actually rest.</p>
+    <div class="jump-nav reveal">
+      <a href="#massage">Massage &amp; Muscle Therapy</a>
+      <a href="#facials">Facials &amp; Body Rituals</a>
+      <a href="#water-mind">Water &amp; Mind Therapies</a>
+      <a href="#signature">Signature Journeys</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div><b>10</b><span>Rituals</span></div>
+      <div><b>4</b><span>Collections</span></div>
+      <div><b>$175–750</b><span>Per Session</span></div>
+      <div><b>45–150</b><span>Minutes</span></div>
+    </div>
+  </div>
+
+  <div class="hero-card reveal">
+    <div class="card-icon">
+      <div class="pulse-ring"></div>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM6 14c0 5 3 8 6 8s6-3 6-8"/></svg>
+    </div>
+    <div class="card-eyebrow">Your Ritual Awaits</div>
+    <h4>Floating Sound Bath</h4>
+    <hr class="card-divider">
+    <div class="card-row"><span>Duration</span><span>60 Min</span></div>
+    <div class="card-row"><span>Setting</span><span>Tranquility Pool</span></div>
+    <div class="card-row"><span>Intensity</span><span>Deeply Relaxing</span></div>
+  </div>
+</header>
+
+<!-- ================= MASSAGE &AMP; MUSCLE THERAPY ================= -->
+<section class="collection-block" id="massage">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">01 · Massage & Muscle Therapy</div>
+        <h2>Massage &amp; Muscle Therapy</h2>
+        <p>Deep tissue, heated bamboo, and reflexology — hands-on work for tension held in the body.</p>
+      </div>
+      <span class="collection-count">3 rituals</span>
+    </div>
+
+    <div class="ritual-grid">
+
+      <!-- Tidal Rhythm Deep Tissue Massage -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-001">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Tidal%20Rhythm%20Deep%20Tissue%20Massage.png" alt="Tidal Rhythm Deep Tissue Massage">
+          <span class="ritual-id">CCR-SPA-001</span>
+          <span class="ritual-price-tag">$240–320 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Signature Deep Tissue &amp; Hot Stone Massage</div>
+          <h3>Tidal Rhythm Deep Tissue Massage</h3>
+          <div class="ritual-tagline">&quot;Let the rhythmic cadence of the tides melt away deep muscular tension.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>60–90 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Medium to Firm Pressure</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Overwater Oceanfront Spa Cabana</div>
+          <div class="amenity-chips">
+            <span>Open-air ocean view cabana</span><span>Sound of natural breaking waves</span><span>Heated treatment tables</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sunset Bamboo Fusion Massage -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-006">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Sunset%20Bamboo%20Fusion%20Massage.png" alt="Sunset Bamboo Fusion Massage">
+          <span class="ritual-id">CCR-SPA-006</span>
+          <span class="ritual-price-tag">$275 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Warm Bamboo Muscle Sculpting Massage</div>
+          <h3>Sunset Bamboo Fusion Massage</h3>
+          <div class="ritual-tagline">&quot;Heated silk-smooth bamboo stalks kneading away chronic tension.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>75 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Firm &amp; Penetrating</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Elevated Hillside Spa Pavilion</div>
+          <div class="amenity-chips">
+            <span>High-elevation ocean view</span><span>Open breeze pavilion</span><span>Custom soundscape playlist option</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Himalayan Salt Stone Reflexology -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-008">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Himalayan%20Salt%20Stone%20Reflexology.png" alt="Himalayan Salt Stone Reflexology">
+          <span class="ritual-id">CCR-SPA-008</span>
+          <span class="ritual-price-tag">$175 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Targeted Foot &amp; Lower Leg Therapy</div>
+          <h3>Himalayan Salt Stone Reflexology</h3>
+          <div class="ritual-tagline">&quot;Restore body equilibrium through ancient foot pressure points and warm mineral salts.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>60 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Medium Pressure</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Solace Garden Lounge</div>
+          <div class="amenity-chips">
+            <span>Zero-gravity reclining lounge chairs</span><span>Open garden breezes</span><span>Choice of herbal infusion teas</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACIALS &AMP; BODY RITUALS ================= -->
+<section class="collection-block" id="facials">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">02 · Facials & Body Rituals</div>
+        <h2>Facials &amp; Body Rituals</h2>
+        <p>Crystal-rolled facials, clay wraps, and after-sun recovery for skin that's been in the ocean and the light.</p>
+      </div>
+      <span class="collection-count">4 rituals</span>
+    </div>
+
+    <div class="ritual-grid">
+
+      <!-- Pearl &amp; Quartz Radiance Facial -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-003">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Pearl%20&%20Quartz%20Radiance%20Facial.png" alt="Pearl &amp; Quartz Radiance Facial">
+          <span class="ritual-id">CCR-SPA-003</span>
+          <span class="ritual-price-tag">$260 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Advanced Anti-Aging &amp; Luminosity Facial</div>
+          <h3>Pearl &amp; Quartz Radiance Facial</h3>
+          <div class="ritual-tagline">&quot;Harnessing mother-of-pearl and rose quartz crystals for an effortless glow.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>60 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Gentle &amp; Soothing</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Main Spa Sanctuary</div>
+          <div class="amenity-chips">
+            <span>Temperature-controlled facial suites</span><span>Specialized LED light therapy enhancement option</span><span>Organic skincare line</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sacred Sun Repair Mask &amp; Restorative Wrap -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-009">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Sacred%20Sun%20Repair%20Mask%20&%20Restorative%20Wrap.png" alt="Sacred Sun Repair Mask &amp; Restorative Wrap">
+          <span class="ritual-id">CCR-SPA-009</span>
+          <span class="ritual-price-tag">$220 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Post-Sun Recovery &amp; Cooling Skin Therapy</div>
+          <h3>Sacred Sun Repair Mask &amp; Restorative Wrap</h3>
+          <div class="ritual-tagline">&quot;Immediate relief, deep hydration, and cooling recovery for sun-kissed skin.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>60 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Ultra-Gentle &amp; Cooling</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Oceanfront Spa Suite</div>
+          <div class="amenity-chips">
+            <span>Temperature-controlled suites</span><span>Chilled gel eye compresses</span><span>Custom soothing herbal elixirs</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botanical Marine Scrub &amp; Rain Shower Ritual -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-007">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Botanical%20Marine%20Scrub%20&%20Rain%20Shower%20Ritual.png" alt="Botanical Marine Scrub &amp; Rain Shower Ritual">
+          <span class="ritual-id">CCR-SPA-007</span>
+          <span class="ritual-price-tag">$190 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Full Body Exfoliation &amp; Vichy Hydro-Massage</div>
+          <h3>Botanical Marine Scrub &amp; Rain Shower Ritual</h3>
+          <div class="ritual-tagline">&quot;Cascading warm water currents paired with crushed coral sea-salt exfoliation.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>45 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Medium Exfoliation</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Slate Stone Vichy Suite</div>
+          <div class="amenity-chips">
+            <span>Heated wet treatment table</span><span>Multi-jet Vichy bar</span><span>Chromotherapy lighting</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solace Sea-Mineral Body Wrap &amp; Detox -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-002">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Solace%20Sea-Mineral%20Body%20Wrap%20&%20Detox.png" alt="Solace Sea-Mineral Body Wrap &amp; Detox">
+          <span class="ritual-id">CCR-SPA-002</span>
+          <span class="ritual-price-tag">$280 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Body Exfoliation, Detoxification &amp; Hydration</div>
+          <h3>Solace Sea-Mineral Body Wrap &amp; Detox</h3>
+          <div class="ritual-tagline">&quot;Pure ocean nutrients and pink coastal clay to revitalize sun-exposed skin.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>75 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Gentle &amp; Restorative</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Garden Spa Pavilion</div>
+          <div class="amenity-chips">
+            <span>Private rain shower</span><span>Botanical garden view</span><span>Herbal tea tasting post-treatment</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WATER &AMP; MIND THERAPIES ================= -->
+<section class="collection-block" id="water-mind">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">03 · Water & Mind Therapies</div>
+        <h2>Water &amp; Mind Therapies</h2>
+        <p>Contrast bathing and floating sound work, for resetting the nervous system rather than the muscles.</p>
+      </div>
+      <span class="collection-count">2 rituals</span>
+    </div>
+
+    <div class="ritual-grid">
+
+      <!-- Coral Cloud Hydrotherapy Thermal Circuit -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-004">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Coral%20Cloud%20Hydrotherapy%20Thermal%20Circuit.png" alt="Coral Cloud Hydrotherapy Thermal Circuit">
+          <span class="ritual-id">CCR-SPA-004</span>
+          <span class="ritual-price-tag">$180 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Guided Thermal Water Therapy &amp; Contrast Bathing</div>
+          <h3>Coral Cloud Hydrotherapy Thermal Circuit</h3>
+          <div class="ritual-tagline">&quot;Reset your nervous system through contrast temperatures and mineral waters.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>90 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Restorative &amp; Invigorating</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Subterranean Hydrotherapy Grotto</div>
+          <div class="amenity-chips">
+            <span>Slate stone interior</span><span>Hydro-massage jets</span><span>Complimentary wellness shots (ginger, turmeric, spirulina)</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Sound Bath &amp; Energy Balancing -->
+      <div class="ritual-card reveal" data-ritual="CCR-SPA-005">
+        <div class="ritual-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Floating%20Sound%20Bath%20&%20Energy%20Balancing.png" alt="Floating Sound Bath &amp; Energy Balancing">
+          <span class="ritual-id">CCR-SPA-005</span>
+          <span class="ritual-price-tag">$210 <span>/ session</span></span>
+        </div>
+        <div class="ritual-body">
+          <div class="ritual-type">Mindfulness, Vibrational Healing &amp; Aquatherapeutics</div>
+          <h3>Floating Sound Bath &amp; Energy Balancing</h3>
+          <div class="ritual-tagline">&quot;Float weightlessly as acoustic vibrations align your bodily energy centers.&quot;</div>
+          <div class="ritual-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>60 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M2 12h4l1.5-4L11 18l2.5-11 1.5 5h7"/></svg>Soft &amp; Deeply Relaxing</div>
+          </div>
+          <div class="ritual-setting"><b>Setting:</b> Tranquility Pool Sanctuary</div>
+          <div class="amenity-chips">
+            <span>Submerged acoustic speakers</span><span>Ambient underwater lighting</span><span>Private quiet pool</span>
+          </div>
+          <div class="ritual-footer">
+            <a href="#" class="btn btn-coral btn-full">Book This Ritual</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIGNATURE JOURNEYS ================= -->
+<section class="collection-block" id="signature">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">04 · Signature Journeys</div>
+        <h2>Signature Journeys</h2>
+        <p>The resort's most immersive wellness experience, built for two.</p>
+      </div>
+      <span class="collection-count">1 journey</span>
+    </div>
+
+    <div class="feature-card reveal" data-ritual="CCR-SPA-010">
+      <div class="feature-media">
+        <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Couples'%20Cloud%20Nine%20Oceanfront%20Immersion.png" alt="Couples' Cloud Nine Oceanfront Immersion">
+        <span class="ritual-id">CCR-SPA-010</span>
+      </div>
+      <div class="feature-body">
+        <div class="ritual-type">Multi-Treatment Couples' Luxury Spa Journey</div>
+        <h3>Couples' Cloud Nine Oceanfront Immersion</h3>
+        <div class="ritual-tagline">&quot;An unforgettable side-by-side wellness journey over the turquoise lagoon.&quot;</div>
+        <p class="feature-desc">The ultimate romantic wellness journey hosted in a private overwater spa sanctuary. Includes a side-by-side full body scrub, a 90-minute customized massage, and finishes with a private flower-filled hydrotherapy bath overlooking the ocean with champagne.</p>
+        <ul class="feature-inclusions">
+<li>Dual body scrubs</li><li>Dual 90-min full body massages</li><li>Private flower bath soak</li><li>Bottle of chilled champagne</li><li>Chocolate-covered tropical fruits</li>
+        </ul>
+        <div class="feature-footer">
+          <div class="feature-price">$750 USD per couple</div>
+          <a href="#" class="btn btn-coral">Book This Ritual</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="rooms-cta">
+  <div class="container">
+    <span class="eyebrow reveal">Not Sure Where to Begin?</span>
+    <h2 class="reveal">Our wellness concierge builds a ritual around how you actually feel.</h2>
+    <p class="reveal">Tell us what's tight, tired, or sun-worn, and we'll match the right treatment, room, and therapist to it.</p>
+    <a href="#" class="btn btn-coral reveal">Talk to Wellness Concierge</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Coral Cloud Resorts">
+        <p>A private coral atoll resort with fifteen residences, set between open ocean and still lagoon water.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Stay</h4>
+        <ul>
+          <li><a href="rooms.html#overwater">Overwater &amp; Lagoon</a></li>
+          <li><a href="rooms.html#beachfront">Beachfront &amp; Garden</a></li>
+          <li><a href="rooms.html#penthouse">Penthouse &amp; Wellness</a></li>
+          <li><a href="rooms.html#estates">Grand Estates</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Dine &amp; Unwind</h4>
+        <ul>
+          <li><a href="dining.html#on-water">On the Water</a></li>
+          <li><a href="spa.html#massage">Massage &amp; Muscle Therapy</a></li>
+          <li><a href="spa.html#facials">Facials &amp; Body Rituals</a></li>
+          <li><a href="spa.html#signature">Signature Journeys</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">reservations@coralcloudresorts.com</a></li>
+          <li><a href="#">+1 (800) 555-0142</a></li>
+          <li><a href="#">Coral Cloud Atoll, South Pacific</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Coral Cloud Resorts. All rights reserved.</span>
+      <span>A fictitious resort brand, built for demonstration purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= RITUAL DETAIL MODAL ================= -->
+<div class="modal-overlay" id="ritualModal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+      <span class="ritual-id" id="modalRitualId"></span>
+      <span class="ritual-price-tag" id="modalPriceTag"></span>
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-type" id="modalType"></div>
+      <h2 id="modalName"></h2>
+      <div class="modal-tagline" id="modalTagline"></div>
+
+      <div class="modal-stats">
+        <div><b>Setting</b><span id="modalSetting"></span></div>
+        <div><b>Duration</b><span id="modalDuration"></span></div>
+        <div><b>Intensity</b><span id="modalIntensity"></span></div>
+      </div>
+
+      <div class="modal-section">
+        <h4>About This Ritual</h4>
+        <p id="modalDescription"></p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Key Inclusions &amp; Highlights</h4>
+        <ul class="modal-highlight-list" id="modalInclusions"></ul>
+      </div>
+
+      <div class="modal-section">
+        <h4>Key Features &amp; Amenities</h4>
+        <div class="modal-amenity-list" id="modalFeatures"></div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-price" id="modalFullPrice"></div>
+        <a href="#" class="btn btn-coral">Book This Ritual</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ================= RITUAL DETAIL DATA ================= */
+  const ritualData = {
+    "CCR-SPA-001": {
+      name: "Tidal Rhythm Deep Tissue Massage",
+      type: "Signature Deep Tissue & Hot Stone Massage",
+      tagline: "Let the rhythmic cadence of the tides melt away deep muscular tension.",
+      setting: "Overwater Oceanfront Spa Cabana",
+      duration: "60 or 90 Minutes",
+      intensity: "Medium to Firm Pressure",
+      price: "$240 USD (60 Min) | $320 USD (90 Min)",
+      description: "Inspired by the rhythmic ebb and flow of ocean tides, this signature massage targets deep muscular knots and postural tension. Using heated basalt stones paired with wild jasmine and coconut oils, therapist strokes mimic ocean waves to restore mobility and circulation.",
+      inclusions: ["Heated basalt stone treatment", "Custom aromatherapeutic oil blending", "Sea-salt foot soak welcome ritual", "Organic coconut water finish"],
+      features: ["Open-air ocean view cabana", "Sound of natural breaking waves", "Heated treatment tables", "Private changing room"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Tidal%20Rhythm%20Deep%20Tissue%20Massage.png"
+    },
+    "CCR-SPA-006": {
+      name: "Sunset Bamboo Fusion Massage",
+      type: "Warm Bamboo Muscle Sculpting Massage",
+      tagline: "Heated silk-smooth bamboo stalks kneading away chronic tension.",
+      setting: "Elevated Hillside Spa Pavilion",
+      duration: "75 Minutes",
+      intensity: "Firm & Penetrating",
+      price: "$275 USD",
+      description: "Natural bamboo stalks of varying sizes are warmed and rolled seamlessly over major muscle groups. Combined with warm virgin coconut oil, this treatment breaks down stubborn adhesions and promotes deep muscular elasticity.",
+      inclusions: ["Heated bamboo rod therapy", "Organic coconut oil hydration", "Warm herb compress", "Sunset tea ritual"],
+      features: ["High-elevation ocean view", "Open breeze pavilion", "Custom soundscape playlist option"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Sunset%20Bamboo%20Fusion%20Massage.png"
+    },
+    "CCR-SPA-008": {
+      name: "Himalayan Salt Stone Reflexology",
+      type: "Targeted Foot & Lower Leg Therapy",
+      tagline: "Restore body equilibrium through ancient foot pressure points and warm mineral salts.",
+      setting: "Solace Garden Lounge",
+      duration: "60 Minutes",
+      intensity: "Medium Pressure",
+      price: "$175 USD",
+      description: "Begins with a warm foot bath infused with raw Himalayan salts and botanical flowers. Therapists apply targeted reflexology pressure points using warm salt stones to release systemic tension and improve organ energy flow.",
+      inclusions: ["Flower-infused mineral foot soak", "Lower leg sea-salt scrub", "Warm salt stone reflexology massage", "Acupressure therapy"],
+      features: ["Zero-gravity reclining lounge chairs", "Open garden breezes", "Choice of herbal infusion teas"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Himalayan%20Salt%20Stone%20Reflexology.png"
+    },
+    "CCR-SPA-003": {
+      name: "Pearl & Quartz Radiance Facial",
+      type: "Advanced Anti-Aging & Luminosity Facial",
+      tagline: "Harnessing mother-of-pearl and rose quartz crystals for an effortless glow.",
+      setting: "Main Spa Sanctuary",
+      duration: "60 Minutes",
+      intensity: "Gentle & Soothing",
+      price: "$260 USD",
+      description: "Utilizing crushed mother-of-pearl micro-exfoliants and chilled rose quartz crystal rollers, this facial boosts collagen production, drains lymphatic fluid, and restores skin elasticity after sun exposure.",
+      inclusions: ["Ultrasonic skin cleansing", "Crushed pearl exfoliation mask", "Rose quartz lymphatic massage", "Hyaluronic acid hydration seal"],
+      features: ["Temperature-controlled facial suites", "Specialized LED light therapy enhancement option", "Organic skincare line"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Pearl%20&%20Quartz%20Radiance%20Facial.png"
+    },
+    "CCR-SPA-009": {
+      name: "Sacred Sun Repair Mask & Restorative Wrap",
+      type: "Post-Sun Recovery & Cooling Skin Therapy",
+      tagline: "Immediate relief, deep hydration, and cooling recovery for sun-kissed skin.",
+      setting: "Oceanfront Spa Suite",
+      duration: "60 Minutes",
+      intensity: "Ultra-Gentle & Cooling",
+      price: "$220 USD",
+      description: "Formulated specifically for skin after UV exposure. Includes application of freshly harvested aloe vera gel, chilled cucumber compress, and a cool lavender wrap to reduce inflammation and seal in essential hydration.",
+      inclusions: ["Fresh organic aloe vera application", "Chilled cucumber facial mask", "Cooling green tea body wrap", "Peppermint lavender head massage"],
+      features: ["Temperature-controlled suites", "Chilled gel eye compresses", "Custom soothing herbal elixirs"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Sacred%20Sun%20Repair%20Mask%20&%20Restorative%20Wrap.png"
+    },
+    "CCR-SPA-007": {
+      name: "Botanical Marine Scrub & Rain Shower Ritual",
+      type: "Full Body Exfoliation & Vichy Hydro-Massage",
+      tagline: "Cascading warm water currents paired with crushed coral sea-salt exfoliation.",
+      setting: "Slate Stone Vichy Suite",
+      duration: "45 Minutes",
+      intensity: "Medium Exfoliation",
+      price: "$190 USD",
+      description: "Lie comfortably beneath a multi-jet Vichy rain shower while a specialist applies a vigorous body polish made from crushed coral sand, wild sea kelp, and essential citrus oils to stimulate circulation and shed dead skin.",
+      inclusions: ["Crushed coral & sea kelp scrub", "7-jet Vichy rain shower hydro-massage", "Sea-foam body cleanse", "Hydrating botanical lotion finish"],
+      features: ["Heated wet treatment table", "Multi-jet Vichy bar", "Chromotherapy lighting"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Botanical%20Marine%20Scrub%20&%20Rain%20Shower%20Ritual.png"
+    },
+    "CCR-SPA-002": {
+      name: "Solace Sea-Mineral Body Wrap & Detox",
+      type: "Body Exfoliation, Detoxification & Hydration",
+      tagline: "Pure ocean nutrients and pink coastal clay to revitalize sun-exposed skin.",
+      setting: "Garden Spa Pavilion",
+      duration: "75 Minutes",
+      intensity: "Gentle & Restorative",
+      price: "$280 USD",
+      description: "A deeply restorative ritual using nutrient-dense pink coastal clay and cold-pressed seaweed extracts harvested from local reefs. The treatment begins with an exfoliating sea-salt body scrub, followed by a warm clay wrap and a cocooning scalp and neck massage.",
+      inclusions: ["Ocean sea-salt scrub", "Mineral-rich pink clay body wrap", "Hydrating seaweed serum application", "Calming scalp massage"],
+      features: ["Private rain shower", "Botanical garden view", "Herbal tea tasting post-treatment"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Solace%20Sea-Mineral%20Body%20Wrap%20&%20Detox.png"
+    },
+    "CCR-SPA-004": {
+      name: "Coral Cloud Hydrotherapy Thermal Circuit",
+      type: "Guided Thermal Water Therapy & Contrast Bathing",
+      tagline: "Reset your nervous system through contrast temperatures and mineral waters.",
+      setting: "Subterranean Hydrotherapy Grotto",
+      duration: "90 Minutes",
+      intensity: "Restorative & Invigorating",
+      price: "$180 USD (Guided) | Complimentary for Villa Guests",
+      description: "A guided thermal journey moving through magnesium-infused warm plunge pools, eucalyptus steam grottos, Himalayan salt saunas, and refreshing cold mist rain showers designed to boost immune function and deep muscle recovery.",
+      inclusions: ["Magnesium warm plunge", "Cold plunge bucket shower", "Eucalyptus steam room", "Salt cave relaxation", "Guided breathwork session"],
+      features: ["Slate stone interior", "Hydro-massage jets", "Complimentary wellness shots (ginger, turmeric, spirulina)"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Coral%20Cloud%20Hydrotherapy%20Thermal%20Circuit.png"
+    },
+    "CCR-SPA-005": {
+      name: "Floating Sound Bath & Energy Balancing",
+      type: "Mindfulness, Vibrational Healing & Aquatherapeutics",
+      tagline: "Float weightlessly as acoustic vibrations align your bodily energy centers.",
+      setting: "Tranquility Pool Sanctuary",
+      duration: "60 Minutes",
+      intensity: "Soft & Deeply Relaxing",
+      price: "$210 USD",
+      description: "Guests rest on custom ergonomic water cushions floating in a heated private pool while a master sound healer plays Tibetan singing bowls, crystal harps, and ocean gongs both above and submerged beneath the water surface.",
+      inclusions: ["Water floatation system", "Custom acoustic sound bath", "Chakra balancing aroma oil application", "Post-session grounding herbal tonic"],
+      features: ["Submerged acoustic speakers", "Ambient underwater lighting", "Private quiet pool"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Floating%20Sound%20Bath%20&%20Energy%20Balancing.png"
+    },
+    "CCR-SPA-010": {
+      name: "Couples' Cloud Nine Oceanfront Immersion",
+      type: "Multi-Treatment Couples' Luxury Spa Journey",
+      tagline: "An unforgettable side-by-side wellness journey over the turquoise lagoon.",
+      setting: "Royal Overwater Couples' Pavilion",
+      duration: "150 Minutes",
+      intensity: "Customizable Pressure",
+      price: "$750 USD per couple",
+      description: "The ultimate romantic wellness journey hosted in a private overwater spa sanctuary. Includes a side-by-side full body scrub, a 90-minute customized massage, and finishes with a private flower-filled hydrotherapy bath overlooking the ocean with champagne.",
+      inclusions: ["Dual body scrubs", "Dual 90-min full body massages", "Private flower bath soak", "Bottle of chilled champagne", "Chocolate-covered tropical fruits"],
+      features: ["Overwater treatment room with glass floor cutouts", "Private outdoor soaking tub", "Outdoor private rain shower", "Lounge daybed"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Spa%20Images/Couples'%20Cloud%20Nine%20Oceanfront%20Immersion.png"
+    },
+  };
+
+  /* ================= MODAL LOGIC ================= */
+  const ritualModal = document.getElementById('ritualModal');
+  const modalClose = document.getElementById('modalClose');
+
+  function openRitualModal(id) {
+    const r = ritualData[id];
+    if (!r) return;
+    document.getElementById('modalImg').src = r.image;
+    document.getElementById('modalImg').alt = r.name;
+    document.getElementById('modalRitualId').textContent = id;
+    document.getElementById('modalPriceTag').innerHTML = r.price.split(' USD')[0] + ' <span>/ session</span>';
+    document.getElementById('modalType').textContent = r.type;
+    document.getElementById('modalName').textContent = r.name;
+    document.getElementById('modalTagline').textContent = '"' + r.tagline + '"';
+    document.getElementById('modalSetting').textContent = r.setting;
+    document.getElementById('modalDuration').textContent = r.duration;
+    document.getElementById('modalIntensity').textContent = r.intensity;
+    document.getElementById('modalDescription').textContent = r.description;
+    document.getElementById('modalFullPrice').innerHTML = r.price + '<span> · standard rate</span>';
+
+    const inclWrap = document.getElementById('modalInclusions');
+    inclWrap.innerHTML = '';
+    r.inclusions.forEach(h => {
+      const li = document.createElement('li');
+      li.textContent = h;
+      inclWrap.appendChild(li);
+    });
+
+    const featureWrap = document.getElementById('modalFeatures');
+    featureWrap.innerHTML = '';
+    r.features.forEach(f => {
+      const span = document.createElement('span');
+      span.textContent = f;
+      featureWrap.appendChild(span);
+    });
+
+    ritualModal.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeRitualModal() {
+    ritualModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('[data-ritual]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.ritual-footer a') || e.target.closest('.feature-footer a')) return;
+      openRitualModal(card.getAttribute('data-ritual'));
+    });
+  });
+
+  modalClose.addEventListener('click', closeRitualModal);
+  ritualModal.addEventListener('click', (e) => {
+    if (e.target === ritualModal) closeRitualModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeRitualModal();
+  });
+</script>
+</body>
+</html>

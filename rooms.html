@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accommodations — Coral Cloud Resorts</title>
+<meta name="description" content="Fifteen residences at Coral Cloud Resorts — overwater villas, beachfront bungalows, penthouses and private estates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2E2A;
+    --teal-900:#0A3D39;
+    --teal-700:#0F5C56;
+    --teal-600:#146B62;
+    --teal-500:#1C8478;
+    --foam:#E7F3EF;
+    --sand:#FBF4E8;
+    --sand-deep:#F3E7D3;
+    --coral:#F2734B;
+    --coral-deep:#DD5A34;
+    --coral-soft:#F8AF8E;
+    --gold:#C79A3C;
+    --white:#FFFFFF;
+    --shadow: 0 20px 50px -20px rgba(10,61,57,0.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  .eyebrow{
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--coral);
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.1;
+    color:var(--teal-900);
+  }
+  .italic{font-style:italic; font-weight:400;}
+  .container{width:100%; max-width:1240px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  .wave-rule{width:120px; height:20px; margin:18px 0 0; overflow:visible;}
+  .wave-rule path{
+    fill:none; stroke:var(--coral); stroke-width:3; stroke-linecap:round;
+    stroke-dasharray:180; stroke-dashoffset:180;
+    transition:stroke-dashoffset 1.1s var(--ease);
+  }
+  .reveal.is-visible .wave-rule path{stroke-dashoffset:0;}
+
+  /* ================= NAV (shared) ================= */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:14px 0;
+    background:rgba(251,244,232,0.94);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 30px -18px rgba(10,46,42,0.25);
+  }
+  .nav .container{display:flex; align-items:center; justify-content:space-between;}
+  .brand img{height:46px; width:auto; filter:drop-shadow(0 4px 10px rgba(10,46,42,0.18));}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{
+    font-size:0.86rem; font-weight:600; letter-spacing:0.03em; color:var(--teal-900);
+    position:relative; padding:6px 8px; transition:color .3s;
+  }
+  .nav-links a.current{color:var(--coral);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--coral); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-links .tag{font-size:0.68rem; letter-spacing:0.08em; color:var(--coral); text-transform:uppercase; margin-left:6px; font-weight:700;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:700; font-size:0.82rem; letter-spacing:0.03em;
+    padding:13px 26px; border-radius:999px; border:1.5px solid transparent; cursor:pointer;
+    transition:transform .35s var(--ease), background .35s, color .35s, border-color .35s;
+  }
+  .btn-coral{background:var(--coral); color:var(--white); box-shadow:0 14px 30px -12px rgba(242,115,75,0.55);}
+  .btn-coral:hover{background:var(--coral-deep); transform:translateY(-2px);}
+  .btn-outline{border-color:var(--teal-700); color:var(--teal-700);}
+  .btn-outline:hover{background:var(--teal-700); color:var(--white);}
+  .btn-sm{padding:10px 20px; font-size:0.76rem;}
+  .btn-full{width:100%; justify-content:center;}
+
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:120;}
+  .hamburger span{width:26px; height:2px; background:var(--teal-900);}
+
+  /* ================= PAGE HERO ================= */
+  .page-hero{
+    padding:158px 0 0;
+    background:
+      radial-gradient(ellipse at top right, rgba(242,115,75,0.14), transparent 55%),
+      var(--sand);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:40px;
+    padding-bottom:64px;
+  }
+  .page-hero .eyebrow{color:var(--coral); display:flex; align-items:center; gap:12px;}
+  .page-hero .eyebrow::before{
+    content:''; display:inline-block; width:34px; height:1.5px; background:var(--coral);
+  }
+  .page-hero h1{font-size:clamp(2.6rem, 5vw, 4.2rem); margin-top:18px; max-width:640px;}
+  .page-hero h1 .italic{color:var(--coral);}
+  .page-hero p{margin-top:22px; max-width:520px; color:#2E4A46; font-size:1.05rem; font-weight:300;}
+
+  /* jump chips */
+  .jump-nav{
+    display:flex; gap:14px; flex-wrap:wrap; margin-top:40px;
+  }
+  .jump-nav a{
+    padding:11px 20px; border-radius:999px; border:1.5px solid rgba(15,92,86,0.25);
+    font-size:0.82rem; font-weight:600; color:var(--teal-700);
+    transition:background .3s, color .3s, border-color .3s;
+  }
+  .jump-nav a:hover{background:var(--teal-700); color:var(--white); border-color:var(--teal-700);}
+
+  /* hero stat strip */
+  .hero-stats{
+    display:flex; flex-wrap:wrap; gap:0;
+    margin-top:52px; padding-top:28px; border-top:1px solid rgba(10,61,57,0.14);
+    max-width:640px;
+  }
+  .hero-stats div{
+    flex:1 1 auto; min-width:120px; padding-right:28px;
+  }
+  .hero-stats b{
+    display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.5rem; color:var(--teal-900);
+  }
+  .hero-stats span{
+    display:block; margin-top:4px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:#5C7B76; font-weight:600;
+  }
+
+  /* hero photo collage — signature element */
+  .hero-visual{
+    position:relative; height:520px; justify-self:center; width:100%; max-width:420px;
+  }
+  .hero-visual .collage-img{
+    position:absolute; border-radius:18px; overflow:hidden;
+    box-shadow:0 30px 60px -24px rgba(10,46,42,0.45);
+    border:6px solid var(--sand);
+  }
+  .hero-visual .collage-img img{width:100%; height:100%; object-fit:cover; display:block;}
+  .collage-back{
+    top:0; right:0; width:78%; height:360px;
+    transform:rotate(4deg);
+    z-index:1;
+  }
+  .collage-front{
+    bottom:0; left:0; width:64%; height:300px;
+    transform:rotate(-5deg);
+    z-index:2;
+  }
+  .collage-badge{
+    position:absolute; z-index:3;
+    background:var(--white); border-radius:16px;
+    padding:14px 18px; box-shadow:0 20px 40px -18px rgba(10,46,42,0.4);
+    display:flex; align-items:center; gap:10px;
+  }
+  .collage-badge-1{top:36%; left:-6%;}
+  .collage-badge svg{width:22px; height:22px; stroke:var(--coral); flex-shrink:0;}
+  .collage-badge b{display:block; font-family:'Fraunces', serif; font-size:1rem; color:var(--teal-900); font-weight:500;}
+  .collage-badge span{display:block; font-size:0.66rem; letter-spacing:0.04em; text-transform:uppercase; color:#5C7B76; font-weight:700; margin-top:1px;}
+  .collage-ring{
+    position:absolute; top:-8%; right:14%; width:70px; height:70px;
+    border:1.5px dashed rgba(242,115,75,0.5); border-radius:50%;
+    z-index:0;
+  }
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr; padding-bottom:40px;}
+    .hero-visual{height:420px; margin-top:20px;}
+  }
+  @media (max-width:560px){
+    .page-hero{padding-top:140px;}
+    .hero-stats div{flex:1 1 45%; margin-bottom:20px;}
+    .hero-visual{height:340px; max-width:320px;}
+    .collage-back{height:260px;}
+    .collage-front{height:210px;}
+    .collage-badge{padding:10px 14px;}
+  }
+
+  /* ================= COLLECTION SECTION ================= */
+  .collection-block{padding:80px 0 20px; scroll-margin-top:100px;}
+  .collection-block:nth-of-type(even){background:var(--foam);}
+  .collection-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap;
+    margin-bottom:48px;
+  }
+  .collection-head .eyebrow{color:var(--coral);}
+  .collection-head h2{font-size:clamp(1.8rem, 3vw, 2.5rem); margin-top:12px;}
+  .collection-head p{max-width:420px; color:#3B5A55; font-weight:300; font-size:0.96rem;}
+  .collection-count{
+    font-family:'Fraunces', serif; font-style:italic; color:var(--coral); font-size:1.05rem;
+  }
+
+  .room-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+    padding-bottom:90px;
+  }
+
+  .room-card{
+    background:var(--white);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 26px 55px -32px rgba(10,46,42,0.3);
+    display:flex; flex-direction:column;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .room-card:hover{transform:translateY(-8px); box-shadow:0 36px 70px -30px rgba(10,46,42,0.4);}
+
+  .room-media{position:relative; height:230px; overflow:hidden;}
+  .room-media img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease);}
+  .room-card:hover .room-media img{transform:scale(1.07);}
+  .room-id{
+    position:absolute; top:16px; left:16px;
+    background:rgba(10,46,42,0.72); color:var(--white);
+    font-size:0.66rem; font-weight:700; letter-spacing:0.06em;
+    padding:6px 11px; border-radius:999px;
+  }
+  .room-price-tag{
+    position:absolute; bottom:16px; right:16px;
+    background:var(--coral); color:var(--white);
+    font-size:0.78rem; font-weight:700;
+    padding:8px 14px; border-radius:999px;
+    box-shadow:0 10px 24px -8px rgba(242,115,75,0.7);
+  }
+  .room-price-tag span{font-weight:400; opacity:0.85; font-size:0.68rem;}
+
+  .room-body{padding:26px 26px 28px; display:flex; flex-direction:column; flex:1;}
+  .room-type{font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .room-body h3{font-size:1.32rem; margin-top:8px; line-height:1.2;}
+  .room-tagline{font-style:italic; color:#5C7B76; font-size:0.88rem; margin-top:6px; font-weight:400; font-family:'Fraunces', serif;}
+
+  .room-stats{
+    display:flex; flex-wrap:wrap; gap:14px 18px;
+    margin-top:18px; padding-top:16px; border-top:1px dashed rgba(10,61,57,0.16);
+    font-size:0.78rem; color:var(--teal-900);
+  }
+  .room-stats div{display:flex; align-items:center; gap:6px;}
+  .room-stats svg{width:15px; height:15px; stroke:var(--coral); flex-shrink:0;}
+
+  .room-view{
+    margin-top:14px; font-size:0.84rem; color:#3B5A55;
+  }
+  .room-view b{color:var(--teal-900); font-weight:700;}
+
+  .amenity-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .amenity-chips span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.7rem; font-weight:600; padding:6px 11px; border-radius:999px;
+  }
+
+  .room-footer{
+    margin-top:auto; padding-top:22px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .room-footer .btn{flex:1;}
+
+  /* Estate variant — wider feature cards */
+  .estate-grid{grid-template-columns:repeat(2, 1fr);}
+  .estate-grid .room-media{height:300px;}
+
+  /* ================= CLOSING CTA ================= */
+  .rooms-cta{
+    padding:120px 0;
+    text-align:center;
+    background:var(--teal-900);
+    color:var(--white);
+  }
+  .rooms-cta .eyebrow{color:var(--coral-soft);}
+  .rooms-cta h2{color:var(--white); font-size:clamp(2rem, 4vw, 3rem); margin-top:16px;}
+  .rooms-cta p{max-width:460px; margin:22px auto 0; color:rgba(255,255,255,0.75); font-weight:300;}
+  .rooms-cta .btn{margin-top:36px;}
+
+  /* ================= FOOTER (shared) ================= */
+  footer{background:var(--ink); color:rgba(255,255,255,0.78); padding:80px 0 30px;}
+  .footer-top{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:48px; padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,0.12);}
+  .footer-brand img{height:46px; margin-bottom:18px; filter:brightness(0) invert(1) opacity(0.95);}
+  .footer-brand p{max-width:280px; font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.6);}
+  .footer-col h4{color:var(--white); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin-bottom:20px;}
+  .footer-col li{margin-bottom:12px; font-size:0.92rem;}
+  .footer-col a:hover{color:var(--coral-soft);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:0.8rem; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:12px;}
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1080px){
+    .room-grid{grid-template-columns:repeat(2, 1fr);}
+    .estate-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:980px){
+    .footer-top{grid-template-columns:1fr 1fr; row-gap:36px;}
+  }
+  /* ================= ROOM MODAL ================= */
+  .room-card{cursor:pointer;}
+  body.modal-open{overflow:hidden;}
+
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(10,46,42,0.55);
+    backdrop-filter:blur(4px);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding:60px 20px;
+    opacity:0; visibility:hidden;
+    transition:opacity .35s var(--ease), visibility .35s var(--ease);
+    overflow-y:auto;
+  }
+  .modal-overlay.open{opacity:1; visibility:visible;}
+
+  .modal-box{
+    background:var(--white);
+    width:100%; max-width:880px;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 40px 90px -30px rgba(10,46,42,0.55);
+    transform:translateY(30px) scale(0.98);
+    opacity:0;
+    transition:transform .4s var(--ease), opacity .4s var(--ease);
+    margin:auto;
+  }
+  .modal-overlay.open .modal-box{transform:translateY(0) scale(1); opacity:1;}
+
+  .modal-media{position:relative; height:360px;}
+  .modal-media img{width:100%; height:100%; object-fit:cover;}
+  .modal-media .room-id{position:absolute; top:20px; left:20px;}
+  .modal-media .room-price-tag{position:absolute; bottom:20px; right:20px; font-size:0.9rem; padding:10px 18px;}
+
+  .modal-close{
+    position:absolute; top:16px; right:16px;
+    width:40px; height:40px; border-radius:50%;
+    background:rgba(11,46,42,0.55); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .3s, transform .3s;
+  }
+  .modal-close:hover{background:var(--coral); transform:rotate(90deg);}
+  .modal-close svg{width:18px; height:18px; stroke:var(--white); stroke-width:2.4;}
+
+  .modal-body{padding:36px 40px 44px;}
+  .modal-type{font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .modal-body h2{font-size:clamp(1.6rem, 3vw, 2.1rem); margin-top:8px;}
+  .modal-tagline{font-style:italic; color:#5C7B76; font-size:1rem; margin-top:8px; font-family:'Fraunces', serif;}
+
+  .modal-stats{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px;
+    margin-top:26px; padding:20px; background:var(--foam); border-radius:14px;
+  }
+  .modal-stats div{font-size:0.82rem; color:var(--teal-900);}
+  .modal-stats b{display:block; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal-500); font-weight:700; margin-bottom:4px;}
+
+  .modal-section{margin-top:28px;}
+  .modal-section h4{font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--coral); font-weight:700; margin-bottom:10px;}
+  .modal-section p{color:#3B5A55; font-size:0.94rem; font-weight:300; line-height:1.7;}
+
+  .modal-amenity-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .modal-amenity-list span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.76rem; font-weight:600; padding:8px 14px; border-radius:999px;
+  }
+
+  .modal-footer{
+    margin-top:34px; padding-top:26px; border-top:1px dashed rgba(10,61,57,0.16);
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .modal-footer .modal-price{font-family:'Fraunces', serif; font-size:1.4rem; color:var(--teal-900);}
+  .modal-footer .modal-price span{font-size:0.78rem; font-weight:400; color:#5C7B76; font-family:'Manrope',sans-serif;}
+
+  @media (max-width:600px){
+    .modal-overlay{padding:0;}
+    .modal-box{max-width:100%; border-radius:0; min-height:100vh;}
+    .modal-media{height:240px;}
+    .modal-body{padding:26px 22px 32px;}
+    .modal-footer{flex-direction:column; align-items:stretch;}
+  }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; inset:0 0 0 auto; width:78%; height:100vh;
+      background:var(--teal-900); flex-direction:column; align-items:flex-start; justify-content:center;
+      padding:0 40px; gap:26px; transform:translateX(100%); transition:transform .45s var(--ease);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--white) !important; font-size:1.1rem;}
+    .nav-links a.current{color:var(--coral-soft) !important;}
+    .hamburger{display:flex;}
+    .nav .btn-coral{display:none;}
+    .nav-links .btn-coral{display:inline-flex; margin-top:10px;}
+    .room-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .container{padding:0 22px;}
+    .room-footer{flex-direction:column; align-items:stretch;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="siteNav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Coral_Cloud_Resort%20Logo.webp" alt="Coral Cloud Resorts">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html" class="current">Accommodations</a></li>
+      <li><a href="dining.html">Dining</a></li>
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="index.html#experiences">Experiences<span class="tag">Soon</span></a></li>
+      <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= PAGE HERO ================= -->
+<header class="page-hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow reveal">Fifteen Residences · One Atoll</div>
+        <h1 class="reveal">Where you stay <span class="italic">is</span> the trip.</h1>
+        <p class="reveal">From a $950 elevated studio to a $14,500 private peninsula, each residence is grouped below by where it sits on the island — over the lagoon, on the sand, above it all, or claiming its own stretch of shoreline.</p>
+        <div class="jump-nav reveal">
+          <a href="#overwater">Overwater &amp; Lagoon</a>
+          <a href="#beachfront">Beachfront &amp; Garden</a>
+          <a href="#penthouse">Penthouse &amp; Wellness</a>
+          <a href="#estates">Grand Estates</a>
+        </div>
+        <div class="hero-stats reveal">
+          <div><b>15</b><span>Residences</span></div>
+          <div><b>4</b><span>Collections</span></div>
+          <div><b>$950–14.5K</b><span>Per Night</span></div>
+          <div><b>12</b><span>Max Guests</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="collage-ring"></div>
+        <div class="collage-img collage-back">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Azure%20Horizon%20Overwater%20Villa.png?updatedAt=1786371487061" alt="The Azure Horizon Overwater Villa">
+        </div>
+        <div class="collage-img collage-front">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Sanctuary%20Royal%20Peninsula%20Estate.png?updatedAt=1786371487093" alt="The Sanctuary Royal Peninsula Estate">
+        </div>
+        <div class="collage-badge collage-badge-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+          <div>
+            <b>Handpicked</b>
+            <span>By our concierge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= OVERWATER & LAGOON ================= -->
+<section class="collection-block" id="overwater">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">01 · Over the Water</div>
+        <h2>Overwater &amp; Lagoon</h2>
+        <p>Glass floors, private plunge pools, and ladders that drop straight into the reef.</p>
+      </div>
+      <span class="collection-count">4 residences</span>
+    </div>
+
+    <div class="room-grid">
+
+      <!-- Solace Swim-Up Lagoon Suite -->
+      <div class="room-card reveal" data-room="CCR-ACC-006">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Solace%20Swim-Up%20Lagoon%20Suite.png?updatedAt=1786371487329" alt="Solace Swim-Up Lagoon Suite">
+          <span class="room-id">CCR-ACC-006</span>
+          <span class="room-price-tag">$1,250 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Resort Lagoon Suite</div>
+          <h3>Solace Swim-Up Lagoon Suite</h3>
+          <div class="room-tagline">"Step off your private terrace directly into a tranquil freshwater lagoon."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,100 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>1 King or 2 Queen</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 3</div>
+          </div>
+          <div class="room-view"><b>View:</b> Central Freshwater Lagoon &amp; Garden</div>
+          <div class="amenity-chips">
+            <span>Swim-up access</span><span>Sunken lounge</span><span>Sub-zero minibar</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Azure Horizon Overwater Villa -->
+      <div class="room-card reveal" data-room="CCR-ACC-001">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Azure%20Horizon%20Overwater%20Villa.png?updatedAt=1786371487061" alt="The Azure Horizon Overwater Villa">
+          <span class="room-id">CCR-ACC-001</span>
+          <span class="room-price-tag">$1,850 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Overwater Villa</div>
+          <h3>The Azure Horizon Overwater Villa</h3>
+          <div class="room-tagline">"Floating luxury where the ocean becomes your living room."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,850 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>King + Daybed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 3</div>
+          </div>
+          <div class="room-view"><b>View:</b> 360° Panoramic Lagoon &amp; Open Ocean</div>
+          <div class="amenity-chips">
+            <span>Glass floor panel</span><span>Infinity plunge pool</span><span>BOSE audio</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lagoon Edge Duplex Suite -->
+      <div class="room-card reveal" data-room="CCR-ACC-014">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Lagoon%20Edge%20Duplex%20Suite.png?updatedAt=1786371487058" alt="Lagoon Edge Duplex Suite">
+          <span class="room-id">CCR-ACC-014</span>
+          <span class="room-price-tag">$1,950 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Two-Story Water Suite</div>
+          <h3>Lagoon Edge Duplex Suite</h3>
+          <div class="room-tagline">"Two stories of overwater luxury connected by a floating spiral staircase."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>2,100 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>King + Daybed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 3</div>
+          </div>
+          <div class="room-view"><b>View:</b> Lagoon &amp; Distant Island</div>
+          <div class="amenity-chips">
+            <span>Bi-level layout</span><span>Private plunge deck</span><span>Spiral staircase</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manta Point Glass-Bottom Villa -->
+      <div class="room-card reveal" data-room="CCR-ACC-012">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Manta%20Point%20Glass-Bottom%20Villa.png?updatedAt=1786371486677" alt="Manta Point Glass-Bottom Villa">
+          <span class="room-id">CCR-ACC-012</span>
+          <span class="room-price-tag">$2,200 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Deep Lagoon Overwater Villa</div>
+          <h3>Manta Point Glass-Bottom Villa</h3>
+          <div class="room-tagline">"Positioned over the marine sanctuary where rays and turtles glide beneath."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,950 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>1 King Bed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 2</div>
+          </div>
+          <div class="room-view"><b>View:</b> Outer Reef Lagoon &amp; Deep Ocean</div>
+          <div class="amenity-chips">
+            <span>Illuminated glass floor</span><span>Private infinity pool</span><span>Night reef gear</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEACHFRONT & GARDEN ================= -->
+<section class="collection-block" id="beachfront">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">02 · On the Sand</div>
+        <h2>Beachfront &amp; Garden</h2>
+        <p>Driftwood bungalows, walled gardens and hillside canopy suites — closer to the ground, closer to the shore.</p>
+      </div>
+      <span class="collection-count">5 residences</span>
+    </div>
+
+    <div class="room-grid">
+
+      <!-- Breezeway Ocean-View Studio -->
+      <div class="room-card reveal" data-room="CCR-ACC-011">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Tidal%20Cove%20Family%20Retreat.png?updatedAt=1786371487086" alt="Breezeway Ocean-View Studio">
+          <span class="room-id">CCR-ACC-011</span>
+          <span class="room-price-tag">$950 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Elevated Oceanfront Studio</div>
+          <h3>Breezeway Ocean-View Studio</h3>
+          <div class="room-tagline">"Modern coastal aesthetic with sweeping horizon views."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>820 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>1 King Bed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 2</div>
+          </div>
+          <div class="room-view"><b>View:</b> Elevated Open Ocean &amp; Horizon</div>
+          <div class="amenity-chips">
+            <span>Sunken balcony daybed</span><span>Rainfall shower</span><span>Nespresso machine</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Driftwood Beachfront Bungalow -->
+      <div class="room-card reveal" data-room="CCR-ACC-005">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Driftwood%20Beachfront%20Bungalow.png?updatedAt=1786371488202" alt="Driftwood Beachfront Bungalow">
+          <span class="room-id">CCR-ACC-005</span>
+          <span class="room-price-tag">$1,100 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Beach Suite</div>
+          <h3>Driftwood Beachfront Bungalow</h3>
+          <div class="room-tagline">"Organic luxury meets island minimalism on the sand."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>950 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>1 King Bed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 2</div>
+          </div>
+          <div class="room-view"><b>View:</b> Direct Beachfront &amp; Coral Lagoon</div>
+          <div class="amenity-chips">
+            <span>Beach sun terrace</span><span>Rain garden shower</span><span>Resort bicycles</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Palm Shadow Garden Villa -->
+      <div class="room-card reveal" data-room="CCR-ACC-008">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Palm%20Shadow%20Garden%20Villa.png?updatedAt=1786371487559" alt="Palm Shadow Garden Villa">
+          <span class="room-id">CCR-ACC-008</span>
+          <span class="room-price-tag">$1,300 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Botanical Garden Villa</div>
+          <h3>Palm Shadow Garden Villa</h3>
+          <div class="room-tagline">"A sanctuary secluded within tropical flora."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,600 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>1 King Bed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 3</div>
+          </div>
+          <div class="room-view"><b>View:</b> Enclosed Tropical Garden &amp; Lotus Pond</div>
+          <div class="amenity-chips">
+            <span>Walled private garden</span><span>Garden plunge pool</span><span>Herbal tea station</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coral Canopy Sanctuary -->
+      <div class="room-card reveal" data-room="CCR-ACC-002">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Coral%20Canopy%20Sanctuary.png?updatedAt=1786371485980" alt="Coral Canopy Sanctuary">
+          <span class="room-id">CCR-ACC-002</span>
+          <span class="room-price-tag">$1,450 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Hillside Luxury Suite</div>
+          <h3>Coral Canopy Sanctuary</h3>
+          <div class="room-tagline">"Nestled in coastal palm groves with uninterrupted panoramic ocean views."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,400 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>1 King Bed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 2</div>
+          </div>
+          <div class="room-view"><b>View:</b> Elevated Panoramic Bay &amp; Rainforest Canopy</div>
+          <div class="amenity-chips">
+            <span>Wrap-around balcony</span><span>Carved stone bathtub</span><span>Leica binoculars</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sunset Reef Pavilion -->
+      <div class="room-card reveal" data-room="CCR-ACC-003">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Sunset%20Reef%20Pavilion.png?updatedAt=1786371487255" alt="Sunset Reef Pavilion">
+          <span class="room-id">CCR-ACC-003</span>
+          <span class="room-price-tag">$2,400 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Beachfront Villa</div>
+          <h3>Sunset Reef Pavilion</h3>
+          <div class="room-tagline">"Step from your private terrace directly onto powder-white sands."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>2,200 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>King + 2 Sofa Beds</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 4</div>
+          </div>
+          <div class="room-view"><b>View:</b> Direct Beachfront &amp; Sunset Ocean</div>
+          <div class="amenity-chips">
+            <span>Private beach path</span><span>Oversized plunge pool</span><span>Beach cabana</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PENTHOUSE & WELLNESS ================= -->
+<section class="collection-block" id="penthouse">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">03 · Above It All</div>
+        <h2>Penthouse &amp; Wellness</h2>
+        <p>A rooftop hot tub above the horizon, and a dedicated spa villa built for slow, restorative mornings.</p>
+      </div>
+      <span class="collection-count">2 residences</span>
+    </div>
+
+    <div class="room-grid estate-grid">
+
+      <!-- Seabreeze Wellness Spa Suite -->
+      <div class="room-card reveal" data-room="CCR-ACC-013">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Seabreeze%20Wellness%20Spa%20Suite.png?updatedAt=1786371487207" alt="Seabreeze Wellness Spa Suite">
+          <span class="room-id">CCR-ACC-013</span>
+          <span class="room-price-tag">$2,100 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">In-Suite Spa Villa</div>
+          <h3>Seabreeze Wellness Spa Suite</h3>
+          <div class="room-tagline">"A dedicated sanctuary for restorative mind-and-body healing."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,750 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>1 King Bed</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 2</div>
+          </div>
+          <div class="room-view"><b>View:</b> Secluded Oceanfront Garden</div>
+          <div class="amenity-chips">
+            <span>Infrared sauna</span><span>Magnesium plunge pool</span><span>Daily spa treatment</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nautilus Oceanfront Penthouse -->
+      <div class="room-card reveal" data-room="CCR-ACC-007">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Nautilus%20Oceanfront%20Penthouse.png?updatedAt=1786371487342" alt="Nautilus Oceanfront Penthouse">
+          <span class="room-id">CCR-ACC-007</span>
+          <span class="room-price-tag">$3,600 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Top-Floor Penthouse Suite</div>
+          <h3>Nautilus Oceanfront Penthouse</h3>
+          <div class="room-tagline">"Sky-high ocean vistas with a private rooftop hot tub."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>2,800 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>2 King Beds</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 4</div>
+          </div>
+          <div class="room-view"><b>View:</b> High-Elevation Unobstructed Oceanfront</div>
+          <div class="amenity-chips">
+            <span>Rooftop hot tub</span><span>Private elevator access</span><span>Champagne service</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= GRAND ESTATES ================= -->
+<section class="collection-block" id="estates">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">04 · The Whole Peninsula</div>
+        <h2>Grand Estates</h2>
+        <p>Multi-bedroom compounds with private staff — built for families, groups, and stays that need real space.</p>
+      </div>
+      <span class="collection-count">4 residences</span>
+    </div>
+
+    <div class="room-grid estate-grid">
+
+      <!-- Tidal Cove Family Retreat -->
+      <div class="room-card reveal" data-room="CCR-ACC-010">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Tidal%20Cove%20Family%20Retreat.png?updatedAt=1786371487086" alt="Tidal Cove Family Retreat">
+          <span class="room-id">CCR-ACC-010</span>
+          <span class="room-price-tag">$4,200 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Multi-Bedroom Beach Villa</div>
+          <h3>Tidal Cove Family Retreat</h3>
+          <div class="room-tagline">"Designed for families to build unforgettable coastal memories together."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>3,200 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>King + 2 Twin + Bunk Room</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 6</div>
+          </div>
+          <div class="room-view"><b>View:</b> Direct Oceanfront &amp; Private Cove</div>
+          <div class="amenity-chips">
+            <span>Private pool</span><span>Outdoor cinema</span><span>Nanny service (4 hrs/day)</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pearl Horizon Royal Residence -->
+      <div class="room-card reveal" data-room="CCR-ACC-009">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Pearl%20Horizon%20Royal%20Residence.png?updatedAt=1786371487711" alt="Pearl Horizon Royal Residence">
+          <span class="room-id">CCR-ACC-009</span>
+          <span class="room-price-tag">$5,800 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Multi-Bedroom Overwater Residence</div>
+          <h3>Pearl Horizon Royal Residence</h3>
+          <div class="room-tagline">"An expansive overwater compound for groups and high-profile guests."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>3,800 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>2 King + 2 Twin</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 6</div>
+          </div>
+          <div class="room-view"><b>View:</b> Sunset Lagoon &amp; Barrier Reef</div>
+          <div class="amenity-chips">
+            <span>Dual plunge pools</span><span>Glass dining pavilion</span><span>Water scooter</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cloud Nine Presidential Villa -->
+      <div class="room-card reveal" data-room="CCR-ACC-004">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Cloud%20Nine%20Presidential%20Villa.png?updatedAt=1786371486747" alt="Cloud Nine Presidential Villa">
+          <span class="room-id">CCR-ACC-004</span>
+          <span class="room-price-tag">$8,500 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Multi-Bedroom Grand Estate</div>
+          <h3>Cloud Nine Presidential Villa</h3>
+          <div class="room-tagline">"The flagship estate of Coral Cloud Resorts offering uncompromised luxury."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>5,500 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>3 King + 2 Twin</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 8</div>
+          </div>
+          <div class="room-view"><b>View:</b> 360° Panoramic Reef &amp; Oceanfront</div>
+          <div class="amenity-chips">
+            <span>20m infinity pool</span><span>Private spa room</span><span>Private dock</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Sanctuary Royal Peninsula Estate -->
+      <div class="room-card reveal" data-room="CCR-ACC-015">
+        <div class="room-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Sanctuary%20Royal%20Peninsula%20Estate.png?updatedAt=1786371487093" alt="The Sanctuary Royal Peninsula Estate">
+          <span class="room-id">CCR-ACC-015</span>
+          <span class="room-price-tag">$14,500 <span>/ night</span></span>
+        </div>
+        <div class="room-body">
+          <div class="room-type">Ultra-Private Peninsula Tip Estate</div>
+          <h3>The Sanctuary, Royal Peninsula Estate</h3>
+          <div class="room-tagline">"Ultimate seclusion on the private tip of the Coral Cloud peninsula."</div>
+          <div class="room-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>8,200 sq ft</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>4 King + 2 Twin Suites</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Up to 12</div>
+          </div>
+          <div class="room-view"><b>View:</b> Unrestricted 360° Ocean, Reef &amp; Sunset</div>
+          <div class="amenity-chips">
+            <span>Private helipad</span><span>Speedboat dock</span><span>Full live-in staff</span>
+          </div>
+          <div class="room-footer">
+            <a href="#" class="btn btn-coral btn-full">Enquire About This Stay</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="rooms-cta">
+  <div class="container">
+    <span class="eyebrow reveal">Can't Decide?</span>
+    <h2 class="reveal">Our concierge team knows every residence by heart.</h2>
+    <p class="reveal">Tell us how many are travelling and what the trip is for, and we'll match you to the right stretch of the atoll.</p>
+    <a href="#" class="btn btn-coral reveal">Talk to Reservations</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Coral Cloud Resorts">
+        <p>A private coral atoll resort with fifteen residences, set between open ocean and still lagoon water.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Stay</h4>
+        <ul>
+          <li><a href="rooms.html#overwater">Overwater &amp; Lagoon</a></li>
+          <li><a href="rooms.html#beachfront">Beachfront &amp; Garden</a></li>
+          <li><a href="rooms.html#penthouse">Penthouse &amp; Wellness</a></li>
+          <li><a href="rooms.html#estates">Grand Estates</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resort</h4>
+        <ul>
+          <li><a href="dining.html">Dining</a></li>
+          <li><a href="spa.html">Spa &amp; Wellness</a></li>
+          <li><a href="index.html#experiences">Island Experiences</a></li>
+          <li><a href="#">Reserve Your Stay</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">reservations@coralcloudresorts.com</a></li>
+          <li><a href="#">+1 (800) 555-0142</a></li>
+          <li><a href="#">Coral Cloud Atoll, South Pacific</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Coral Cloud Resorts. All rights reserved.</span>
+      <span>A fictitious resort brand, built for demonstration purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= ROOM DETAIL MODAL ================= -->
+<div class="modal-overlay" id="roomModal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+      <span class="room-id" id="modalRoomId"></span>
+      <span class="room-price-tag" id="modalPriceTag"></span>
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-type" id="modalType"></div>
+      <h2 id="modalName"></h2>
+      <div class="modal-tagline" id="modalTagline"></div>
+
+      <div class="modal-stats">
+        <div><b>Total Area</b><span id="modalArea"></span></div>
+        <div><b>Bed Configuration</b><span id="modalBeds"></span></div>
+        <div><b>Max Occupancy</b><span id="modalOccupancy"></span></div>
+        <div><b>View Type</b><span id="modalViewType"></span></div>
+        <div><b>Check-In / Check-Out</b><span id="modalCheck"></span></div>
+        <div><b>Service Hours</b><span id="modalService"></span></div>
+      </div>
+
+      <div class="modal-section">
+        <h4>About This Residence</h4>
+        <p id="modalDescription"></p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Key Amenities &amp; Features</h4>
+        <div class="modal-amenity-list" id="modalAmenities"></div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-price" id="modalFullPrice"></div>
+        <a href="#" class="btn btn-coral">Enquire About This Stay</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ================= ROOM DETAIL DATA ================= */
+  const roomData = {
+    "CCR-ACC-011": {
+      name: "Breezeway Ocean-View Studio",
+      type: "Elevated Oceanfront Studio",
+      tagline: "Modern coastal aesthetic with sweeping horizon views.",
+      area: "820 sq ft (76 m²)",
+      beds: "1 King Bed",
+      occupancy: "2 Adults",
+      view: "Elevated Open Ocean & Horizon View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "7:00 AM – 11:00 PM Room Service | 24-Hour Concierge",
+      price: "$950 USD / night",
+      description: "Located on the upper floors of the central lodge, this studio features high ceilings, timber beams, and expansive sliding glass doors that open to a large private balcony with a sunken daybed overlooking the waves.",
+      amenities: ["Private balcony with sunken daybed", "Marble bathroom with rainfall shower", "Smart room automation", "Premium minibar", "Nespresso machine"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Tidal%20Cove%20Family%20Retreat.png?updatedAt=1786371487086"
+    },
+    "CCR-ACC-004": {
+      name: "Cloud Nine Presidential Villa",
+      type: "Multi-Bedroom Grand Estate",
+      tagline: "The flagship estate of Coral Cloud Resorts offering uncompromised luxury.",
+      area: "5,500 sq ft (510 m²)",
+      beds: "3 King Beds + 2 Twin Beds",
+      occupancy: "8 Guests (Max 8 Adults or 6 Adults + 2 Children)",
+      view: "360° Panoramic Reef & Oceanfront View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM (Flexible upon request)",
+      service: "24/7 Private Chef, Butler & Security | 24-Hour In-Villa Dining",
+      price: "$8,500 USD / night",
+      description: "A two-level architectural masterpiece located on a private jutting peninsula. Features an Olympic-length infinity swimming pool, private spa treatment pavilion, fully equipped chef's kitchen, grand living hall, and private security/staff quarters.",
+      amenities: ["20m lap infinity pool", "Private spa treatment room", "Dedicated buggy vehicle", "Personal chef & butler team", "Private dock access", "Master bathroom steam room", "Bang & Olufsen sound system"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Cloud%20Nine%20Presidential%20Villa.png?updatedAt=1786371486747"
+    },
+    "CCR-ACC-002": {
+      name: "Coral Canopy Sanctuary",
+      type: "Hillside Luxury Suite",
+      tagline: "Nestled in coastal palm groves with uninterrupted panoramic ocean views.",
+      area: "1,400 sq ft (130 m²)",
+      beds: "1 King Bed",
+      occupancy: "2 Adults",
+      view: "Elevated Panoramic Bay & Rainforest Canopy View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "7:00 AM – 11:00 PM Dedicated Concierge | 24-Hour In-Villa Dining",
+      price: "$1,450 USD / night",
+      description: "Tucked into lush tropical hillside foliage, these elevated suites blend indoor and outdoor living seamlessly with wrap-around teak balconies, deep hand-carved stone soaking tubs, and floor-to-ceiling glass sliding panels. Ideal for nature lovers seeking privacy and high-altitude ocean breezes.",
+      amenities: ["Wrap-around timber balcony", "Outdoor carved stone bathtub", "Organic Egyptian cotton linens", "Private espresso bar", "Leica binoculars for wildlife spotting", "Yoga mat setup"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Coral%20Canopy%20Sanctuary.png?updatedAt=1786371485980"
+    },
+    "CCR-ACC-005": {
+      name: "Driftwood Beachfront Bungalow",
+      type: "Beach Suite",
+      tagline: "Organic luxury meets island minimalism on the sand.",
+      area: "950 sq ft (88 m²)",
+      beds: "1 King Bed",
+      occupancy: "2 Adults",
+      view: "Direct Beachfront & Coral Lagoon View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "7:00 AM – 11:00 PM Room Service | 24-Hour Concierge",
+      price: "$1,100 USD / night",
+      description: "Crafted from weathered driftwood, local limestone, and natural thatch, this bungalow offers a cozy, intimate retreat just steps from the shore. Features an open-air rain garden bathroom and private sun loungers directly on the beach.",
+      amenities: ["Private beach sun terrace", "Palm hammock grove", "Outdoor rain garden shower", "Complimentary resort bicycles", "Custom organic bath products"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Driftwood%20Beachfront%20Bungalow.png?updatedAt=1786371488202"
+    },
+    "CCR-ACC-014": {
+      name: "Lagoon Edge Duplex Suite",
+      type: "Two-Story Water Suite",
+      tagline: "Two stories of overwater luxury connected by a floating spiral staircase.",
+      area: "2,100 sq ft (195 m²)",
+      beds: "1 King Bed (Upper Level) + 1 Double Daybed (Lower Level)",
+      occupancy: "3 Adults (or 2 Adults + 2 Children)",
+      view: "Lagoon & Distant Island View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "7:00 AM – 11:00 PM Room Service | 24-Hour Concierge",
+      price: "$1,950 USD / night",
+      description: "A unique bi-level overwater layout featuring a ground-floor living salon and private plunge pool deck, connected via a floating wooden spiral staircase to a high-ceiling upper master bedroom with a wrap-around sunset balcony.",
+      amenities: ["Bi-level layout", "Private plunge pool deck", "Upper balcony with sunset daybed", "Spiral architectural staircase", "Double vanity bathroom"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Lagoon%20Edge%20Duplex%20Suite.png?updatedAt=1786371487058"
+    },
+    "CCR-ACC-012": {
+      name: "Manta Point Glass-Bottom Villa",
+      type: "Deep Lagoon Overwater Villa",
+      tagline: "Positioned over the marine sanctuary where rays and turtles glide beneath.",
+      area: "1,950 sq ft (181 m²)",
+      beds: "1 King Bed",
+      occupancy: "2 Adults",
+      view: "Outer Reef Lagoon & Deep Ocean View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "24/7 Dedicated Private Butler Service | 24-Hour In-Villa Dining",
+      price: "$2,200 USD / night",
+      description: "Located at the far edge of the overwater jetty directly over a marine sanctuary. Features oversized glass floor sections in both the bedroom and bathroom, illuminated underwater night lighting, and an extended outdoor sunset deck.",
+      amenities: ["Illuminated underwater night viewing glass floor", "Private infinity pool", "Direct lagoon ladder", "Telescope for stargazing", "Night reef snorkeling gear"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Manta%20Point%20Glass-Bottom%20Villa.png?updatedAt=1786371486677"
+    },
+    "CCR-ACC-007": {
+      name: "Nautilus Oceanfront Penthouse",
+      type: "Top-Floor Penthouse Suite",
+      tagline: "Sky-high ocean vistas with a private rooftop hot tub.",
+      area: "2,800 sq ft (260 m²)",
+      beds: "2 King Beds",
+      occupancy: "4 Adults",
+      view: "High-Elevation Unobstructed Oceanfront View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "24/7 Dedicated Private Butler Service | 24-Hour In-Villa Dining",
+      price: "$3,600 USD / night",
+      description: "Occupying the top floor of the resort's elevated coastal wing, the Penthouse features a wrap-around sky terrace, private outdoor hot tub, full wet bar, and double master suites with glass-enclosed rain showers overlooking the horizon.",
+      amenities: ["Private rooftop hot tub", "Keycard-secured elevator access", "Nightly complimentary champagne service", "Walk-in closets", "Curated contemporary art collection"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Nautilus%20Oceanfront%20Penthouse.png?updatedAt=1786371487342"
+    },
+    "CCR-ACC-008": {
+      name: "Palm Shadow Garden Villa",
+      type: "Botanical Garden Villa",
+      tagline: "A sanctuary secluded within tropical flora.",
+      area: "1,600 sq ft (148 m²)",
+      beds: "1 King Bed",
+      occupancy: "3 Guests (2 Adults + 1 Child)",
+      view: "Enclosed Tropical Garden & Lotus Pond View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "7:00 AM – 11:00 PM Room Service | 24-Hour Concierge",
+      price: "$1,300 USD / night",
+      description: "Hidden behind high stone walls, this sanctuary is surrounded by indigenous flora, water features, and ancient palm trees. It offers total seclusion with its own private courtyard plunge pool and a dedicated lotus pond meditation deck.",
+      amenities: ["Walled private garden", "Lotus pond meditation deck", "Private garden plunge pool", "Outdoor rain shower", "Artisan herbal tea station"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Palm%20Shadow%20Garden%20Villa.png?updatedAt=1786371487559"
+    },
+    "CCR-ACC-009": {
+      name: "Pearl Horizon Royal Residence",
+      type: "Multi-Bedroom Overwater Residence",
+      tagline: "An expansive overwater compound for groups and high-profile guests.",
+      area: "3,800 sq ft (353 m²)",
+      beds: "2 King Beds + 2 Twin Beds",
+      occupancy: "6 Guests (Max 6 Adults)",
+      view: "Sunset Lagoon & Barrier Reef View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "24/7 Private Butler & Sommelier Service | 24-Hour In-Villa Dining",
+      price: "$5,800 USD / night",
+      description: "An overwater complex connected by private wooden walkways. Features two master suites, a central glass dining pavilion floating over the water, dual freshwater plunge pools, and private ocean access stairs.",
+      amenities: ["Dual plunge pools", "Overwater glass-floor dining pavilion", "Glass bottom floor panels", "Private wine cellar display", "Dedicated butler", "Motorized water scooter"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Pearl%20Horizon%20Royal%20Residence.png?updatedAt=1786371487711"
+    },
+    "CCR-ACC-013": {
+      name: "Seabreeze Wellness Spa Suite",
+      type: "In-Suite Spa Villa",
+      tagline: "A dedicated sanctuary for restorative mind-and-body healing.",
+      area: "1,750 sq ft (162 m²)",
+      beds: "1 King Bed",
+      occupancy: "2 Adults",
+      view: "Secluded Oceanfront Garden View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "24/7 Dedicated Private Butler & Wellness Concierge | 24-Hour In-Villa Dining",
+      price: "$2,100 USD / night",
+      description: "Designed specifically for wellness travelers. Includes a private in-suite treatment room, private infrared sauna, outdoor magnesium plunge pool, and daily customized aromatherapeutic bath preparations by a resort therapist.",
+      amenities: ["Private infrared sauna", "Outdoor magnesium plunge pool", "Dual massage tables", "Organic wellness minibar", "Air purification system", "Daily complimentary in-suite spa treatment (60 min)"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Seabreeze%20Wellness%20Spa%20Suite.png?updatedAt=1786371487207"
+    },
+    "CCR-ACC-006": {
+      name: "Solace Swim-Up Lagoon Suite",
+      type: "Resort Lagoon Suite",
+      tagline: "Step off your private terrace directly into a tranquil freshwater lagoon.",
+      area: "1,100 sq ft (102 m²)",
+      beds: "1 King Bed or 2 Queen Beds",
+      occupancy: "3 Adults (or 2 Adults + 2 Children)",
+      view: "Central Freshwater Lagoon & Garden View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "7:00 AM – 11:00 PM Room Service | 24-Hour Concierge",
+      price: "$1,250 USD / night",
+      description: "Located on the ground level of the main enclave, these suites feature private sunken wooden patios that extend directly into a quiet, meandering freshwater pool reserved exclusively for swim-up suite guests.",
+      amenities: ["Direct swim-up lagoon pool access", "Sunken outdoor seating lounge", "Signature bath salts menu", "Sub-zero minibar", "Oversized soaking tub"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Solace%20Swim-Up%20Lagoon%20Suite.png?updatedAt=1786371487329"
+    },
+    "CCR-ACC-003": {
+      name: "Sunset Reef Pavilion",
+      type: "Beachfront Villa",
+      tagline: "Step from your private terrace directly onto powder-white sands.",
+      area: "2,200 sq ft (204 m²)",
+      beds: "1 King Bed + 2 Single Sofa Beds",
+      occupancy: "4 Guests (Max 3 Adults or 2 Adults + 2 Children)",
+      view: "Direct Beachfront & Sunset Ocean View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "24/7 Dedicated Private Butler Service | 24-Hour In-Villa Dining",
+      price: "$2,400 USD / night",
+      description: "Positioned directly on the western shoreline, this pavilion features a private walled courtyard, open-air lounge pavilion, and an oversized plunge pool aligned perfectly for sunset views. Includes a private beachfront cabana and direct path to the water.",
+      amenities: ["Private beach access path", "Oversized plunge pool", "Shaded daybed cabana", "Built-in wine cooler", "Outdoor rainfall garden shower", "Signature beach tote and sandals set"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Sunset%20Reef%20Pavilion.png?updatedAt=1786371487255"
+    },
+    "CCR-ACC-001": {
+      name: "The Azure Horizon Overwater Villa",
+      type: "Overwater Villa",
+      tagline: "Floating luxury where the ocean becomes your living room.",
+      area: "1,850 sq ft (172 m²)",
+      beds: "1 King Bed + 1 Convertible Daybed",
+      occupancy: "3 Adults (or 2 Adults + 1 Child)",
+      view: "360° Panoramic Lagoon & Open Ocean View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "24/7 Dedicated Private Butler Service | 24-Hour In-Villa Dining",
+      price: "$1,850 USD / night (Excluding local taxes & service charges)",
+      description: "Hovering over pristine lagoon waters, this signature villa features a glass-floor viewing lounge in the master salon, a private freshwater infinity dip pool, and direct ladder access to the coral reef below. Designed with bleached teak wood, floor-to-ceiling glass walls, and ocean-facing loungers for ultimate privacy and immersion.",
+      amenities: ["Private freshwater infinity plunge pool", "Glass floor viewing panel", "Ocean hammock over the water", "Outdoor rainfall shower", "BOSE surround audio", "Sub-zero espresso bar", "Complimentary snorkel equipment"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Azure%20Horizon%20Overwater%20Villa.png?updatedAt=1786371487061"
+    },
+    "CCR-ACC-015": {
+      name: "The Sanctuary, Royal Peninsula Estate",
+      type: "Ultra-Private Peninsula Tip Estate",
+      tagline: "Ultimate seclusion on the private tip of the Coral Cloud peninsula.",
+      area: "8,200 sq ft (761 m²)",
+      beds: "4 King Bedrooms + 2 Twin Guest Suites",
+      occupancy: "12 Guests (Max 12 Adults)",
+      view: "Unrestricted 360° Ocean, Reef & Sunset View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM (Flexible)",
+      service: "24/7 Full Private Staff (Butler, Chef, Security, Driver, Boat Captain)",
+      price: "$14,500 USD / night",
+      description: "The most private and luxurious accommodation on the island. Situated on its own isolated tip of land surrounded by private beaches. Features dual swimming pools, a private helicopter landing pad, private speedboat dock, private wine room, and dedicated staff quarters.",
+      amenities: ["Dual infinity pools", "Private helipad", "Private yacht/speedboat dock", "Dedicated 24/7 staff team", "Private cinema room", "Commercial kitchen", "Private gym & sauna"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Sanctuary%20Royal%20Peninsula%20Estate.png?updatedAt=1786371487093"
+    },
+    "CCR-ACC-010": {
+      name: "Tidal Cove Family Retreat",
+      type: "Multi-Bedroom Beach Villa",
+      tagline: "Designed for families to build unforgettable coastal memories together.",
+      area: "3,200 sq ft (297 m²)",
+      beds: "1 King Bed + 2 Twin Beds + 1 Bunk Bed Room",
+      occupancy: "6 Guests (4 Adults + 2 Children)",
+      view: "Direct Oceanfront & Private Cove View",
+      checkInOut: "Check-In: 3:00 PM | Check-Out: 12:00 PM",
+      service: "24/7 Dedicated Private Butler Service | 24-Hour In-Villa Dining",
+      price: "$4,200 USD / night",
+      description: "Thoughtfully designed for families, featuring interconnected suite pavilions centered around a large private courtyard pool. Includes an outdoor projector cinema, custom children's bunk room, and direct access to a shallow, calm swimming bay.",
+      amenities: ["Private swimming pool", "Outdoor cinema projector system", "Family lounge with board games", "Child-proofing upon request", "Complimentary nanny service (4 hrs/day)"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Tidal%20Cove%20Family%20Retreat.png?updatedAt=1786371487086"
+    }
+  };
+
+  /* ================= MODAL LOGIC ================= */
+  const roomModal = document.getElementById('roomModal');
+  const modalClose = document.getElementById('modalClose');
+
+  function openRoomModal(id) {
+    const r = roomData[id];
+    if (!r) return;
+    document.getElementById('modalImg').src = r.image;
+    document.getElementById('modalImg').alt = r.name;
+    document.getElementById('modalRoomId').textContent = id;
+    document.getElementById('modalPriceTag').innerHTML = r.price.split(' USD')[0] + ' <span>/ night</span>';
+    document.getElementById('modalType').textContent = r.type;
+    document.getElementById('modalName').textContent = r.name;
+    document.getElementById('modalTagline').textContent = '"' + r.tagline + '"';
+    document.getElementById('modalArea').textContent = r.area;
+    document.getElementById('modalBeds').textContent = r.beds;
+    document.getElementById('modalOccupancy').textContent = r.occupancy;
+    document.getElementById('modalViewType').textContent = r.view;
+    document.getElementById('modalCheck').textContent = r.checkInOut;
+    document.getElementById('modalService').textContent = r.service;
+    document.getElementById('modalDescription').textContent = r.description;
+    document.getElementById('modalFullPrice').innerHTML = r.price + '<span> · standard nightly rate</span>';
+
+    const amenityWrap = document.getElementById('modalAmenities');
+    amenityWrap.innerHTML = '';
+    r.amenities.forEach(a => {
+      const span = document.createElement('span');
+      span.textContent = a;
+      amenityWrap.appendChild(span);
+    });
+
+    roomModal.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeRoomModal() {
+    roomModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.room-card[data-room]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't trigger the modal when the "Enquire" button itself is clicked
+      if (e.target.closest('.room-footer a')) return;
+      openRoomModal(card.getAttribute('data-room'));
+    });
+  });
+
+  modalClose.addEventListener('click', closeRoomModal);
+  roomModal.addEventListener('click', (e) => {
+    if (e.target === roomModal) closeRoomModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeRoomModal();
+  });
+</script>
+</body>
+</html>
