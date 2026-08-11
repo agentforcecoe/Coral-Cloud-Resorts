@@ -1,0 +1,157 @@
+.footer {
+  background: var(--pearl);
+  position: relative;
+}
+
+.wave {
+  line-height: 0;
+  margin-bottom: -2px;
+}
+
+.wave svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.body {
+  background: var(--midnight);
+  padding: 4rem 0 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand {}
+
+.logoText {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+  max-width: 280px;
+  margin-bottom: 1.5rem;
+}
+
+.socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.socialLink:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.col {}
+
+.colTitle {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.colLink {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+
+.colLink:hover {
+  color: #fff;
+}
+
+.colText {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.awards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.award {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.copy {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+}
+
+.legal {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legal a {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.2s;
+}
+
+.legal a:hover {
+  color: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr; }
+  .bottom { flex-direction: column; align-items: flex-start; }
+}
