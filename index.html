@@ -296,10 +296,14 @@
   }
   #cc-chat-header .cc-icon-btn:hover{ background:rgba(255,255,255,.16); }
 
-  #cc-chat-mount{ flex:1; min-height:0; background:var(--sand); }
+  #cc-chat-mount{ flex:1; min-height:0; background:var(--sand); position:relative; }
   #cc-chat-mount .cc-placeholder{
-    height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:8px; color:var(--teal-600); font-family:'Manrope',sans-serif; font-size:.9rem; padding:24px; text-align:center;
+    background:var(--sand);
+    transition:opacity .3s ease;
+    pointer-events:none;
   }
 
   @media (max-width:640px){
@@ -941,6 +945,14 @@
     overlay.style.visibility = 'hidden';
     overlay.style.pointerEvents = 'none';
     showBar();
+
+    // Remove our loading placeholder once Salesforce confirms the
+    // conversation is actually ready — otherwise it sits on top of
+    // the real chat content forever.
+    window.addEventListener('onEmbeddedMessagingReady', function(){
+      var ph = document.querySelector('#cc-chat-mount .cc-placeholder');
+      if (ph) { ph.style.opacity = '0'; setTimeout(function(){ ph.remove(); }, 300); }
+    });
   })();
 </script>
 
