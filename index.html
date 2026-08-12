@@ -322,6 +322,12 @@
   #cc-chat-header .cc-icon-btn:hover{ background:rgba(255,255,255,.16); }
   #cc-chat-header .cc-icon-btn:active{ transform:scale(.9); }
 
+  /* expand (restore-to-center) button only makes sense while docked */
+  .cc-expand-btn{ display:none; }
+  #cc-chat-overlay.cc-docked .cc-expand-btn{ display:flex; }
+  #cc-chat-overlay.cc-docked #cc-minimize{ display:none; }
+  #cc-chat-overlay.cc-docked #cc-chat-header{ cursor:pointer; }
+
   #cc-chat-mount{ flex:1; min-height:0; background:var(--sand); position:relative; }
   #cc-chat-mount .cc-placeholder{
     position:absolute; inset:0;
@@ -666,7 +672,7 @@
 <nav class="nav" id="siteNav">
   <div class="container">
     <a href="index.html" class="brand">
-      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Gemini_Generated_Image_bvihajbvihajbvih.png?updatedAt=1786517201288" alt="Coral Cloud Resorts" class="brand-logo" id="brandLogo">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Gemini_Generated_Image_bvihajbvihajbvih.png" alt="Coral Cloud Resorts" class="brand-logo" id="brandLogo">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
@@ -918,7 +924,10 @@
         <div class="cc-status">Online now</div>
         <svg class="cc-wave" viewBox="0 0 60 14"><path d="M2 8c5-8 9 8 14 0s9-8 14 0 9 8 14 0 9-8 14 0"/></svg>
       </div>
-      <div class="cc-icon-btn" id="cc-minimize" title="Minimize">–</div>
+      <div class="cc-icon-btn cc-expand-btn" id="cc-expand" title="Expand to full view">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      </div>
+      <div class="cc-icon-btn" id="cc-minimize" title="Minimize to corner">–</div>
       <div class="cc-icon-btn" id="cc-close" title="Close">✕</div>
     </div>
     <div id="cc-chat-mount">
@@ -932,26 +941,44 @@
     var bar = document.getElementById('cc-chat-bar');
     var icon = document.getElementById('cc-chat-icon');
     var overlay = document.getElementById('cc-chat-overlay');
+    var header = document.getElementById('cc-chat-header');
 
+    function hideOverlay(){
+      overlay.classList.remove('cc-open');
+      overlay.style.visibility = 'hidden';
+      overlay.style.pointerEvents = 'none';
+    }
+
+    // pre-chat invite bar (nothing open yet)
     function showBar(){
       bar.style.display = 'flex';
       icon.style.display = 'none';
-      overlay.classList.remove('cc-open');
-      overlay.style.visibility = 'hidden';
-      overlay.style.pointerEvents = 'none';
+      overlay.classList.remove('cc-docked');
+      hideOverlay();
     }
+    // fully closed — just the round launcher icon, bottom-right
     function showIcon(){
       bar.style.display = 'none';
       icon.style.display = 'block';
-      overlay.classList.remove('cc-open');
-      overlay.style.visibility = 'hidden';
-      overlay.style.pointerEvents = 'none';
+      overlay.classList.remove('cc-docked');
+      hideOverlay();
     }
+    // centered, full-size conversation
     function showFullPage(){
       bar.style.display = 'none';
       icon.style.display = 'none';
+      overlay.classList.remove('cc-docked');
       overlay.style.visibility = 'visible';
       overlay.style.pointerEvents = 'auto';
+      requestAnimationFrame(function(){ overlay.classList.add('cc-open'); });
+    }
+    // "minimized" — small window docked bottom-right, page stays usable behind it
+    function showDocked(){
+      bar.style.display = 'none';
+      icon.style.display = 'none';
+      overlay.classList.add('cc-docked');
+      overlay.style.visibility = 'visible';
+      overlay.style.pointerEvents = 'none'; // backdrop is transparent + click-through
       requestAnimationFrame(function(){ overlay.classList.add('cc-open'); });
     }
 
@@ -965,13 +992,20 @@
     });
     icon.addEventListener('click', showFullPage);
     document.getElementById('cc-close').addEventListener('click', showIcon);
-    document.getElementById('cc-minimize').addEventListener('click', showIcon);
+    document.getElementById('cc-minimize').addEventListener('click', showDocked);
+    document.getElementById('cc-expand').addEventListener('click', showFullPage);
+
+    // while docked, clicking anywhere on the header (not its buttons) restores full view
+    header.addEventListener('click', function(e){
+      if (!overlay.classList.contains('cc-docked')) return;
+      if (e.target.closest('.cc-icon-btn')) return;
+      showFullPage();
+    });
 
     // start hidden (visibility, not display:none) so the inline-mode
     // conversation mounted inside #cc-chat-mount keeps real dimensions
     overlay.style.display = 'flex';
-    overlay.style.visibility = 'hidden';
-    overlay.style.pointerEvents = 'none';
+    hideOverlay();
     showBar();
 
     // Remove our loading placeholder once Salesforce confirms the
