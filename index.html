@@ -400,12 +400,15 @@
   .exp-head p{max-width:420px; color:#3B5A55; font-weight:300;}
   .exp-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;}
   .exp-card{
+    display:block;
     background:var(--white);
     border-radius:18px;
     padding:40px 32px;
     box-shadow:0 24px 50px -30px rgba(10,46,42,0.25);
     position:relative;
     overflow:hidden;
+    text-decoration:none;
+    color:inherit;
     transition:transform .4s var(--ease), box-shadow .4s var(--ease);
   }
   .exp-card:hover{transform:translateY(-8px); box-shadow:0 34px 60px -28px rgba(10,46,42,0.35);}
@@ -418,13 +421,19 @@
   .exp-icon svg{width:26px; height:26px; stroke:var(--teal-700);}
   .exp-card h3{font-size:1.35rem; margin-bottom:10px;}
   .exp-card p{color:#3B5A55; font-size:0.94rem; font-weight:400;}
-  .exp-soon{
+  .exp-count{
     position:absolute; top:24px; right:24px;
     font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--coral); font-weight:700;
-    border:1px solid var(--coral-soft);
+    color:var(--teal-600); font-weight:700;
+    border:1px solid rgba(15,92,86,0.25);
     padding:5px 10px; border-radius:999px;
   }
+  .exp-link{
+    margin-top:24px; display:inline-flex; align-items:center; gap:8px;
+    font-size:0.8rem; font-weight:700; color:var(--coral);
+  }
+  .exp-link svg{width:14px; height:14px; stroke:var(--coral); transition:transform .3s var(--ease);}
+  .exp-card:hover .exp-link svg{transform:translateX(5px);}
 
   /* ================= CTA BANNER ================= */
   .cta-banner{
@@ -511,7 +520,7 @@
       <li><a href="rooms.html">Accommodations</a></li>
       <li><a href="dining.html">Dining</a></li>
       <li><a href="spa.html">Spa</a></li>
-      <li><a href="index.html#experiences">Experiences<span class="tag">Soon</span></a></li>
+      <li><a href="experiences.html">Experiences</a></li>
       <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -648,27 +657,30 @@
         <div class="eyebrow">Beyond the Room</div>
         <h2>Dining, wellness &amp; the island calendar.</h2>
       </div>
-      <p class="reveal">We're currently building out full pages for dining, spa treatments, and our time-based island experiences. Here's a preview of what's arriving next.</p>
+      <p class="reveal">Twelve dining venues, ten spa rituals, and ten scheduled island experiences — everything beyond the room is open and ready to browse.</p>
     </div>
     <div class="exp-grid">
-      <div class="exp-card reveal">
-        <span class="exp-soon">Opening Soon</span>
+      <a href="dining.html" class="exp-card reveal">
+        <span class="exp-count">12 Venues</span>
         <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v20M6 2c0 3-2 3-2 6s2 3 2 3M18 2v8a2 2 0 01-4 0V2M16 2v20"/></svg></div>
         <h3>Dining</h3>
-        <p>From the overwater glass-floor pavilion to private in-villa chef service — a full table of island dining experiences.</p>
-      </div>
-      <div class="exp-card reveal">
-        <span class="exp-soon">Opening Soon</span>
+        <p>From the overwater glass-floor pavilion to a private dinner carved into the dunes — a full table of island dining experiences.</p>
+        <span class="exp-link">Explore Dining <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="spa.html" class="exp-card reveal">
+        <span class="exp-count">10 Rituals</span>
         <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
         <h3>Spa &amp; Wellness</h3>
-        <p>Led by the Seabreeze Wellness Spa Suite — infrared saunas, aromatherapy, and treatments timed to the tide.</p>
-      </div>
-      <div class="exp-card reveal">
-        <span class="exp-soon">Opening Soon</span>
+        <p>From an overwater deep-tissue massage to a subterranean hydrotherapy circuit — treatments timed to the tide.</p>
+        <span class="exp-link">Explore Spa &amp; Wellness <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="experiences.html" class="exp-card reveal">
+        <span class="exp-count">10 Experiences</span>
         <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></div>
         <h3>Island Experiences</h3>
-        <p>Sunrise reef snorkels, night manta viewings, and other moments scheduled around the island's natural rhythm.</p>
-      </div>
+        <p>Bioluminescent kayaking, dawn fishing charters, sunset champagne sails, and stargazing with our resident astrophysicist.</p>
+        <span class="exp-link">Explore Experiences <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
@@ -703,9 +715,9 @@
       <div class="footer-col">
         <h4>Resort</h4>
         <ul>
-          <li><a href="index.html#experiences">Dining</a></li>
-          <li><a href="index.html#experiences">Spa &amp; Wellness</a></li>
-          <li><a href="index.html#experiences">Island Experiences</a></li>
+          <li><a href="dining.html">Dining</a></li>
+          <li><a href="spa.html">Spa &amp; Wellness</a></li>
+          <li><a href="experiences.html">Island Experiences</a></li>
           <li><a href="#">Reserve Your Stay</a></li>
         </ul>
       </div>

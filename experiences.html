@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiences — Coral Cloud Resorts</title>
+<meta name="description" content="Ten curated experiences at Coral Cloud Resorts — bioluminescent kayaking, coral planting, a dawn fishing charter, sunset champagne sailing, and stargazing with a resident astrophysicist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#0B2E2A;
+    --teal-900:#0A3D39;
+    --teal-700:#0F5C56;
+    --teal-600:#146B62;
+    --teal-500:#1C8478;
+    --foam:#E7F3EF;
+    --sand:#FBF4E8;
+    --sand-deep:#F3E7D3;
+    --coral:#F2734B;
+    --coral-deep:#DD5A34;
+    --coral-soft:#F8AF8E;
+    --gold:#C79A3C;
+    --white:#FFFFFF;
+    --shadow: 0 20px 50px -20px rgba(10,61,57,0.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  .eyebrow{
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--coral);
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.1;
+    color:var(--teal-900);
+  }
+  .italic{font-style:italic; font-weight:400;}
+  .container{width:100%; max-width:1240px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  .wave-rule{width:120px; height:20px; margin:18px 0 0; overflow:visible;}
+  .wave-rule path{
+    fill:none; stroke:var(--coral); stroke-width:3; stroke-linecap:round;
+    stroke-dasharray:180; stroke-dashoffset:180;
+    transition:stroke-dashoffset 1.1s var(--ease);
+  }
+  .reveal.is-visible .wave-rule path{stroke-dashoffset:0;}
+
+  /* ================= NAV (shared) ================= */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:14px 0;
+    background:rgba(251,244,232,0.94);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 30px -18px rgba(10,46,42,0.25);
+  }
+  .nav .container{display:flex; align-items:center; justify-content:space-between;}
+  .brand img{height:46px; width:auto; filter:drop-shadow(0 4px 10px rgba(10,46,42,0.18));}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{
+    font-size:0.86rem; font-weight:600; letter-spacing:0.03em; color:var(--teal-900);
+    position:relative; padding:6px 8px; transition:color .3s;
+  }
+  .nav-links a.current{color:var(--coral);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--coral); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-links .tag{font-size:0.68rem; letter-spacing:0.08em; color:var(--coral); text-transform:uppercase; margin-left:6px; font-weight:700;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:700; font-size:0.82rem; letter-spacing:0.03em;
+    padding:13px 26px; border-radius:999px; border:1.5px solid transparent; cursor:pointer;
+    transition:transform .35s var(--ease), background .35s, color .35s, border-color .35s;
+  }
+  .btn-coral{background:var(--coral); color:var(--white); box-shadow:0 14px 30px -12px rgba(242,115,75,0.55);}
+  .btn-coral:hover{background:var(--coral-deep); transform:translateY(-2px);}
+  .btn-outline{border-color:var(--teal-700); color:var(--teal-700);}
+  .btn-outline:hover{background:var(--teal-700); color:var(--white);}
+  .btn-sm{padding:10px 20px; font-size:0.76rem;}
+  .btn-full{width:100%; justify-content:center;}
+
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:120;}
+  .hamburger span{width:26px; height:2px; background:var(--teal-900);}
+
+  /* ================= PAGE HERO ================= */
+  .page-hero{
+    padding:158px 0 0;
+    background:
+      radial-gradient(ellipse at top right, rgba(242,115,75,0.14), transparent 55%),
+      var(--sand);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:40px;
+    padding-bottom:64px;
+  }
+  .page-hero .eyebrow{color:var(--coral); display:flex; align-items:center; gap:12px;}
+  .page-hero .eyebrow::before{
+    content:''; display:inline-block; width:34px; height:1.5px; background:var(--coral);
+  }
+  .page-hero h1{font-size:clamp(2.6rem, 5vw, 4.2rem); margin-top:18px; max-width:640px;}
+  .page-hero h1 .italic{color:var(--coral);}
+  .page-hero p{margin-top:22px; max-width:520px; color:#2E4A46; font-size:1.05rem; font-weight:300;}
+
+  /* jump chips */
+  .jump-nav{
+    display:flex; gap:14px; flex-wrap:wrap; margin-top:40px;
+  }
+  .jump-nav a{
+    padding:11px 20px; border-radius:999px; border:1.5px solid rgba(15,92,86,0.25);
+    font-size:0.82rem; font-weight:600; color:var(--teal-700);
+    transition:background .3s, color .3s, border-color .3s;
+  }
+  .jump-nav a:hover{background:var(--teal-700); color:var(--white); border-color:var(--teal-700);}
+
+  /* hero stat strip */
+  .hero-stats{
+    display:flex; flex-wrap:wrap; gap:0;
+    margin-top:52px; padding-top:28px; border-top:1px solid rgba(10,61,57,0.14);
+    max-width:640px;
+  }
+  .hero-stats div{
+    flex:1 1 auto; min-width:120px; padding-right:28px;
+  }
+  .hero-stats b{
+    display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.5rem; color:var(--teal-900);
+  }
+  .hero-stats span{
+    display:block; margin-top:4px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:#5C7B76; font-weight:600;
+  }
+
+  /* hero photo collage — signature element */
+  .hero-visual{
+    position:relative; height:520px; justify-self:center; width:100%; max-width:420px;
+  }
+  .hero-visual .collage-img{
+    position:absolute; border-radius:18px; overflow:hidden;
+    box-shadow:0 30px 60px -24px rgba(10,46,42,0.45);
+    border:6px solid var(--sand);
+  }
+  .hero-visual .collage-img img{width:100%; height:100%; object-fit:cover; display:block;}
+  .collage-back{
+    top:0; right:0; width:78%; height:360px;
+    transform:rotate(4deg);
+    z-index:1;
+  }
+  .collage-front{
+    bottom:0; left:0; width:64%; height:300px;
+    transform:rotate(-5deg);
+    z-index:2;
+  }
+  .collage-badge{
+    position:absolute; z-index:3;
+    background:var(--white); border-radius:16px;
+    padding:14px 18px; box-shadow:0 20px 40px -18px rgba(10,46,42,0.4);
+    display:flex; align-items:center; gap:10px;
+  }
+  .collage-badge-1{top:36%; left:-6%;}
+  .collage-badge svg{width:22px; height:22px; stroke:var(--coral); flex-shrink:0;}
+  .collage-badge b{display:block; font-family:'Fraunces', serif; font-size:1rem; color:var(--teal-900); font-weight:500;}
+  .collage-badge span{display:block; font-size:0.66rem; letter-spacing:0.04em; text-transform:uppercase; color:#5C7B76; font-weight:700; margin-top:1px;}
+  .collage-ring{
+    position:absolute; top:-8%; right:14%; width:70px; height:70px;
+    border:1.5px dashed rgba(242,115,75,0.5); border-radius:50%;
+    z-index:0;
+  }
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr; padding-bottom:40px;}
+    .hero-visual{height:420px; margin-top:20px;}
+  }
+  @media (max-width:560px){
+    .page-hero{padding-top:140px;}
+    .hero-stats div{flex:1 1 45%; margin-bottom:20px;}
+    .hero-visual{height:340px; max-width:320px;}
+    .collage-back{height:260px;}
+    .collage-front{height:210px;}
+    .collage-badge{padding:10px 14px;}
+  }
+
+  
+  /* ================= HERO CAROUSEL ================= */
+  .page-hero{position:relative;}
+  .hero-carousel{
+    position:relative; height:clamp(560px, 92vh, 820px);
+    overflow:hidden; background:var(--teal-900);
+  }
+  .carousel-slide{
+    position:absolute; inset:0; opacity:0; visibility:hidden; z-index:1;
+    transition:opacity 1.1s ease;
+  }
+  .carousel-slide.active{opacity:1; visibility:visible; z-index:2;}
+  .carousel-slide img{
+    width:100%; height:100%; object-fit:cover;
+    animation:kenburns 14s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.09);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .carousel-slide img{animation:none;}
+  }
+  .carousel-scrim{
+    position:absolute; inset:0; z-index:3; pointer-events:none;
+    background:
+      linear-gradient(180deg, rgba(8,32,29,0.55) 0%, rgba(8,32,29,0.15) 32%, rgba(8,32,29,0.35) 62%, rgba(8,32,29,0.85) 100%),
+      linear-gradient(90deg, rgba(8,32,29,0.6) 0%, rgba(8,32,29,0.05) 55%);
+  }
+
+  .carousel-content{
+    position:absolute; z-index:4; left:0; right:0; bottom:112px;
+    padding:0 40px;
+  }
+  .carousel-content .exp-eyebrow{
+    color:var(--coral-soft); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700;
+    display:flex; align-items:center; gap:10px;
+  }
+  .carousel-content .exp-eyebrow::before{content:''; width:28px; height:1.5px; background:var(--coral-soft); display:inline-block;}
+  .carousel-content h1{
+    color:var(--white); font-size:clamp(2rem, 4.4vw, 3.4rem); margin-top:14px; max-width:720px; line-height:1.08;
+  }
+  .carousel-content .exp-tagline-text{
+    color:rgba(255,255,255,0.82); font-size:1rem; font-weight:300; margin-top:14px; max-width:520px;
+  }
+  .carousel-content .exp-meta-row{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;
+  }
+  .carousel-content .exp-meta-row span{
+    background:rgba(255,255,255,0.1); backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.22); color:var(--white);
+    font-size:0.76rem; font-weight:600; padding:7px 14px; border-radius:999px;
+  }
+  .carousel-ctas{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .carousel-ctas .btn-outline{
+    background:transparent; border:1.5px solid rgba(255,255,255,0.5); color:var(--white);
+    padding:14px 28px; border-radius:999px; font-size:0.85rem; font-weight:600;
+    transition:background .3s, border-color .3s;
+  }
+  .carousel-ctas .btn-outline:hover{background:rgba(255,255,255,0.12); border-color:var(--white);}
+
+  /* controls */
+  .carousel-controls{
+    position:absolute; z-index:5; left:0; right:0; bottom:36px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:0 40px;
+  }
+  .carousel-dots{display:flex; flex-wrap:wrap; gap:8px; max-width:60%;}
+  .carousel-dots button{
+    width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.35);
+    cursor:pointer; padding:0; transition:background .3s, transform .3s; flex-shrink:0;
+  }
+  .carousel-dots button.active{background:var(--coral); transform:scale(1.35);}
+  .carousel-arrows{display:flex; gap:10px; flex-shrink:0;}
+  .carousel-arrow{
+    width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.4);
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(6px); color:var(--white);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background .3s, border-color .3s;
+  }
+  .carousel-arrow:hover{background:var(--coral); border-color:var(--coral);}
+  .carousel-arrow svg{width:18px; height:18px; stroke:currentColor; stroke-width:2.2;}
+
+  .carousel-progress{
+    position:absolute; z-index:5; left:0; right:0; bottom:0; height:3px;
+    background:rgba(255,255,255,0.14);
+  }
+  .carousel-progress-bar{
+    height:100%; width:0%; background:var(--coral);
+  }
+  .carousel-progress-bar.animating{
+    animation:progress-fill linear forwards;
+  }
+  @keyframes progress-fill{ from{width:0%;} to{width:100%;} }
+
+  @media (max-width:760px){
+    .hero-carousel{height:clamp(520px, 88vh, 700px);}
+    .carousel-content{bottom:96px; padding:0 22px;}
+    .carousel-content h1{font-size:clamp(1.7rem, 7vw, 2.4rem);}
+    .carousel-content .exp-tagline-text{display:none;}
+    .carousel-ctas .btn-outline{display:none;}
+    .carousel-controls{padding:0 22px; bottom:26px;}
+    .carousel-dots{max-width:70%;}
+  }
+  @media (max-width:480px){
+    .carousel-arrows{display:none;}
+    .carousel-dots{max-width:100%;}
+  }
+
+  /* ================= HERO SUBSTRIP (intro copy under carousel) ================= */
+  .hero-substrip{padding:64px 0 20px; background:var(--sand);}
+  .hero-substrip .eyebrow{color:var(--coral); display:flex; align-items:center; gap:12px;}
+  .hero-substrip .eyebrow::before{content:''; display:inline-block; width:34px; height:1.5px; background:var(--coral);}
+  .hero-substrip h2{font-size:clamp(1.9rem, 3.6vw, 2.7rem); margin-top:14px; max-width:680px;}
+  .hero-substrip p{margin-top:16px; max-width:600px; color:#2E4A46; font-size:1.02rem; font-weight:300;}
+
+  .jump-nav{display:flex; gap:14px; flex-wrap:wrap; margin-top:32px;}
+  .jump-nav a{
+    padding:11px 20px; border-radius:999px; border:1.5px solid rgba(15,92,86,0.25);
+    font-size:0.82rem; font-weight:600; color:var(--teal-700);
+    transition:background .3s, color .3s, border-color .3s;
+  }
+  .jump-nav a:hover{background:var(--teal-700); color:var(--white); border-color:var(--teal-700);}
+
+  .hero-stats{
+    display:flex; flex-wrap:wrap; gap:0;
+    margin-top:40px; padding-top:24px; border-top:1px solid rgba(10,61,57,0.14);
+    max-width:640px;
+  }
+  .hero-stats div{flex:1 1 auto; min-width:120px; padding-right:24px;}
+  .hero-stats b{display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.4rem; color:var(--teal-900);}
+  .hero-stats span{display:block; margin-top:4px; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:#5C7B76; font-weight:600;}
+
+  @media (max-width:560px){
+    .hero-stats div{flex:1 1 45%; margin-bottom:18px;}
+  }
+
+  /* ================= COLLECTION SECTION ================= */
+  .collection-block{padding:80px 0 20px; scroll-margin-top:100px;}
+  .collection-block:nth-of-type(even){background:var(--foam);}
+  .collection-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap;
+    margin-bottom:48px;
+  }
+  .collection-head .eyebrow{color:var(--coral);}
+  .collection-head h2{font-size:clamp(1.8rem, 3vw, 2.5rem); margin-top:12px;}
+  .collection-head p{max-width:460px; color:#3B5A55; font-weight:300; font-size:0.96rem;}
+  .collection-count{font-family:'Fraunces', serif; font-style:italic; color:var(--coral); font-size:1.05rem;}
+
+  .exp-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+    padding-bottom:90px;
+  }
+
+  .exp-card{
+    background:var(--white); border-radius:20px; overflow:hidden; cursor:pointer;
+    box-shadow:0 26px 55px -32px rgba(10,46,42,0.3);
+    display:flex; flex-direction:column;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .exp-card:hover{transform:translateY(-8px); box-shadow:0 36px 70px -30px rgba(10,46,42,0.4);}
+
+  .exp-media{position:relative; height:230px; overflow:hidden;}
+  .exp-media img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease);}
+  .exp-card:hover .exp-media img{transform:scale(1.07);}
+  .exp-id{
+    position:absolute; top:16px; left:16px;
+    background:rgba(10,46,42,0.72); color:var(--white);
+    font-size:0.66rem; font-weight:700; letter-spacing:0.06em;
+    padding:6px 11px; border-radius:999px;
+  }
+  .exp-price-tag{
+    position:absolute; bottom:16px; right:16px;
+    background:var(--coral); color:var(--white);
+    font-size:0.78rem; font-weight:700; padding:8px 14px; border-radius:999px;
+    box-shadow:0 10px 24px -8px rgba(242,115,75,0.7);
+  }
+  .exp-price-tag span{font-weight:400; opacity:0.85; font-size:0.68rem;}
+
+  .exp-body{padding:26px 26px 28px; display:flex; flex-direction:column; flex:1;}
+  .exp-type{font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .exp-body h3{font-size:1.24rem; margin-top:8px; line-height:1.22;}
+  .exp-tagline{font-style:italic; color:#5C7B76; font-size:0.88rem; margin-top:6px; font-weight:400; font-family:'Fraunces', serif;}
+
+  .exp-stats{
+    display:flex; flex-wrap:wrap; gap:12px 16px;
+    margin-top:18px; padding-top:16px; border-top:1px dashed rgba(10,61,57,0.16);
+    font-size:0.76rem; color:var(--teal-900);
+  }
+  .exp-stats div{display:flex; align-items:center; gap:6px;}
+  .exp-stats svg{width:14px; height:14px; stroke:var(--coral); flex-shrink:0;}
+
+  .exp-setting{margin-top:14px; font-size:0.84rem; color:#3B5A55;}
+  .exp-setting b{color:var(--teal-900); font-weight:700;}
+
+  .amenity-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .amenity-chips span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.7rem; font-weight:600; padding:6px 11px; border-radius:999px;
+  }
+
+  .exp-footer{margin-top:auto; padding-top:22px; display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .exp-footer .btn{flex:1;}
+/* ================= CLOSING CTA ================= */
+  .rooms-cta{
+    padding:120px 0;
+    text-align:center;
+    background:var(--teal-900);
+    color:var(--white);
+  }
+  .rooms-cta .eyebrow{color:var(--coral-soft);}
+  .rooms-cta h2{color:var(--white); font-size:clamp(2rem, 4vw, 3rem); margin-top:16px;}
+  .rooms-cta p{max-width:460px; margin:22px auto 0; color:rgba(255,255,255,0.75); font-weight:300;}
+  .rooms-cta .btn{margin-top:36px;}
+
+  /* ================= FOOTER (shared) ================= */
+  footer{background:var(--ink); color:rgba(255,255,255,0.78); padding:80px 0 30px;}
+  .footer-top{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:48px; padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,0.12);}
+  .footer-brand img{height:46px; margin-bottom:18px; filter:brightness(0) invert(1) opacity(0.95);}
+  .footer-brand p{max-width:280px; font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.6);}
+  .footer-col h4{color:var(--white); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin-bottom:20px;}
+  .footer-col li{margin-bottom:12px; font-size:0.92rem;}
+  .footer-col a:hover{color:var(--coral-soft);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:0.8rem; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:12px;}
+
+  
+  /* ================= EXPERIENCE MODAL ================= */
+  body.modal-open{overflow:hidden;}
+
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(10,46,42,0.55); backdrop-filter:blur(4px);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding:60px 20px; opacity:0; visibility:hidden;
+    transition:opacity .35s var(--ease), visibility .35s var(--ease);
+    overflow-y:auto;
+  }
+  .modal-overlay.open{opacity:1; visibility:visible;}
+
+  .modal-box{
+    background:var(--white); width:100%; max-width:880px; border-radius:22px; overflow:hidden;
+    box-shadow:0 40px 90px -30px rgba(10,46,42,0.55);
+    transform:translateY(30px) scale(0.98); opacity:0;
+    transition:transform .4s var(--ease), opacity .4s var(--ease); margin:auto;
+  }
+  .modal-overlay.open .modal-box{transform:translateY(0) scale(1); opacity:1;}
+
+  .modal-media{position:relative; height:360px;}
+  .modal-media img{width:100%; height:100%; object-fit:cover;}
+  .modal-media .exp-id{position:absolute; top:20px; left:20px;}
+  .modal-media .exp-price-tag{position:absolute; bottom:20px; right:20px; font-size:0.9rem; padding:10px 18px;}
+
+  .modal-close{
+    position:absolute; top:16px; right:16px; width:40px; height:40px; border-radius:50%;
+    background:rgba(11,46,42,0.55); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .3s, transform .3s;
+  }
+  .modal-close:hover{background:var(--coral); transform:rotate(90deg);}
+  .modal-close svg{width:18px; height:18px; stroke:var(--white); stroke-width:2.4;}
+
+  .modal-body{padding:36px 40px 44px;}
+  .modal-type{font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal-500); font-weight:700;}
+  .modal-body h2{font-size:clamp(1.6rem, 3vw, 2.1rem); margin-top:8px;}
+  .modal-tagline{font-style:italic; color:#5C7B76; font-size:1rem; margin-top:8px; font-family:'Fraunces', serif;}
+
+  .modal-stats{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:16px;
+    margin-top:26px; padding:20px; background:var(--foam); border-radius:14px;
+  }
+  .modal-stats div{font-size:0.82rem; color:var(--teal-900);}
+  .modal-stats b{display:block; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal-500); font-weight:700; margin-bottom:4px;}
+
+  .modal-section{margin-top:28px;}
+  .modal-section h4{font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--coral); font-weight:700; margin-bottom:10px;}
+  .modal-section p{color:#3B5A55; font-size:0.94rem; font-weight:300; line-height:1.7;}
+
+  .modal-highlight-list{margin:0; padding:0;}
+  .modal-highlight-list li{
+    list-style:none; position:relative; padding-left:22px; margin-bottom:10px;
+    color:#3B5A55; font-size:0.92rem; font-weight:400; line-height:1.5;
+  }
+  .modal-highlight-list li::before{
+    content:''; position:absolute; left:0; top:8px; width:8px; height:8px;
+    background:var(--coral); border-radius:50%;
+  }
+
+  .modal-amenity-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .modal-amenity-list span{
+    background:var(--sand-deep); color:var(--teal-900);
+    font-size:0.76rem; font-weight:600; padding:8px 14px; border-radius:999px;
+  }
+
+  .modal-footer{
+    margin-top:34px; padding-top:26px; border-top:1px dashed rgba(10,61,57,0.16);
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .modal-footer .modal-price{font-family:'Fraunces', serif; font-size:1.4rem; color:var(--teal-900);}
+  .modal-footer .modal-price span{font-size:0.78rem; font-weight:400; color:#5C7B76; font-family:'Manrope',sans-serif;}
+
+  @media (max-width:600px){
+    .modal-overlay{padding:0;}
+    .modal-box{max-width:100%; border-radius:0; min-height:100vh;}
+    .modal-media{height:240px;}
+    .modal-body{padding:26px 22px 32px;}
+    .modal-footer{flex-direction:column; align-items:stretch;}
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1080px){
+    .exp-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:980px){
+    .footer-top{grid-template-columns:1fr 1fr; row-gap:36px;}
+  }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; inset:0 0 0 auto; width:78%; height:100vh;
+      background:var(--teal-900); flex-direction:column; align-items:flex-start; justify-content:center;
+      padding:0 40px; gap:26px; transform:translateX(100%); transition:transform .45s var(--ease);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--white) !important; font-size:1.1rem;}
+    .nav-links a.current{color:var(--coral-soft) !important;}
+    .hamburger{display:flex;}
+    .nav .btn-coral{display:none;}
+    .nav-links .btn-coral{display:inline-flex; margin-top:10px;}
+    .exp-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .container{padding:0 22px;}
+    .exp-footer{flex-direction:column; align-items:stretch;}
+  }
+
+  @media (max-width:420px){
+    .hero-stats div{flex:1 1 100%; padding-right:0;}
+  }
+
+  /* generous breakpoint for large monitors */
+  @media (min-width:1600px){
+    .container{max-width:1400px;}
+    .exp-grid{grid-template-columns:repeat(4, 1fr);}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="siteNav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Coral_Cloud_Resort%20Logo.webp" alt="Coral Cloud Resorts">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Accommodations</a></li>
+      <li><a href="dining.html">Dining</a></li>
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="experiences.html" class="current">Experiences</a></li>
+      <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= PAGE HERO — AUTOPLAY CAROUSEL ================= -->
+<header class="page-hero">
+  <div class="hero-carousel" id="heroCarousel" role="region" aria-label="Featured experiences" aria-roledescription="carousel">
+    <div class="carousel-track" id="carouselTrack"></div>
+    <div class="carousel-scrim"></div>
+
+    <div class="carousel-content container">
+      <div class="exp-eyebrow" id="slideEyebrow"></div>
+      <h1 id="slideName"></h1>
+      <p class="exp-tagline-text" id="slideTagline"></p>
+      <div class="exp-meta-row" id="slideMeta"></div>
+      <div class="carousel-ctas">
+        <a href="#marine" class="btn btn-coral">Browse All Experiences</a>
+        <button class="btn-outline" id="slideDetailsBtn" type="button">View This Experience</button>
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow" id="prevBtn" aria-label="Previous experience" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-arrow" id="nextBtn" aria-label="Next experience" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="carousel-progress"><div class="carousel-progress-bar" id="progressBar"></div></div>
+  </div>
+
+  <!-- ================= HERO SUBSTRIP ================= -->
+  <div class="hero-substrip">
+    <div class="container">
+      <div class="eyebrow reveal">Ten Experiences · One Atoll</div>
+      <h2 class="reveal">Fill the hours between checking in and checking out.</h2>
+      <p class="reveal">From a $60 sunrise yoga session to a $1,200 private sandbar escape, these are the ten ways guests actually spend their days — on the water, off the grid, and occasionally underneath it.</p>
+      <div class="jump-nav reveal">
+        <a href="#marine">Water &amp; Marine</a>
+        <a href="#sailing">Sailing &amp; Escapes</a>
+        <a href="#workshops">Culinary &amp; Craft</a>
+        <a href="#sky-wellness">Sky &amp; Wellness</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div><b>10</b><span>Experiences</span></div>
+        <div><b>4</b><span>Collections</span></div>
+        <div><b>$60–1,200</b><span>Per Booking</span></div>
+        <div><b>75Min–4.5Hr</b><span>Duration Range</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= WATER &AMP; MARINE ADVENTURES ================= -->
+<section class="collection-block" id="marine">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">01 · Water & Marine Adventures</div>
+        <h2>Water &amp; Marine Adventures</h2>
+        <p>Glass kayaks under bioluminescence, coral planting, night snorkeling, and a dawn charter for your own catch.</p>
+      </div>
+      <span class="collection-count">4 experiences</span>
+    </div>
+
+    <div class="exp-grid">
+
+      <!-- Twilight Bioluminescent Kayaking -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-001">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Twilight%20Bioluminescent%20Kayaking.png" alt="Twilight Bioluminescent Kayaking">
+          <span class="exp-id">CCR-EXP-001</span>
+          <span class="exp-price-tag">$180 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Nighttime Marine Adventure &amp; Kayaking</div>
+          <h3>Twilight Bioluminescent Kayaking</h3>
+          <div class="exp-tagline">&quot;Paddle into a glowing night sea illuminated by natural marine bioluminescence.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>1.5 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Nightly</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 10</div>
+          </div>
+          <div class="exp-setting"><b>Meets at:</b> Lagoon Kayak Launch</div>
+          <div class="amenity-chips">
+            <span>Custom transparent glass kayaks</span><span>Illuminated dry bags</span><span>Safety tracking vests</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coral Reef Restoration &amp; Planting Workshop -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-003">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Coral%20Reef%20Restoration%20&%20Planting%20Workshop.png" alt="Coral Reef Restoration &amp; Planting Workshop">
+          <span class="exp-id">CCR-EXP-003</span>
+          <span class="exp-price-tag">$210 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Marine Conservation &amp; Eco-Diving / Snorkeling</div>
+          <h3>Coral Reef Restoration &amp; Planting Workshop</h3>
+          <div class="exp-tagline">&quot;Leave a lasting green footprint by planting your own coral on the resort's nursery reef.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>2 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Tue, Thu, Sat</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 8</div>
+          </div>
+          <div class="exp-setting"><b>Meets at:</b> Coral Nursery Dock</div>
+          <div class="amenity-chips">
+            <span>Full scuba/snorkel equipment provided</span><span>Underwater photography of your planting session</span><span>Coral nursery access</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dawn “Catch &amp; Cook” Ocean Charter -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-002">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Dawn%20Catch%20&%20Cook%20Ocean%20Charter.png" alt="Dawn “Catch &amp; Cook” Ocean Charter">
+          <span class="exp-id">CCR-EXP-002</span>
+          <span class="exp-price-tag">$550 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Deep-Sea Fishing &amp; Culinary Excursion</div>
+          <h3>Dawn “Catch &amp; Cook” Ocean Charter</h3>
+          <div class="exp-tagline">&quot;Hook seasonal ocean game fish at first light and savor your catch for lunch.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>4.5 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Mon, Wed, Fri</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 6</div>
+          </div>
+          <div class="exp-setting"><b>Departs from:</b> Coral Cloud Marina</div>
+          <div class="amenity-chips">
+            <span>42ft luxury sport fishing boat</span><span>Shimano dual-speed reels</span><span>GPS fish finder</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nighttime Reef Snorkeling Safari -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-010">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Nighttime%20Reef%20Snorkeling%20Safari.png" alt="Nighttime Reef Snorkeling Safari">
+          <span class="exp-id">CCR-EXP-010</span>
+          <span class="exp-price-tag">$195 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Nocturnal Marine Exploration</div>
+          <h3>Nighttime Reef Snorkeling Safari</h3>
+          <div class="exp-tagline">&quot;Discover the secret nocturnal ocean world illuminated by specialized underwater torches.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>1.5 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Tue, Fri</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 6</div>
+          </div>
+          <div class="exp-setting"><b>Meets at:</b> House Reef Lagoon</div>
+          <div class="amenity-chips">
+            <span>1000-lumen underwater torches</span><span>Shorty thermal wetsuits</span><span>Specialized glow-filters for corals</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SAILING &AMP; PRIVATE ESCAPES ================= -->
+<section class="collection-block" id="sailing">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">02 · Sailing & Private Escapes</div>
+        <h2>Sailing &amp; Private Escapes</h2>
+        <p>A champagne sunset sail, or a speedboat straight to your own sandbar.</p>
+      </div>
+      <span class="collection-count">2 experiences</span>
+    </div>
+
+    <div class="exp-grid">
+
+      <!-- Sunset Catamaran &amp; Champagne Cruise -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-004">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Sunset%20Catamaran%20&%20Champagne%20Cruise.png" alt="Sunset Catamaran &amp; Champagne Cruise">
+          <span class="exp-id">CCR-EXP-004</span>
+          <span class="exp-price-tag">$290 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Luxury Sunset Sailing &amp; Wine Tasting</div>
+          <h3>Sunset Catamaran &amp; Champagne Cruise</h3>
+          <div class="exp-tagline">&quot;Sail along the outer barrier reef with vintage champagne and live acoustic tunes.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>2 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 16</div>
+          </div>
+          <div class="exp-setting"><b>Departs from:</b> Coral Cloud Marina</div>
+          <div class="amenity-chips">
+            <span>50ft luxury sailing catamaran</span><span>Trampolines with plush cushions</span><span>Shade lounge</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Private Island Sandbar Picnic Escape -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-008">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Private%20Island%20Sandbar%20Picnic%20Escape.png" alt="Private Island Sandbar Picnic Escape">
+          <span class="exp-id">CCR-EXP-008</span>
+          <span class="exp-price-tag">$1,200 <span>/ package</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Private Island &amp; Luxury Excursion</div>
+          <h3>Private Island Sandbar Picnic Escape</h3>
+          <div class="exp-tagline">&quot;Complete seclusion on a deserted white sandbar with luxury tent service.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>4 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>On Demand</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>2–4 Guests</div>
+          </div>
+          <div class="exp-setting"><b>Departs from:</b> Coral Cloud Marina</div>
+          <div class="amenity-chips">
+            <span>Private island setup</span><span>Satellite communication radio</span><span>Shaded lounge</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CULINARY &AMP; CRAFT WORKSHOPS ================= -->
+<section class="collection-block" id="workshops">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">03 · Culinary & Craft Workshops</div>
+        <h2>Culinary &amp; Craft Workshops</h2>
+        <p>Hands-on sessions with the resort's chefs and bartenders, from the garden to the glass.</p>
+      </div>
+      <span class="collection-count">2 experiences</span>
+    </div>
+
+    <div class="exp-grid">
+
+      <!-- Artisanal Coastal Cooking Masterclass -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-009">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Artisanal%20Coastal%20Cooking%20Masterclass.png" alt="Artisanal Coastal Cooking Masterclass">
+          <span class="exp-id">CCR-EXP-009</span>
+          <span class="exp-price-tag">$220 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Garden-to-Table Culinary Workshop</div>
+          <h3>Artisanal Coastal Cooking Masterclass</h3>
+          <div class="exp-tagline">&quot;Harvest organic garden herbs and learn island culinary secrets from our Executive Chef.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>2.5 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Wed, Sat</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 8</div>
+          </div>
+          <div class="exp-setting"><b>Meets at:</b> Garden Pavilion Kitchen</div>
+          <div class="amenity-chips">
+            <span>Fully equipped open-air chef stations</span><span>Organic harvest baskets</span><span>Wine pairing service</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master Mixology &amp; Botanical Infusion Workshop -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-005">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Master%20Mixology%20&%20Botanical%20Infusion%20Workshop.png" alt="Master Mixology &amp; Botanical Infusion Workshop">
+          <span class="exp-id">CCR-EXP-005</span>
+          <span class="exp-price-tag">$140 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Culinary &amp; Beverage Craft Workshop</div>
+          <h3>Master Mixology &amp; Botanical Infusion Workshop</h3>
+          <div class="exp-tagline">&quot;Uncover the art of craft cocktails using smoked rums, local botanicals, and molecular foams.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>1.5 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 6</div>
+          </div>
+          <div class="exp-setting"><b>Meets at:</b> The Driftwood Lounge</div>
+          <div class="amenity-chips">
+            <span>Individual copper mixology stations</span><span>Smoke gun infusers</span><span>Apothecary botanical shelf</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKY &AMP; SUNRISE WELLNESS ================= -->
+<section class="collection-block" id="sky-wellness">
+  <div class="container">
+    <div class="collection-head reveal">
+      <div>
+        <div class="eyebrow">04 · Sky & Sunrise Wellness</div>
+        <h2>Sky &amp; Sunrise Wellness</h2>
+        <p>Bookending the day — sunrise breathwork over the water, and deep space after dark.</p>
+      </div>
+      <span class="collection-count">2 experiences</span>
+    </div>
+
+    <div class="exp-grid">
+
+      <!-- Stargazing with Resident Astrophysicist -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-007">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Stargazing%20with%20Resident%20Astrophysicist.png" alt="Stargazing with Resident Astrophysicist">
+          <span class="exp-id">CCR-EXP-007</span>
+          <span class="exp-price-tag">$120 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Astronomy &amp; Night Sky Exploration</div>
+          <h3>Stargazing with Resident Astrophysicist</h3>
+          <div class="exp-tagline">&quot;Journey through the cosmos using research-grade telescopes on dark-sky dunes.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>1.5 Hrs</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Mon, Thu, Sat</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 12</div>
+          </div>
+          <div class="exp-setting"><b>Meets at:</b> Dark-Sky Dunes</div>
+          <div class="amenity-chips">
+            <span>Celestron 11-inch computerized telescopes</span><span>Lounge seating</span><span>Night-vision star guides</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sunrise Ocean-Deck Yoga &amp; Breathwork -->
+      <div class="exp-card reveal" data-exp="CCR-EXP-006">
+        <div class="exp-media">
+          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Sunrise%20Ocean-Deck%20Yoga%20&%20Breathwork.png" alt="Sunrise Ocean-Deck Yoga &amp; Breathwork">
+          <span class="exp-id">CCR-EXP-006</span>
+          <span class="exp-price-tag">$60 <span>/ person</span></span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-type">Wellness &amp; Mindful Movement</div>
+          <h3>Sunrise Ocean-Deck Yoga &amp; Breathwork</h3>
+          <div class="exp-tagline">&quot;Welcome the morning sun with restorative Vinyasa flow and oceanfront breathwork.&quot;</div>
+          <div class="exp-stats">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>75 Min</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Daily</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Max 15</div>
+          </div>
+          <div class="exp-setting"><b>Meets at:</b> Overwater Yoga Pavilion</div>
+          <div class="amenity-chips">
+            <span>Eco-friendly cork mats</span><span>Linen bolsters</span><span>Open-air overwater pavilion</span>
+          </div>
+          <div class="exp-footer">
+            <a href="#" class="btn btn-coral btn-full">Reserve This Experience</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="rooms-cta">
+  <div class="container">
+    <span class="eyebrow reveal">Not Sure What to Book First?</span>
+    <h2 class="reveal">Our activities concierge can build your whole itinerary.</h2>
+    <p class="reveal">Tell us how many days you have and what excites you — we'll balance the water, the wine, and the wind-down time.</p>
+    <a href="#" class="btn btn-coral reveal">Talk to Activities Concierge</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Coral Cloud Resorts">
+        <p>A private coral atoll resort with fifteen residences, set between open ocean and still lagoon water.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Stay</h4>
+        <ul>
+          <li><a href="rooms.html#overwater">Overwater &amp; Lagoon</a></li>
+          <li><a href="rooms.html#beachfront">Beachfront &amp; Garden</a></li>
+          <li><a href="rooms.html#penthouse">Penthouse &amp; Wellness</a></li>
+          <li><a href="rooms.html#estates">Grand Estates</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Do</h4>
+        <ul>
+          <li><a href="experiences.html#marine">Water &amp; Marine</a></li>
+          <li><a href="experiences.html#sailing">Sailing &amp; Escapes</a></li>
+          <li><a href="dining.html">Dining</a></li>
+          <li><a href="spa.html">Spa &amp; Wellness</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">reservations@coralcloudresorts.com</a></li>
+          <li><a href="#">+1 (800) 555-0142</a></li>
+          <li><a href="#">Coral Cloud Atoll, South Pacific</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Coral Cloud Resorts. All rights reserved.</span>
+      <span>A fictitious resort brand, built for demonstration purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= EXPERIENCE DETAIL MODAL ================= -->
+<div class="modal-overlay" id="expModal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+      <span class="exp-id" id="modalExpId"></span>
+      <span class="exp-price-tag" id="modalPriceTag"></span>
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-type" id="modalType"></div>
+      <h2 id="modalName"></h2>
+      <div class="modal-tagline" id="modalTagline"></div>
+
+      <div class="modal-stats">
+        <div><b>Duration</b><span id="modalDuration"></span></div>
+        <div><b>Schedule</b><span id="modalSchedule"></span></div>
+        <div><b>Group Size</b><span id="modalCapacity"></span></div>
+        <div><b id="modalSettingLabel">Meets At</b><span id="modalSetting"></span></div>
+      </div>
+
+      <div class="modal-section">
+        <h4>About This Experience</h4>
+        <p id="modalDescription"></p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Key Inclusions &amp; Highlights</h4>
+        <ul class="modal-highlight-list" id="modalInclusions"></ul>
+      </div>
+
+      <div class="modal-section">
+        <h4>Key Features &amp; Equipment</h4>
+        <div class="modal-amenity-list" id="modalFeatures"></div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-price" id="modalFullPrice"></div>
+        <a href="#" class="btn btn-coral">Reserve This Experience</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ================= EXPERIENCE DETAIL DATA ================= */
+  const expData = {
+    "CCR-EXP-001": {
+      name: "Twilight Bioluminescent Kayaking",
+      type: "Nighttime Marine Adventure & Kayaking",
+      tagline: "Paddle into a glowing night sea illuminated by natural marine bioluminescence.",
+      settingLabel: "Meets at",
+      setting: "Lagoon Kayak Launch",
+      duration: "1.5 Hours",
+      schedule: "6:30 PM – 8:00 PM (Nightly)",
+      capacity: "Max 10 Guests per Session",
+      price: "$180 USD per person",
+      priceSuffix: "/ person",
+      description: "Guided by our resident marine biologist, guests embark after dusk into quiet mangrove channels and calm lagoon waters in custom clear-bottom glass kayaks. As paddle blades disrupt the water, thousands of harmless bioluminescent plankton glow with a vibrant electric blue light beneath the vessel.",
+      inclusions: ["Guided glass kayak tour", "Bioluminescence presentation by marine biologist", "Safety gear and dry bags", "Post-paddle spiced herbal tea on the beach"],
+      features: ["Custom transparent glass kayaks", "Illuminated dry bags", "Safety tracking vests", "Expert marine guide"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Twilight%20Bioluminescent%20Kayaking.png"
+    },
+    "CCR-EXP-003": {
+      name: "Coral Reef Restoration & Planting Workshop",
+      type: "Marine Conservation & Eco-Diving / Snorkeling",
+      tagline: "Leave a lasting green footprint by planting your own coral on the resort's nursery reef.",
+      settingLabel: "Meets at",
+      setting: "Coral Nursery Dock",
+      duration: "2 Hours",
+      schedule: "10:00 AM – 12:00 PM (Tues, Thu, Sat)",
+      capacity: "Max 8 Guests",
+      price: "$210 USD per person",
+      priceSuffix: "/ person",
+      description: "Partner with our marine conservation team to protect local marine biodiversity. The experience begins with a short interactive seminar on coral biology, followed by hands-on fragment harvesting in our land-based nursery and an underwater dive or snorkel session to attach your coral frame to the house reef.",
+      inclusions: ["Coral ecology presentation", "Nursery fragment preparation", "Guided dive/snorkel planting session", "Personalized reef coordinate certificate and bi-annual digital growth updates"],
+      features: ["Full scuba/snorkel equipment provided", "Underwater photography of your planting session", "Coral nursery access"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Coral%20Reef%20Restoration%20&%20Planting%20Workshop.png"
+    },
+    "CCR-EXP-002": {
+      name: "Dawn “Catch & Cook” Ocean Charter",
+      type: "Deep-Sea Fishing & Culinary Excursion",
+      tagline: "Hook seasonal ocean game fish at first light and savor your catch for lunch.",
+      settingLabel: "Departs from",
+      setting: "Coral Cloud Marina",
+      duration: "4.5 Hours",
+      schedule: "6:30 AM – 11:00 AM (Mon, Wed, Fri)",
+      capacity: "Max 6 Guests per Charter",
+      price: "$550 USD per person (Private Charter option available at $2,800 USD)",
+      priceSuffix: "/ person",
+      description: "Set sail at dawn aboard Coral Cloud's 42-foot custom sports fishing vessel with our master captain and crew. Cast lines along the outer barrier drop-off for yellowfin tuna, mahi-mahi, or snapper. Upon return, an Ember & Tide executive chef prepares your fresh catch into a bespoke multi-course afternoon lunch.",
+      inclusions: ["Deep-sea sport fishing gear and bait", "Morning barista coffee & continental breakfast on board", "Fish preparation & custom 3-course lunch at Ember & Tide"],
+      features: ["42ft luxury sport fishing boat", "Shimano dual-speed reels", "GPS fish finder", "Licensed captain & deckhand team"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Dawn%20Catch%20&%20Cook%20Ocean%20Charter.png"
+    },
+    "CCR-EXP-010": {
+      name: "Nighttime Reef Snorkeling Safari",
+      type: "Nocturnal Marine Exploration",
+      tagline: "Discover the secret nocturnal ocean world illuminated by specialized underwater torches.",
+      settingLabel: "Meets at",
+      setting: "House Reef Lagoon",
+      duration: "1.5 Hours",
+      schedule: "8:00 PM – 9:30 PM (Tues, Fri)",
+      capacity: "Max 6 Guests",
+      price: "$195 USD per person",
+      priceSuffix: "/ person",
+      description: "Slip into the calm house reef lagoon after dark when nocturnal ocean creatures awaken. Accompanied by a marine biologist and equipped with high-lumen waterproof torches, encounter hunting octopuses, bioluminescent sea anemones, sleeping sea turtles, and glowing coral formations.",
+      inclusions: ["Guided night reef snorkel", "High-powered underwater LED lights", "Shorty wetsuit rental", "Marine biologist debrief", "Hot spiced tea upon exit"],
+      features: ["1000-lumen underwater torches", "Shorty thermal wetsuits", "Specialized glow-filters for corals"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Nighttime%20Reef%20Snorkeling%20Safari.png"
+    },
+    "CCR-EXP-004": {
+      name: "Sunset Catamaran & Champagne Cruise",
+      type: "Luxury Sunset Sailing & Wine Tasting",
+      tagline: "Sail along the outer barrier reef with vintage champagne and live acoustic tunes.",
+      settingLabel: "Departs from",
+      setting: "Coral Cloud Marina",
+      duration: "2 Hours",
+      schedule: "5:00 PM – 7:00 PM (Daily)",
+      capacity: "Max 16 Guests",
+      price: "$290 USD per person",
+      priceSuffix: "/ person",
+      description: "Board our 50-foot luxury catamaran as the sun begins its descent toward the horizon. Unwind on spacious trampoline deck nets while sipping unlimited free-flowing vintage champagne, savoring artisan charcuterie, and listening to live acoustic music played against a backdrop of golden sea views.",
+      inclusions: ["2-hour coastal sail", "Unlimited vintage champagne", "Craft cocktails & premium wines", "Artisan charcuterie & raw bar platter", "Live musical performance"],
+      features: ["50ft luxury sailing catamaran", "Trampolines with plush cushions", "Shade lounge", "Professional marine crew"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Sunset%20Catamaran%20&%20Champagne%20Cruise.png"
+    },
+    "CCR-EXP-008": {
+      name: "Private Island Sandbar Picnic Escape",
+      type: "Private Island & Luxury Excursion",
+      tagline: "Complete seclusion on a deserted white sandbar with luxury tent service.",
+      settingLabel: "Departs from",
+      setting: "Coral Cloud Marina",
+      duration: "4 Hours",
+      schedule: "11:00 AM – 3:00 PM (On Demand)",
+      capacity: "Private Experience (2 to 4 Guests)",
+      price: "$1,200 USD total package (Up to 4 Guests)",
+      priceSuffix: "/ package",
+      description: "A private speedboat transports you to a deserted sandbar surrounded by miles of crystal turquoise sea. The resort team sets up a luxury shaded canvas tent, plush floor cushions, a chilled gourmet seafood picnic basket, and fine champagne before leaving you in complete bliss.",
+      inclusions: ["Private boat transfers", "Bohemian luxury canvas tent setup", "3-course gourmet picnic hamper", "Bottle of Veuve Clicquot champagne", "Paddleboards and snorkel gear"],
+      features: ["Private island setup", "Satellite communication radio", "Shaded lounge", "Paddleboards"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Private%20Island%20Sandbar%20Picnic%20Escape.png"
+    },
+    "CCR-EXP-009": {
+      name: "Artisanal Coastal Cooking Masterclass",
+      type: "Garden-to-Table Culinary Workshop",
+      tagline: "Harvest organic garden herbs and learn island culinary secrets from our Executive Chef.",
+      settingLabel: "Meets at",
+      setting: "Garden Pavilion Kitchen",
+      duration: "2.5 Hours",
+      schedule: "11:00 AM – 1:30 PM (Wed, Sat)",
+      capacity: "Max 8 Guests",
+      price: "$220 USD per person",
+      priceSuffix: "/ person",
+      description: "Begin with a guided morning stroll through the resort's organic botanical gardens to harvest fresh herbs, chili peppers, and native roots. Move into an open-air pavilion kitchen where the Executive Chef teaches traditional curing, grilling, and sauce-making techniques for a 3-course lunch.",
+      inclusions: ["Guided garden tour", "Individual cooking station", "3-course lunch with wine pairing", "Embroidered Coral Cloud apron & recipe book takeaway"],
+      features: ["Fully equipped open-air chef stations", "Organic harvest baskets", "Wine pairing service"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Artisanal%20Coastal%20Cooking%20Masterclass.png"
+    },
+    "CCR-EXP-005": {
+      name: "Master Mixology & Botanical Infusion Workshop",
+      type: "Culinary & Beverage Craft Workshop",
+      tagline: "Uncover the art of craft cocktails using smoked rums, local botanicals, and molecular foams.",
+      settingLabel: "Meets at",
+      setting: "The Driftwood Lounge",
+      duration: "1.5 Hours",
+      schedule: "4:00 PM – 5:30 PM (Daily)",
+      capacity: "Max 6 Guests per Station",
+      price: "$140 USD per person",
+      priceSuffix: "/ person",
+      description: "Set inside the open bar at The Driftwood Lounge, this hands-on workshop teaches guests the fundamentals of modern mixology. Guided by master bartenders, you'll forge custom bitters using garden-harvested herbs, practice wood-smoke infusions, and craft three signature cocktails.",
+      inclusions: ["Mixology kit & station setup", "Creation of 3 custom cocktails", "Recipe journal & branded bar spoon takeaway", "Artisan tapas pairing platter"],
+      features: ["Individual copper mixology stations", "Smoke gun infusers", "Apothecary botanical shelf"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Master%20Mixology%20&%20Botanical%20Infusion%20Workshop.png"
+    },
+    "CCR-EXP-007": {
+      name: "Stargazing with Resident Astrophysicist",
+      type: "Astronomy & Night Sky Exploration",
+      tagline: "Journey through the cosmos using research-grade telescopes on dark-sky dunes.",
+      settingLabel: "Meets at",
+      setting: "Dark-Sky Dunes",
+      duration: "1.5 Hours",
+      schedule: "9:00 PM – 10:30 PM (Mon, Thu, Sat)",
+      capacity: "Max 12 Guests",
+      price: "$120 USD per person",
+      priceSuffix: "/ person",
+      description: "Escape light pollution on a dark beach dune where our resident astrophysicist guides you through deep space. Using high-powered computerized telescopes, view Saturn's rings, distant nebulae, and binary star systems while enjoying digestifs and hot cocoa around a low-fire lounge.",
+      inclusions: ["Guided sky tour and constellation identification", "Deep-space telescope viewing", "Constellation map souvenir", "Hot spiced chocolate and cognac service"],
+      features: ["Celestron 11-inch computerized telescopes", "Lounge seating", "Night-vision star guides", "Fire pit"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Stargazing%20with%20Resident%20Astrophysicist.png"
+    },
+    "CCR-EXP-006": {
+      name: "Sunrise Ocean-Deck Yoga & Breathwork",
+      type: "Wellness & Mindful Movement",
+      tagline: "Welcome the morning sun with restorative Vinyasa flow and oceanfront breathwork.",
+      settingLabel: "Meets at",
+      setting: "Overwater Yoga Pavilion",
+      duration: "75 Minutes",
+      schedule: "7:00 AM – 8:15 AM (Daily)",
+      capacity: "Max 15 Guests",
+      price: "$60 USD per person (Complimentary for Suite & Villa Guests)",
+      priceSuffix: "/ person",
+      description: "Held on the resort's elevated overwater yoga pavilion as dawn breaks. Led by certified yoga and Pranayama masters, this class blends fluid Vinyasa sequences with gentle sound bowls and deep ocean-breath exercises designed to awaken energy centers and calm the mind.",
+      inclusions: ["75-minute guided yoga and meditation practice", "Sound bowl closing relaxation", "Chilled organic coconut water", "Cold herbal towels"],
+      features: ["Eco-friendly cork mats", "Linen bolsters", "Open-air overwater pavilion", "Sound healing crystal bowls"],
+      image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Sunrise%20Ocean-Deck%20Yoga%20&%20Breathwork.png"
+    },
+  };
+
+  /* ================= MODAL LOGIC ================= */
+  const expModal = document.getElementById('expModal');
+  const modalClose = document.getElementById('modalClose');
+
+  function openExpModal(id) {
+    const x = expData[id];
+    if (!x) return;
+    document.getElementById('modalImg').src = x.image;
+    document.getElementById('modalImg').alt = x.name;
+    document.getElementById('modalExpId').textContent = id;
+    document.getElementById('modalPriceTag').innerHTML = x.price.split(' USD')[0] + ' <span>' + x.priceSuffix + '</span>';
+    document.getElementById('modalType').textContent = x.type;
+    document.getElementById('modalName').textContent = x.name;
+    document.getElementById('modalTagline').textContent = '"' + x.tagline + '"';
+    document.getElementById('modalDuration').textContent = x.duration;
+    document.getElementById('modalSchedule').textContent = x.schedule;
+    document.getElementById('modalCapacity').textContent = x.capacity;
+    document.getElementById('modalSettingLabel').textContent = x.settingLabel;
+    document.getElementById('modalSetting').textContent = x.setting;
+    document.getElementById('modalDescription').textContent = x.description;
+    document.getElementById('modalFullPrice').innerHTML = x.price + '<span> · standard rate</span>';
+
+    const inclWrap = document.getElementById('modalInclusions');
+    inclWrap.innerHTML = '';
+    x.inclusions.forEach(h => {
+      const li = document.createElement('li');
+      li.textContent = h;
+      inclWrap.appendChild(li);
+    });
+
+    const featureWrap = document.getElementById('modalFeatures');
+    featureWrap.innerHTML = '';
+    x.features.forEach(f => {
+      const span = document.createElement('span');
+      span.textContent = f;
+      featureWrap.appendChild(span);
+    });
+
+    expModal.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeExpModal() {
+    expModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.exp-card[data-exp]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.exp-footer a')) return;
+      openExpModal(card.getAttribute('data-exp'));
+    });
+  });
+
+  modalClose.addEventListener('click', closeExpModal);
+  expModal.addEventListener('click', (e) => {
+    if (e.target === expModal) closeExpModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeExpModal();
+  });
+
+  /* ================= HERO CAROUSEL ================= */
+  const carouselSlides = [
+    { id: "CCR-EXP-004", name: "Sunset Catamaran & Champagne Cruise", category: "Luxury Sunset Sailing & Wine Tasting", tagline: "Sail along the outer barrier reef with vintage champagne and live acoustic tunes.", duration: "2 Hrs", price: "$290", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Sunset%20Catamaran%20&%20Champagne%20Cruise.png" },
+    { id: "CCR-EXP-001", name: "Twilight Bioluminescent Kayaking", category: "Nighttime Marine Adventure & Kayaking", tagline: "Paddle into a glowing night sea illuminated by natural marine bioluminescence.", duration: "1.5 Hrs", price: "$180", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Twilight%20Bioluminescent%20Kayaking.png" },
+    { id: "CCR-EXP-002", name: "Dawn “Catch & Cook” Ocean Charter", category: "Deep-Sea Fishing & Culinary Excursion", tagline: "Hook seasonal ocean game fish at first light and savor your catch for lunch.", duration: "4.5 Hrs", price: "$550", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Dawn%20Catch%20&%20Cook%20Ocean%20Charter.png" },
+    { id: "CCR-EXP-008", name: "Private Island Sandbar Picnic Escape", category: "Private Island & Luxury Excursion", tagline: "Complete seclusion on a deserted white sandbar with luxury tent service.", duration: "4 Hrs", price: "$1,200", priceSuffix: "/ package", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Private%20Island%20Sandbar%20Picnic%20Escape.png" },
+    { id: "CCR-EXP-003", name: "Coral Reef Restoration & Planting Workshop", category: "Marine Conservation & Eco-Diving / Snorkeling", tagline: "Leave a lasting green footprint by planting your own coral on the resort's nursery reef.", duration: "2 Hrs", price: "$210", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Coral%20Reef%20Restoration%20&%20Planting%20Workshop.png" },
+    { id: "CCR-EXP-007", name: "Stargazing with Resident Astrophysicist", category: "Astronomy & Night Sky Exploration", tagline: "Journey through the cosmos using research-grade telescopes on dark-sky dunes.", duration: "1.5 Hrs", price: "$120", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Stargazing%20with%20Resident%20Astrophysicist.png" },
+    { id: "CCR-EXP-009", name: "Artisanal Coastal Cooking Masterclass", category: "Garden-to-Table Culinary Workshop", tagline: "Harvest organic garden herbs and learn island culinary secrets from our Executive Chef.", duration: "2.5 Hrs", price: "$220", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Artisanal%20Coastal%20Cooking%20Masterclass.png" },
+    { id: "CCR-EXP-010", name: "Nighttime Reef Snorkeling Safari", category: "Nocturnal Marine Exploration", tagline: "Discover the secret nocturnal ocean world illuminated by specialized underwater torches.", duration: "1.5 Hrs", price: "$195", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Nighttime%20Reef%20Snorkeling%20Safari.png" },
+    { id: "CCR-EXP-005", name: "Master Mixology & Botanical Infusion Workshop", category: "Culinary & Beverage Craft Workshop", tagline: "Uncover the art of craft cocktails using smoked rums, local botanicals, and molecular foams.", duration: "1.5 Hrs", price: "$140", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Master%20Mixology%20&%20Botanical%20Infusion%20Workshop.png" },
+    { id: "CCR-EXP-006", name: "Sunrise Ocean-Deck Yoga & Breathwork", category: "Wellness & Mindful Movement", tagline: "Welcome the morning sun with restorative Vinyasa flow and oceanfront breathwork.", duration: "75 Min", price: "$60", priceSuffix: "/ person", image: "https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Resort%20Time%20Based%20Experiences%20Images/Sunrise%20Ocean-Deck%20Yoga%20&%20Breathwork.png" },
+  ];
+
+  const track = document.getElementById('carouselTrack');
+  const dotsWrap = document.getElementById('carouselDots');
+  const progressBar = document.getElementById('progressBar');
+  const slideEyebrow = document.getElementById('slideEyebrow');
+  const slideName = document.getElementById('slideName');
+  const slideTagline = document.getElementById('slideTagline');
+  const slideMeta = document.getElementById('slideMeta');
+  const slideDetailsBtn = document.getElementById('slideDetailsBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const heroCarousel = document.getElementById('heroCarousel');
+
+  const SLIDE_DURATION = 4500; // ms, within the 3-5s window
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let currentSlide = 0;
+  let autoplayTimer = null;
+  let isPaused = false;
+
+  // Build slide images
+  carouselSlides.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'carousel-slide' + (i === 0 ? ' active' : '');
+    div.setAttribute('data-index', i);
+    const img = document.createElement('img');
+    img.src = s.image;
+    img.alt = s.name;
+    div.appendChild(img);
+    track.appendChild(div);
+  });
+
+  // Build dots
+  carouselSlides.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'active-dot' + (i === 0 ? ' active' : '');
+    if (i === 0) btn.classList.add('active');
+    btn.setAttribute('aria-label', 'Go to ' + s.name);
+    btn.addEventListener('click', () => goToSlide(i, true));
+    dotsWrap.appendChild(btn);
+  });
+
+  const slideEls = () => track.querySelectorAll('.carousel-slide');
+  const dotEls = () => dotsWrap.querySelectorAll('button');
+
+  function renderSlideContent(i) {
+    const s = carouselSlides[i];
+    slideEyebrow.textContent = s.category;
+    slideName.textContent = s.name;
+    slideTagline.textContent = s.tagline;
+    slideMeta.innerHTML = '<span>' + s.duration + '</span><span>' + s.price + ' ' + s.priceSuffix + '</span>';
+    slideDetailsBtn.onclick = () => openExpModal(s.id);
+  }
+
+  function goToSlide(i, userInitiated) {
+    const total = carouselSlides.length;
+    currentSlide = (i + total) % total;
+
+    slideEls().forEach((el, idx) => el.classList.toggle('active', idx === currentSlide));
+    dotEls().forEach((el, idx) => el.classList.toggle('active', idx === currentSlide));
+    renderSlideContent(currentSlide);
+    restartProgress();
+
+    if (userInitiated) restartAutoplay();
+  }
+
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+
+  function restartProgress() {
+    progressBar.classList.remove('animating');
+    progressBar.style.width = '0%';
+    void progressBar.offsetWidth; // force reflow to restart animation
+    if (!prefersReducedMotion) {
+      progressBar.style.animationDuration = SLIDE_DURATION + 'ms';
+      progressBar.classList.add('animating');
+    } else {
+      progressBar.style.width = '100%';
+    }
+  }
+
+  function startAutoplay() {
+    if (prefersReducedMotion) return;
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (!isPaused) nextSlide();
+    }, SLIDE_DURATION);
+  }
+  function stopAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  }
+  function restartAutoplay() {
+    startAutoplay();
+  }
+
+  prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1, true));
+  nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1, true));
+
+  heroCarousel.addEventListener('mouseenter', () => { isPaused = true; });
+  heroCarousel.addEventListener('mouseleave', () => { isPaused = false; });
+  heroCarousel.addEventListener('focusin', () => { isPaused = true; });
+  heroCarousel.addEventListener('focusout', () => { isPaused = false; });
+
+  // touch swipe support
+  let touchStartX = 0;
+  heroCarousel.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; isPaused = true; }, {passive:true});
+  heroCarousel.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (dx > 40) goToSlide(currentSlide - 1, true);
+    else if (dx < -40) goToSlide(currentSlide + 1, true);
+    isPaused = false;
+  }, {passive:true});
+
+  renderSlideContent(0);
+  restartProgress();
+  startAutoplay();
+</script>
+</body>
+</html>

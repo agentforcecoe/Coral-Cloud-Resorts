@@ -107,30 +107,122 @@
   .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:120;}
   .hamburger span{width:26px; height:2px; background:var(--teal-900);}
 
-  /* ================= PAGE HERO ================= */
-  .page-hero{
-    padding:158px 0 0;
+  /* ================= HERO CAROUSEL ================= */
+  .page-hero{position:relative;}
+  .hero-carousel{
+    position:relative; height:clamp(560px, 92vh, 820px);
+    overflow:hidden; background:var(--teal-900);
+  }
+  .carousel-slide{
+    position:absolute; inset:0; opacity:0; visibility:hidden; z-index:1;
+    transition:opacity 1.1s ease;
+  }
+  .carousel-slide.active{opacity:1; visibility:visible; z-index:2;}
+  .carousel-slide img{
+    width:100%; height:100%; object-fit:cover;
+    animation:kenburns 14s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.09);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .carousel-slide img{animation:none;}
+  }
+  .carousel-scrim{
+    position:absolute; inset:0; z-index:3; pointer-events:none;
     background:
-      radial-gradient(ellipse at top right, rgba(242,115,75,0.14), transparent 55%),
-      var(--sand);
-    overflow:hidden;
+      linear-gradient(180deg, rgba(8,32,29,0.55) 0%, rgba(8,32,29,0.15) 32%, rgba(8,32,29,0.35) 62%, rgba(8,32,29,0.85) 100%),
+      linear-gradient(90deg, rgba(8,32,29,0.6) 0%, rgba(8,32,29,0.05) 55%);
   }
-  .hero-grid{
-    display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:40px;
-    padding-bottom:64px;
-  }
-  .page-hero .eyebrow{color:var(--coral); display:flex; align-items:center; gap:12px;}
-  .page-hero .eyebrow::before{
-    content:''; display:inline-block; width:34px; height:1.5px; background:var(--coral);
-  }
-  .page-hero h1{font-size:clamp(2.6rem, 5vw, 4.2rem); margin-top:18px; max-width:640px;}
-  .page-hero h1 .italic{color:var(--coral);}
-  .page-hero p{margin-top:22px; max-width:520px; color:#2E4A46; font-size:1.05rem; font-weight:300;}
 
-  /* jump chips */
-  .jump-nav{
-    display:flex; gap:14px; flex-wrap:wrap; margin-top:40px;
+  .carousel-content{
+    position:absolute; z-index:4; left:0; right:0; bottom:112px;
+    padding:0 40px;
   }
+  .carousel-content .exp-eyebrow{
+    color:var(--coral-soft); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700;
+    display:flex; align-items:center; gap:10px;
+  }
+  .carousel-content .exp-eyebrow::before{content:''; width:28px; height:1.5px; background:var(--coral-soft); display:inline-block;}
+  .carousel-content h1{
+    color:var(--white); font-size:clamp(2rem, 4.4vw, 3.4rem); margin-top:14px; max-width:720px; line-height:1.08;
+  }
+  .carousel-content .exp-tagline-text{
+    color:rgba(255,255,255,0.82); font-size:1rem; font-weight:300; margin-top:14px; max-width:520px;
+  }
+  .carousel-content .exp-meta-row{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;
+  }
+  .carousel-content .exp-meta-row span{
+    background:rgba(255,255,255,0.1); backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.22); color:var(--white);
+    font-size:0.76rem; font-weight:600; padding:7px 14px; border-radius:999px;
+  }
+  .carousel-ctas{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .carousel-ctas .btn-outline{
+    background:transparent; border:1.5px solid rgba(255,255,255,0.5); color:var(--white);
+    padding:14px 28px; border-radius:999px; font-size:0.85rem; font-weight:600;
+    transition:background .3s, border-color .3s;
+  }
+  .carousel-ctas .btn-outline:hover{background:rgba(255,255,255,0.12); border-color:var(--white);}
+
+  /* controls */
+  .carousel-controls{
+    position:absolute; z-index:5; left:0; right:0; bottom:36px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:0 40px;
+  }
+  .carousel-dots{display:flex; flex-wrap:wrap; gap:8px; max-width:60%;}
+  .carousel-dots button{
+    width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.35);
+    cursor:pointer; padding:0; transition:background .3s, transform .3s; flex-shrink:0;
+  }
+  .carousel-dots button.active{background:var(--coral); transform:scale(1.35);}
+  .carousel-arrows{display:flex; gap:10px; flex-shrink:0;}
+  .carousel-arrow{
+    width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.4);
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(6px); color:var(--white);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background .3s, border-color .3s;
+  }
+  .carousel-arrow:hover{background:var(--coral); border-color:var(--coral);}
+  .carousel-arrow svg{width:18px; height:18px; stroke:currentColor; stroke-width:2.2;}
+
+  .carousel-progress{
+    position:absolute; z-index:5; left:0; right:0; bottom:0; height:3px;
+    background:rgba(255,255,255,0.14);
+  }
+  .carousel-progress-bar{
+    height:100%; width:0%; background:var(--coral);
+  }
+  .carousel-progress-bar.animating{
+    animation:progress-fill linear forwards;
+  }
+  @keyframes progress-fill{ from{width:0%;} to{width:100%;} }
+
+  @media (max-width:760px){
+    .hero-carousel{height:clamp(520px, 88vh, 700px);}
+    .carousel-content{bottom:96px; padding:0 22px;}
+    .carousel-content h1{font-size:clamp(1.7rem, 7vw, 2.4rem);}
+    .carousel-content .exp-tagline-text{display:none;}
+    .carousel-ctas .btn-outline{display:none;}
+    .carousel-controls{padding:0 22px; bottom:26px;}
+    .carousel-dots{max-width:70%;}
+  }
+  @media (max-width:480px){
+    .carousel-arrows{display:none;}
+    .carousel-dots{max-width:100%;}
+  }
+
+  /* ================= HERO SUBSTRIP (intro copy under carousel) ================= */
+  .hero-substrip{padding:64px 0 20px; background:var(--sand);}
+  .hero-substrip .eyebrow{color:var(--coral); display:flex; align-items:center; gap:12px;}
+  .hero-substrip .eyebrow::before{content:''; display:inline-block; width:34px; height:1.5px; background:var(--coral);}
+  .hero-substrip h2{font-size:clamp(1.9rem, 3.6vw, 2.7rem); margin-top:14px; max-width:680px;}
+  .hero-substrip p{margin-top:16px; max-width:600px; color:#2E4A46; font-size:1.02rem; font-weight:300;}
+
+  .jump-nav{display:flex; gap:14px; flex-wrap:wrap; margin-top:32px;}
   .jump-nav a{
     padding:11px 20px; border-radius:999px; border:1.5px solid rgba(15,92,86,0.25);
     font-size:0.82rem; font-weight:600; color:var(--teal-700);
@@ -138,71 +230,21 @@
   }
   .jump-nav a:hover{background:var(--teal-700); color:var(--white); border-color:var(--teal-700);}
 
-  /* hero stat strip */
   .hero-stats{
     display:flex; flex-wrap:wrap; gap:0;
-    margin-top:52px; padding-top:28px; border-top:1px solid rgba(10,61,57,0.14);
+    margin-top:40px; padding-top:24px; border-top:1px solid rgba(10,61,57,0.14);
     max-width:640px;
   }
-  .hero-stats div{
-    flex:1 1 auto; min-width:120px; padding-right:28px;
-  }
-  .hero-stats b{
-    display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.5rem; color:var(--teal-900);
-  }
-  .hero-stats span{
-    display:block; margin-top:4px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:#5C7B76; font-weight:600;
-  }
+  .hero-stats div{flex:1 1 auto; min-width:120px; padding-right:24px;}
+  .hero-stats b{display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.4rem; color:var(--teal-900);}
+  .hero-stats span{display:block; margin-top:4px; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:#5C7B76; font-weight:600;}
 
-  /* hero photo collage — signature element */
-  .hero-visual{
-    position:relative; height:520px; justify-self:center; width:100%; max-width:420px;
-  }
-  .hero-visual .collage-img{
-    position:absolute; border-radius:18px; overflow:hidden;
-    box-shadow:0 30px 60px -24px rgba(10,46,42,0.45);
-    border:6px solid var(--sand);
-  }
-  .hero-visual .collage-img img{width:100%; height:100%; object-fit:cover; display:block;}
-  .collage-back{
-    top:0; right:0; width:78%; height:360px;
-    transform:rotate(4deg);
-    z-index:1;
-  }
-  .collage-front{
-    bottom:0; left:0; width:64%; height:300px;
-    transform:rotate(-5deg);
-    z-index:2;
-  }
-  .collage-badge{
-    position:absolute; z-index:3;
-    background:var(--white); border-radius:16px;
-    padding:14px 18px; box-shadow:0 20px 40px -18px rgba(10,46,42,0.4);
-    display:flex; align-items:center; gap:10px;
-  }
-  .collage-badge-1{top:36%; left:-6%;}
-  .collage-badge svg{width:22px; height:22px; stroke:var(--coral); flex-shrink:0;}
-  .collage-badge b{display:block; font-family:'Fraunces', serif; font-size:1rem; color:var(--teal-900); font-weight:500;}
-  .collage-badge span{display:block; font-size:0.66rem; letter-spacing:0.04em; text-transform:uppercase; color:#5C7B76; font-weight:700; margin-top:1px;}
-  .collage-ring{
-    position:absolute; top:-8%; right:14%; width:70px; height:70px;
-    border:1.5px dashed rgba(242,115,75,0.5); border-radius:50%;
-    z-index:0;
-  }
-
-  @media (max-width:980px){
-    .hero-grid{grid-template-columns:1fr; padding-bottom:40px;}
-    .hero-visual{height:420px; margin-top:20px;}
-  }
   @media (max-width:560px){
-    .page-hero{padding-top:140px;}
-    .hero-stats div{flex:1 1 45%; margin-bottom:20px;}
-    .hero-visual{height:340px; max-width:320px;}
-    .collage-back{height:260px;}
-    .collage-front{height:210px;}
-    .collage-badge{padding:10px 14px;}
+    .hero-stats div{flex:1 1 45%; margin-bottom:18px;}
   }
-
+  @media (max-width:420px){
+    .hero-stats div{flex:1 1 100%; padding-right:0;}
+  }
   /* ================= COLLECTION SECTION ================= */
   .collection-block{padding:80px 0 20px; scroll-margin-top:100px;}
   .collection-block:nth-of-type(even){background:var(--foam);}
@@ -411,6 +453,10 @@
     .container{padding:0 22px;}
     .room-footer{flex-direction:column; align-items:stretch;}
   }
+
+  @media (min-width:1600px){
+    .container{max-width:1400px;}
+  }
 </style>
 </head>
 <body>
@@ -426,7 +472,7 @@
       <li><a href="rooms.html" class="current">Accommodations</a></li>
       <li><a href="dining.html">Dining</a></li>
       <li><a href="spa.html">Spa</a></li>
-      <li><a href="index.html#experiences">Experiences<span class="tag">Soon</span></a></li>
+      <li><a href="experiences.html">Experiences</a></li>
       <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -435,43 +481,55 @@
   </div>
 </nav>
 
-<!-- ================= PAGE HERO ================= -->
+<!-- ================= PAGE HERO — AUTOPLAY CAROUSEL ================= -->
 <header class="page-hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow reveal">Fifteen Residences · One Atoll</div>
-        <h1 class="reveal">Where you stay <span class="italic">is</span> the trip.</h1>
-        <p class="reveal">From a $950 elevated studio to a $14,500 private peninsula, each residence is grouped below by where it sits on the island — over the lagoon, on the sand, above it all, or claiming its own stretch of shoreline.</p>
-        <div class="jump-nav reveal">
-          <a href="#overwater">Overwater &amp; Lagoon</a>
-          <a href="#beachfront">Beachfront &amp; Garden</a>
-          <a href="#penthouse">Penthouse &amp; Wellness</a>
-          <a href="#estates">Grand Estates</a>
-        </div>
-        <div class="hero-stats reveal">
-          <div><b>15</b><span>Residences</span></div>
-          <div><b>4</b><span>Collections</span></div>
-          <div><b>$950–14.5K</b><span>Per Night</span></div>
-          <div><b>12</b><span>Max Guests</span></div>
-        </div>
-      </div>
+  <div class="hero-carousel" id="heroCarousel" role="region" aria-label="Featured accommodations" aria-roledescription="carousel">
+    <div class="carousel-track" id="carouselTrack"></div>
+    <div class="carousel-scrim"></div>
 
-      <div class="hero-visual reveal">
-        <div class="collage-ring"></div>
-        <div class="collage-img collage-back">
-          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Azure%20Horizon%20Overwater%20Villa.png?updatedAt=1786371487061" alt="The Azure Horizon Overwater Villa">
-        </div>
-        <div class="collage-img collage-front">
-          <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/The%20Sanctuary%20Royal%20Peninsula%20Estate.png?updatedAt=1786371487093" alt="The Sanctuary Royal Peninsula Estate">
-        </div>
-        <div class="collage-badge collage-badge-1">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
-          <div>
-            <b>Handpicked</b>
-            <span>By our concierge</span>
-          </div>
-        </div>
+    <div class="carousel-content container">
+      <div class="exp-eyebrow" id="slideEyebrow"></div>
+      <h1 id="slideName"></h1>
+      <p class="exp-tagline-text" id="slideTagline"></p>
+      <div class="exp-meta-row" id="slideMeta"></div>
+      <div class="carousel-ctas">
+        <a href="#overwater" class="btn btn-coral">Browse All Residences</a>
+        <button class="btn-outline" id="slideDetailsBtn" type="button">View This Residence</button>
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow" id="prevBtn" aria-label="Previous residence" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-arrow" id="nextBtn" aria-label="Next residence" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="carousel-progress"><div class="carousel-progress-bar" id="progressBar"></div></div>
+  </div>
+
+  <!-- ================= HERO SUBSTRIP ================= -->
+  <div class="hero-substrip">
+    <div class="container">
+      <div class="eyebrow reveal">Fifteen Residences · One Atoll</div>
+      <h2 class="reveal">Where you stay <span class="italic">is</span> the trip.</h2>
+      <p class="reveal">From a $950 elevated studio to a $14,500 private peninsula, each residence is grouped below by where it sits on the island — over the lagoon, on the sand, above it all, or claiming its own stretch of shoreline.</p>
+      <div class="jump-nav reveal">
+        <a href="#overwater">Overwater &amp; Lagoon</a>
+        <a href="#beachfront">Beachfront &amp; Garden</a>
+        <a href="#penthouse">Penthouse &amp; Wellness</a>
+        <a href="#estates">Grand Estates</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div><b>15</b><span>Residences</span></div>
+        <div><b>4</b><span>Collections</span></div>
+        <div><b>$950–14.5K</b><span>Per Night</span></div>
+        <div><b>12</b><span>Max Guests</span></div>
       </div>
     </div>
   </div>
@@ -1331,6 +1389,133 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeRoomModal();
   });
+
+  /* ================= HERO CAROUSEL ================= */
+  const carouselIds = ["CCR-ACC-006","CCR-ACC-001","CCR-ACC-014","CCR-ACC-012","CCR-ACC-011","CCR-ACC-005","CCR-ACC-008","CCR-ACC-002","CCR-ACC-003","CCR-ACC-013","CCR-ACC-007","CCR-ACC-010","CCR-ACC-009","CCR-ACC-004","CCR-ACC-015"];
+
+  const track = document.getElementById('carouselTrack');
+  const dotsWrap = document.getElementById('carouselDots');
+  const progressBar = document.getElementById('progressBar');
+  const slideEyebrow = document.getElementById('slideEyebrow');
+  const slideName = document.getElementById('slideName');
+  const slideTagline = document.getElementById('slideTagline');
+  const slideMeta = document.getElementById('slideMeta');
+  const slideDetailsBtn = document.getElementById('slideDetailsBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const heroCarousel = document.getElementById('heroCarousel');
+
+  const SLIDE_DURATION = 4500; // ms, within the 3-5s window
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let currentSlide = 0;
+  let autoplayTimer = null;
+  let isPaused = false;
+
+  function slideMetaChips(item) {
+    return '<span>' + item.beds + '</span><span>' + item.price.split(' USD')[0] + ' / night</span>';
+  }
+
+  // Build slide images
+  carouselIds.forEach((id, i) => {
+    const item = roomData[id];
+    const div = document.createElement('div');
+    div.className = 'carousel-slide' + (i === 0 ? ' active' : '');
+    div.setAttribute('data-index', i);
+    const img = document.createElement('img');
+    img.src = item.image;
+    img.alt = item.name;
+    div.appendChild(img);
+    track.appendChild(div);
+  });
+
+  // Build dots
+  carouselIds.forEach((id, i) => {
+    const item = roomData[id];
+    const btn = document.createElement('button');
+    if (i === 0) btn.classList.add('active');
+    btn.setAttribute('aria-label', 'Go to ' + item.name);
+    btn.addEventListener('click', () => goToSlide(i, true));
+    dotsWrap.appendChild(btn);
+  });
+
+  const slideEls = () => track.querySelectorAll('.carousel-slide');
+  const dotEls = () => dotsWrap.querySelectorAll('button');
+
+  function renderSlideContent(i) {
+    const id = carouselIds[i];
+    const item = roomData[id];
+    slideEyebrow.textContent = item.type;
+    slideName.textContent = item.name;
+    slideTagline.textContent = item.tagline;
+    slideMeta.innerHTML = slideMetaChips(item);
+    slideDetailsBtn.onclick = () => openRoomModal(id);
+  }
+
+  function goToSlide(i, userInitiated) {
+    const total = carouselIds.length;
+    currentSlide = (i + total) % total;
+
+    slideEls().forEach((el, idx) => el.classList.toggle('active', idx === currentSlide));
+    dotEls().forEach((el, idx) => el.classList.toggle('active', idx === currentSlide));
+    renderSlideContent(currentSlide);
+    restartProgress();
+
+    if (userInitiated) restartAutoplay();
+  }
+
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+
+  function restartProgress() {
+    progressBar.classList.remove('animating');
+    progressBar.style.width = '0%';
+    void progressBar.offsetWidth; // force reflow to restart animation
+    if (!prefersReducedMotion) {
+      progressBar.style.animationDuration = SLIDE_DURATION + 'ms';
+      progressBar.classList.add('animating');
+    } else {
+      progressBar.style.width = '100%';
+    }
+  }
+
+  function startAutoplay() {
+    if (prefersReducedMotion) return;
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (!isPaused) nextSlide();
+    }, SLIDE_DURATION);
+  }
+  function stopAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  }
+  function restartAutoplay() {
+    startAutoplay();
+  }
+
+  prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1, true));
+  nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1, true));
+
+  heroCarousel.addEventListener('mouseenter', () => { isPaused = true; });
+  heroCarousel.addEventListener('mouseleave', () => { isPaused = false; });
+  heroCarousel.addEventListener('focusin', () => { isPaused = true; });
+  heroCarousel.addEventListener('focusout', () => { isPaused = false; });
+
+  // touch swipe support
+  let touchStartX = 0;
+  heroCarousel.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; isPaused = true; }, {passive:true});
+  heroCarousel.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (dx > 40) goToSlide(currentSlide - 1, true);
+    else if (dx < -40) goToSlide(currentSlide + 1, true);
+    isPaused = false;
+  }, {passive:true});
+
+  renderSlideContent(0);
+  restartProgress();
+  startAutoplay();
+
 </script>
 </body>
 </html>
