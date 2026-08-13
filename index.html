@@ -1064,6 +1064,10 @@
 			embeddedservice_bootstrap.settings.displayMode = 'inline';
 			embeddedservice_bootstrap.settings.targetElement = document.getElementById('cc-chat-mount');
 
+			// We already render our own header (title, avatar, status, minimize/expand/close),
+			// so suppress Salesforce's own inline header to avoid a duplicate header bar.
+			embeddedservice_bootstrap.settings.headerEnabled = false;
+
 			embeddedservice_bootstrap.init(
 				'00DKa00000Uxd6c',
 				'Coral_Cloud_Agent_Agentforce_COE_Hospitality',
