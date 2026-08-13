@@ -295,18 +295,19 @@
   #cc-chat-overlay.cc-docked.cc-open #cc-chat-panel{ transform:translateX(0) scale(1) translateY(0); }
 
   #cc-chat-header{
-    display:flex; align-items:center; gap:14px;
-    padding:18px 22px;
+    display:flex; align-items:center; gap:12px;
+    padding:13px 20px;
     background:linear-gradient(120deg, var(--teal-900), var(--teal-700));
     color:#fff; flex:0 0 auto;
+    box-shadow:inset 0 -1px 0 rgba(255,255,255,.1);
   }
-  #cc-chat-header .cc-chat-ring{ width:38px; height:38px; }
-  #cc-chat-header .cc-core{ width:38px; height:38px; font-size:16px; }
+  #cc-chat-header .cc-chat-ring{ width:32px; height:32px; }
+  #cc-chat-header .cc-core{ width:32px; height:32px; font-size:14px; }
   #cc-chat-header .cc-meta{ flex:1; text-align:left; }
-  #cc-chat-header .cc-name{ font-family:'Fraunces',serif; font-weight:500; font-size:1.05rem; }
-  #cc-chat-header .cc-status{ font-family:'Manrope',sans-serif; font-size:.74rem; color:var(--coral-soft); display:flex; align-items:center; gap:6px; margin-top:2px; }
+  #cc-chat-header .cc-name{ font-family:'Fraunces',serif; font-weight:500; font-size:.98rem; }
+  #cc-chat-header .cc-status{ font-family:'Manrope',sans-serif; font-size:.7rem; color:var(--coral-soft); display:flex; align-items:center; gap:6px; margin-top:1px; }
   #cc-chat-header .cc-status::before{ content:''; width:6px; height:6px; border-radius:50%; background:#6fe0a8; }
-  #cc-chat-header .cc-wave{ width:60px; height:14px; margin-top:4px; overflow:visible; }
+  #cc-chat-header .cc-wave{ width:52px; height:12px; margin-top:2px; overflow:visible; }
   #cc-chat-header .cc-wave path{
     fill:none; stroke:var(--coral-soft); stroke-width:2.4; stroke-linecap:round;
     stroke-dasharray:120; stroke-dashoffset:120;
@@ -1063,10 +1064,6 @@
 			// Render the real conversation inside our themed panel instead of a floating window
 			embeddedservice_bootstrap.settings.displayMode = 'inline';
 			embeddedservice_bootstrap.settings.targetElement = document.getElementById('cc-chat-mount');
-
-			// We already render our own header (title, avatar, status, minimize/expand/close),
-			// so suppress Salesforce's own inline header to avoid a duplicate header bar.
-			embeddedservice_bootstrap.settings.headerEnabled = false;
 
 			embeddedservice_bootstrap.init(
 				'00DKa00000Uxd6c',
