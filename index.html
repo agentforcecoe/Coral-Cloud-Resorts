@@ -673,7 +673,7 @@
 <nav class="nav" id="siteNav">
   <div class="container">
     <a href="index.html" class="brand">
-      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Gemini_Generated_Image_bvihajbvihajbvih.png?updatedAt=1786517201288" alt="Coral Cloud Resorts" class="brand-logo" id="brandLogo">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Gemini_Generated_Image_bvihajbvihajbvih.png" alt="Coral Cloud Resorts" class="brand-logo" id="brandLogo">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
@@ -992,9 +992,25 @@
       showIcon();
     });
     icon.addEventListener('click', showFullPage);
-    document.getElementById('cc-close').addEventListener('click', showIcon);
+    document.getElementById('cc-close').addEventListener('click', function(){
+      // End the underlying session too, not just hide our panel — uses the
+      // documented embeddedservice_bootstrap.userVerificationAPI.clearSession()
+      // (NOT "utilAPI.clearSession" — that method doesn't exist).
+      try {
+        if (window.embeddedservice_bootstrap && embeddedservice_bootstrap.userVerificationAPI) {
+          embeddedservice_bootstrap.userVerificationAPI.clearSession();
+        }
+      } catch (err) { /* widget not ready yet — nothing to clear */ }
+      showIcon();
+    });
     document.getElementById('cc-minimize').addEventListener('click', showDocked);
     document.getElementById('cc-expand').addEventListener('click', showFullPage);
+
+    // if the visitor (or agent) ends the chat from the native menu itself,
+    // fall our own UI back to the launcher icon so the two stay in sync
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(){
+      showIcon();
+    });
 
     // while docked, clicking anywhere on the header (not its buttons) restores full view
     header.addEventListener('click', function(e){
