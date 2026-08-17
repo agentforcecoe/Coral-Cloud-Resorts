@@ -295,29 +295,16 @@
   #cc-chat-overlay.cc-docked.cc-open #cc-chat-panel{ transform:translateX(0) scale(1) translateY(0); }
 
   #cc-chat-header{
-    display:flex; align-items:center; gap:12px;
-    padding:13px 20px;
+    display:flex; align-items:center; justify-content:flex-end; gap:4px;
+    padding:8px 10px;
     background:linear-gradient(120deg, var(--teal-900), var(--teal-700));
     color:#fff; flex:0 0 auto;
     box-shadow:inset 0 -1px 0 rgba(255,255,255,.1);
   }
-  #cc-chat-header .cc-chat-ring{ width:32px; height:32px; }
-  #cc-chat-header .cc-core{ width:32px; height:32px; font-size:14px; }
-  #cc-chat-header .cc-meta{ flex:1; text-align:left; }
-  #cc-chat-header .cc-name{ font-family:'Fraunces',serif; font-weight:500; font-size:.98rem; }
-  #cc-chat-header .cc-status{ font-family:'Manrope',sans-serif; font-size:.7rem; color:var(--coral-soft); display:flex; align-items:center; gap:6px; margin-top:1px; }
-  #cc-chat-header .cc-status::before{ content:''; width:6px; height:6px; border-radius:50%; background:#6fe0a8; }
-  #cc-chat-header .cc-wave{ width:52px; height:12px; margin-top:2px; overflow:visible; }
-  #cc-chat-header .cc-wave path{
-    fill:none; stroke:var(--coral-soft); stroke-width:2.4; stroke-linecap:round;
-    stroke-dasharray:120; stroke-dashoffset:120;
-    transition:stroke-dashoffset .9s var(--ease) .15s;
-  }
-  #cc-chat-overlay.cc-open #cc-chat-header .cc-wave path{ stroke-dashoffset:0; }
   #cc-chat-header .cc-icon-btn{
-    width:32px; height:32px; border-radius:50%;
+    width:28px; height:28px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    cursor:pointer; color:#fff; font-size:16px;
+    cursor:pointer; color:#fff; font-size:15px;
     transition:transform .15s ease;
   }
   #cc-chat-header .cc-icon-btn:hover{ background:rgba(255,255,255,.16); }
@@ -919,12 +906,6 @@
 <div id="cc-chat-overlay">
   <div id="cc-chat-panel">
     <div id="cc-chat-header">
-      <div class="cc-chat-ring"><div class="cc-core">✦</div></div>
-      <div class="cc-meta">
-        <div class="cc-name">Coral Cloud Concierge</div>
-        <div class="cc-status">Online now</div>
-        <svg class="cc-wave" viewBox="0 0 60 14"><path d="M2 8c5-8 9 8 14 0s9-8 14 0 9 8 14 0 9-8 14 0"/></svg>
-      </div>
       <div class="cc-icon-btn cc-expand-btn" id="cc-expand" title="Expand to full view">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
       </div>
