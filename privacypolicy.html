@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Coral Cloud Resorts</title>
+<meta name="description" content="How Coral Cloud Resorts collects, uses, and protects your personal information.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2E2A;
+    --teal-900:#0A3D39;
+    --teal-700:#0F5C56;
+    --teal-600:#146B62;
+    --teal-500:#1C8478;
+    --foam:#E7F3EF;
+    --sand:#FBF4E8;
+    --sand-deep:#F3E7D3;
+    --coral:#F2734B;
+    --coral-deep:#DD5A34;
+    --coral-soft:#F8AF8E;
+    --gold:#C79A3C;
+    --white:#FFFFFF;
+    --shadow: 0 20px 50px -20px rgba(10,61,57,0.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  .eyebrow{
+    font-family:'Manrope', sans-serif; font-weight:700; font-size:0.72rem;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--coral);
+  }
+  h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:500; line-height:1.15; color:var(--teal-900); }
+  .container{ width:100%; max-width:1240px; margin:0 auto; padding:0 32px; }
+  section{position:relative;}
+
+  /* ===== nav ===== */
+  .nav{ position:sticky; top:0; z-index:500; background:var(--sand); border-bottom:1px solid rgba(10,61,57,0.08); }
+  .nav .container{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand-logo{height:38px;}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{ font-family:'Manrope', sans-serif; font-weight:600; font-size:0.92rem; color:var(--teal-900); position:relative; padding-bottom:4px; }
+  .nav-links a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--coral); transition:width .25s var(--ease); }
+  .nav-links a:hover::after{width:100%;}
+  .btn{ display:inline-flex; align-items:center; justify-content:center; font-family:'Manrope', sans-serif; font-weight:600; font-size:0.88rem; padding:12px 24px; border-radius:999px; transition:all .25s var(--ease); }
+  .btn-coral{ background:var(--coral); color:var(--white); }
+  .btn-coral:hover{ background:var(--coral-deep); transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(221,90,52,0.7); }
+  .hamburger{ display:none; background:none; border:none; cursor:pointer; }
+
+  /* ===== legal hero ===== */
+  .legal-hero{ padding:64px 0 40px; background:linear-gradient(180deg, var(--foam), var(--sand)); border-bottom:1px solid rgba(10,61,57,0.08); }
+  .legal-hero h1{ font-size:clamp(2.2rem, 4vw, 3.1rem); margin-top:14px; }
+  .legal-hero .meta{ margin-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:0.86rem; color:var(--teal-700); }
+  .legal-hero .meta strong{ color:var(--teal-900); }
+
+  /* ===== legal body ===== */
+  .legal-body{ padding:56px 0 100px; }
+  .legal-layout{ display:grid; grid-template-columns:260px 1fr; gap:64px; align-items:start; }
+
+  .legal-toc{ position:sticky; top:96px; background:var(--white); border-radius:18px; padding:22px 22px; box-shadow:var(--shadow); }
+  .legal-toc .toc-label{ margin-bottom:12px; display:block; }
+  .legal-toc ol{ list-style:none; counter-reset:toc; }
+  .legal-toc li{ counter-increment:toc; margin-bottom:9px; }
+  .legal-toc a{ font-size:0.85rem; color:var(--ink); display:flex; gap:8px; line-height:1.4; transition:color .2s; }
+  .legal-toc a::before{ content:counter(toc) "."; color:var(--coral); font-weight:700; flex:0 0 auto; }
+  .legal-toc a:hover{ color:var(--coral); }
+
+  .legal-content h2{ font-size:1.5rem; margin-top:46px; margin-bottom:14px; padding-top:6px; scroll-margin-top:96px; }
+  .legal-content section:first-of-type h2{ margin-top:0; }
+  .legal-content h3{ font-size:1.08rem; color:var(--teal-700); margin-top:24px; margin-bottom:8px; }
+  .legal-content p{ margin-bottom:14px; color:#294B46; font-size:0.98rem; }
+  .legal-content ul{ margin:0 0 16px 22px; color:#294B46; font-size:0.98rem; list-style:disc; }
+  .legal-content li{ margin-bottom:8px; }
+  .legal-content a.inline-link{ color:var(--coral); text-decoration:underline; text-underline-offset:3px; }
+  .legal-content strong{ color:var(--teal-900); }
+
+  .callout{ background:var(--foam); border-left:3px solid var(--teal-500); border-radius:10px; padding:16px 20px; margin:20px 0; font-size:0.92rem; }
+
+  .table-wrap{ overflow-x:auto; margin:18px 0 22px; border-radius:12px; box-shadow:var(--shadow); }
+  table.data-table{ width:100%; border-collapse:collapse; background:var(--white); font-size:0.88rem; min-width:560px; }
+  table.data-table th{ text-align:left; background:var(--teal-900); color:var(--white); font-family:'Manrope',sans-serif; font-weight:600; padding:12px 16px; }
+  table.data-table td{ padding:12px 16px; border-bottom:1px solid rgba(10,61,57,0.08); color:#294B46; vertical-align:top; }
+  table.data-table tr:last-child td{ border-bottom:none; }
+
+  .legal-divider{ height:1px; background:rgba(10,61,57,0.1); margin:40px 0; }
+  .back-to-top{ display:inline-flex; align-items:center; gap:6px; margin-top:48px; font-family:'Manrope',sans-serif; font-weight:600; font-size:0.85rem; color:var(--teal-700); }
+  .back-to-top:hover{ color:var(--coral); }
+
+  /* ===== footer ===== */
+  footer{ background:var(--teal-900); color:var(--foam); padding:64px 0 28px; }
+  .footer-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.12); }
+  .footer-brand img{ height:34px; margin-bottom:14px; filter:brightness(0) invert(1); }
+  .footer-brand p{ font-size:0.86rem; color:rgba(231,243,239,0.7); max-width:280px; }
+  .footer-col h4{ font-family:'Manrope',sans-serif; font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--coral-soft); margin-bottom:16px; }
+  .footer-col li{ margin-bottom:10px; }
+  .footer-col a{ font-size:0.9rem; color:rgba(231,243,239,0.85); }
+  .footer-col a:hover{ color:var(--white); }
+  .footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:24px; font-size:0.8rem; color:rgba(231,243,239,0.55); }
+
+  @media (max-width:900px){
+    .legal-layout{ grid-template-columns:1fr; }
+    .legal-toc{ position:static; }
+    .footer-top{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px){
+    .nav-links{ display:none; }
+    .hamburger{ display:block; }
+    .container{ padding:0 22px; }
+    .footer-top{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="siteNav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Gemini_Generated_Image_bvihajbvihajbvih.png" alt="Coral Cloud Resorts" class="brand-logo">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Accommodations</a></li>
+      <li><a href="dining.html">Dining</a></li>
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="legal-hero">
+  <div class="container">
+    <div class="eyebrow">Legal</div>
+    <h1>Privacy Policy</h1>
+    <div class="meta">
+      <span><strong>Effective:</strong> January 1, 2026</span>
+      <span><strong>Last updated:</strong> August 18, 2026</span>
+      <span><strong>Applies to:</strong> coralcloudresorts.com, our reservations systems, and the Coral Cloud Agent chat concierge</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BODY ================= -->
+<section class="legal-body">
+  <div class="container legal-layout">
+
+    <!-- TOC -->
+    <nav class="legal-toc" aria-label="Table of contents">
+      <span class="eyebrow toc-label">On this page</span>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#collect">Information We Collect</a></li>
+        <li><a href="#chat">The Coral Cloud Agent Chat Concierge</a></li>
+        <li><a href="#use">How We Use Your Information</a></li>
+        <li><a href="#sharing">How We Share Information</a></li>
+        <li><a href="#cookies">Cookies &amp; Tracking Technologies</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#security">Data Security</a></li>
+        <li><a href="#rights">Your Rights &amp; Choices</a></li>
+        <li><a href="#international">International Data Transfers</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#changes">Changes to This Policy</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="legal-content">
+
+      <section id="overview">
+        <h2>1. Overview</h2>
+        <p>Coral Cloud Resorts ("we," "us," "our") respects your privacy and is committed to protecting the personal information you share with us — whether you're browsing our Site, requesting a quote through our AI concierge, or staying with us as a guest. This Privacy Policy explains what information we collect, why we collect it, how it's used, and the choices available to you.</p>
+        <p>By using coralcloudresorts.com (the "Site") or providing information to us in connection with a reservation, you acknowledge the practices described in this policy.</p>
+      </section>
+
+      <section id="collect">
+        <h2>2. Information We Collect</h2>
+        <h3>Information you provide directly</h3>
+        <ul>
+          <li><strong>Reservation details:</strong> name, email address, phone number, mailing address, arrival/departure dates, party size, and special requests.</li>
+          <li><strong>Payment information:</strong> credit card or payment details, processed through our PCI-DSS-compliant payment provider. We do not store full card numbers on our own servers.</li>
+          <li><strong>Communications:</strong> messages sent via our contact forms, email, telephone, or the Coral Cloud Agent chat concierge.</li>
+          <li><strong>Account information:</strong> if you create a guest profile, your login credentials and stored preferences (e.g. room type, dietary needs).</li>
+        </ul>
+        <h3>Information collected automatically</h3>
+        <ul>
+          <li><strong>Device &amp; usage data:</strong> IP address, browser type, pages visited, referring URL, and approximate location (derived from IP), collected via cookies and similar technologies.</li>
+          <li><strong>Analytics data:</strong> aggregated, pseudonymized behavioral data used to understand how visitors use the Site.</li>
+        </ul>
+      </section>
+
+      <section id="chat">
+        <h2>3. The Coral Cloud Agent Chat Concierge</h2>
+        <p>Our Site includes an AI-assisted chat concierge, the Coral Cloud Agent, built on Salesforce Agentforce / Embedded Messaging technology. When you use this chat feature:</p>
+        <ul>
+          <li>The content of your conversation, along with basic technical information (browser, approximate location, session identifiers), is transmitted to and processed by Salesforce, Inc. as our service provider, in order to generate responses and maintain conversation continuity as you move between pages on our Site.</li>
+          <li>If you provide personal information in the chat (such as your name, email, or travel dates) to receive a recommendation or quote, that information is handled under this Privacy Policy and may be used to follow up with you regarding your inquiry.</li>
+          <li>Conversation transcripts may be reviewed by our reservations team to improve response quality and resolve guest inquiries, and may be retained for a limited period as described in Section 7.</li>
+          <li>Please avoid sharing sensitive information (such as full payment card numbers or government ID numbers) directly in the chat window; our reservations team will always request this through a secure channel when needed.</li>
+        </ul>
+        <div class="callout">
+          The Coral Cloud Agent's responses are generated automatically and are provided for convenience. See our <a class="inline-link" href="terms-and-conditions.html#agent">Terms &amp; Conditions</a> for details on how chat interactions relate to confirmed bookings.
+        </div>
+      </section>
+
+      <section id="use">
+        <h2>4. How We Use Your Information</h2>
+        <ul>
+          <li>To process and manage your reservation, including confirmations, changes, and cancellations;</li>
+          <li>To communicate with you about your stay, respond to inquiries, and provide customer support;</li>
+          <li>To personalize your experience, including remembering preferences for future stays;</li>
+          <li>To process payments and prevent fraud;</li>
+          <li>To send marketing communications, where you have opted in (you may unsubscribe at any time);</li>
+          <li>To analyze and improve the Site, our services, and the performance of the Coral Cloud Agent; and</li>
+          <li>To comply with legal obligations, including tax, safety, and immigration record-keeping requirements applicable to hospitality providers.</li>
+        </ul>
+      </section>
+
+      <section id="sharing">
+        <h2>5. How We Share Information</h2>
+        <p>We do not sell your personal information. We share information only in the following circumstances:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Recipient</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Payment processors</td><td>To securely process reservation payments and deposits.</td></tr>
+              <tr><td>Salesforce, Inc. (Agentforce / Embedded Messaging)</td><td>To power the Coral Cloud Agent chat concierge and maintain conversation history across your visit.</td></tr>
+              <tr><td>Property management &amp; CRM systems</td><td>To manage your reservation, guest profile, and stay preferences.</td></tr>
+              <tr><td>Independent excursion &amp; spa partners</td><td>Only where necessary to fulfill an activity or treatment you've booked, and only the details required for that purpose.</td></tr>
+              <tr><td>Analytics providers</td><td>To understand aggregated Site usage; data is pseudonymized where possible.</td></tr>
+              <tr><td>Legal &amp; regulatory authorities</td><td>Where required by law, court order, or to protect the safety of guests and staff.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="cookies">
+        <h2>6. Cookies &amp; Tracking Technologies</h2>
+        <p>We use cookies and similar technologies to operate the Site, remember your preferences, understand usage patterns, and — where you've consented — support marketing efforts. This includes:</p>
+        <ul>
+          <li><strong>Essential cookies:</strong> required for core Site functionality, such as maintaining your chat session as you move between pages.</li>
+          <li><strong>Analytics cookies:</strong> help us understand how visitors interact with the Site.</li>
+          <li><strong>Marketing cookies:</strong> used, with consent, to tailor promotional content.</li>
+        </ul>
+        <p>You can control cookies through your browser settings; disabling essential cookies may affect Site functionality, including the chat concierge's ability to remember your conversation across pages.</p>
+      </section>
+
+      <section id="retention">
+        <h2>7. Data Retention</h2>
+        <p>We retain personal information for as long as necessary to fulfill the purposes described in this policy, including:</p>
+        <ul>
+          <li>Reservation and guest stay records: retained for 7 years to meet tax and financial record-keeping obligations;</li>
+          <li>Chat concierge transcripts: retained for up to 24 months to support quality review and dispute resolution, unless a shorter period is requested and legally permitted;</li>
+          <li>Marketing preferences: retained until you unsubscribe or request deletion.</li>
+        </ul>
+      </section>
+
+      <section id="security">
+        <h2>8. Data Security</h2>
+        <p>We use industry-standard technical and organizational measures — including encryption in transit, access controls, and PCI-DSS-compliant payment handling — to protect your information. However, no method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+      </section>
+
+      <section id="rights">
+        <h2>9. Your Rights &amp; Choices</h2>
+        <p>Depending on where you live, you may have the right to:</p>
+        <ul>
+          <li>Access the personal information we hold about you;</li>
+          <li>Request correction of inaccurate information;</li>
+          <li>Request deletion of your personal information, subject to legal retention requirements;</li>
+          <li>Object to or restrict certain processing, including marketing;</li>
+          <li>Request a portable copy of your data; and</li>
+          <li>Withdraw consent at any time where processing is based on consent.</li>
+        </ul>
+        <p>To exercise any of these rights, contact us using the details in Section 13. We will respond within the timeframe required by applicable law.</p>
+      </section>
+
+      <section id="international">
+        <h2>10. International Data Transfers</h2>
+        <p>Coral Cloud Resorts and our service providers, including Salesforce, may process and store information in countries other than your own. Where required, we rely on appropriate safeguards — such as standard contractual clauses — to ensure your information receives an adequate level of protection wherever it is processed.</p>
+      </section>
+
+      <section id="children">
+        <h2>11. Children's Privacy</h2>
+        <p>The Site and our reservation services are not directed to children under 16, and we do not knowingly collect personal information from children under 16. If you believe a child has provided us with personal information, please contact us so we can delete it.</p>
+      </section>
+
+      <section id="changes">
+        <h2>12. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. The "Last updated" date at the top of this page reflects the most recent revision. We encourage you to review this page periodically.</p>
+      </section>
+
+      <div class="legal-divider"></div>
+
+      <section id="contact">
+        <h2>13. Contact Us</h2>
+        <p>For questions about this Privacy Policy or to exercise your data rights, contact:</p>
+        <p>
+          Coral Cloud Resorts — Privacy Office<br>
+          <a class="inline-link" href="mailto:privacy@coralcloudresorts.com">privacy@coralcloudresorts.com</a><br>
+          +1 (800) 555-0142<br>
+          Coral Cloud Atoll, South Pacific
+        </p>
+        <p style="margin-top:24px; font-size:0.82rem; color:var(--teal-700);">Coral Cloud Resorts is a fictitious resort brand used for demonstration purposes; this policy is provided as a realistic content example and does not reflect the practices of an actual data controller.</p>
+      </section>
+
+      <a href="#top" class="back-to-top">↑ Back to top</a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Coral Cloud Resorts">
+        <p>A private coral atoll resort with fifteen residences, set between open ocean and still lagoon water.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Stay</h4>
+        <ul>
+          <li><a href="rooms.html#overwater">Overwater &amp; Lagoon</a></li>
+          <li><a href="rooms.html#beachfront">Beachfront &amp; Garden</a></li>
+          <li><a href="rooms.html#penthouse">Penthouse &amp; Wellness</a></li>
+          <li><a href="rooms.html#estates">Grand Estates</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resort</h4>
+        <ul>
+          <li><a href="dining.html">Dining</a></li>
+          <li><a href="spa.html">Spa &amp; Wellness</a></li>
+          <li><a href="experiences.html">Island Experiences</a></li>
+          <li><a href="#">Reserve Your Stay</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="privacypolicy.html">Privacy Policy</a></li>
+          <li><a href="#">reservations@coralcloudresorts.com</a></li>
+          <li><a href="#">+1 (800) 555-0142</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Coral Cloud Resorts. All rights reserved.</span>
+      <span>A fictitious resort brand, built for demonstration purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Coral Cloud Concierge chat widget — one shared file, include on every page -->
+<script src="/Coral-Cloud-Resorts/coralChatWidget.js" defer></script>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

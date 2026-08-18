@@ -1517,6 +1517,25 @@
   startAutoplay();
 
 </script>
-<script src="/Coral-Cloud-Resorts/coralChatWidget.js" defer></script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DKa00000Uxd6c',
+				'Coral_Cloud_Agent_Agentforce_COE_Hospitality',
+				'https://ap1763032291393.my.site.com/ESWCoralCloudAgentAgen1786514087670',
+				{
+					scrt2URL: 'https://ap1763032291393.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://ap1763032291393.my.site.com/ESWCoralCloudAgentAgen1786514087670/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 </body>
 </html>

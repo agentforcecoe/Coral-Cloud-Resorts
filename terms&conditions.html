@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Conditions — Coral Cloud Resorts</title>
+<meta name="description" content="Terms and Conditions for reservations, stays, and use of coralcloudresorts.com.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2E2A;
+    --teal-900:#0A3D39;
+    --teal-700:#0F5C56;
+    --teal-600:#146B62;
+    --teal-500:#1C8478;
+    --foam:#E7F3EF;
+    --sand:#FBF4E8;
+    --sand-deep:#F3E7D3;
+    --coral:#F2734B;
+    --coral-deep:#DD5A34;
+    --coral-soft:#F8AF8E;
+    --gold:#C79A3C;
+    --white:#FFFFFF;
+    --shadow: 0 20px 50px -20px rgba(10,61,57,0.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  .eyebrow{
+    font-family:'Manrope', sans-serif; font-weight:700; font-size:0.72rem;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--coral);
+  }
+  h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:500; line-height:1.15; color:var(--teal-900); }
+  .container{ width:100%; max-width:1240px; margin:0 auto; padding:0 32px; }
+  section{position:relative;}
+
+  /* ===== nav (same as site) ===== */
+  .nav{
+    position:sticky; top:0; z-index:500;
+    background:var(--sand); border-bottom:1px solid rgba(10,61,57,0.08);
+  }
+  .nav .container{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand-logo{height:38px;}
+  .nav-links{display:flex; align-items:center; gap:38px;}
+  .nav-links a{
+    font-family:'Manrope', sans-serif; font-weight:600; font-size:0.92rem;
+    color:var(--teal-900); position:relative; padding-bottom:4px;
+  }
+  .nav-links a.current{ color:var(--coral); }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--coral); transition:width .25s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Manrope', sans-serif; font-weight:600; font-size:0.88rem;
+    padding:12px 24px; border-radius:999px; transition:all .25s var(--ease);
+  }
+  .btn-coral{ background:var(--coral); color:var(--white); }
+  .btn-coral:hover{ background:var(--coral-deep); transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(221,90,52,0.7); }
+  .hamburger{ display:none; background:none; border:none; cursor:pointer; }
+
+  /* ===== legal page header ===== */
+  .legal-hero{
+    padding:64px 0 40px;
+    background:linear-gradient(180deg, var(--foam), var(--sand));
+    border-bottom:1px solid rgba(10,61,57,0.08);
+  }
+  .legal-hero h1{ font-size:clamp(2.2rem, 4vw, 3.1rem); margin-top:14px; }
+  .legal-hero .meta{
+    margin-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px;
+    font-size:0.86rem; color:var(--teal-700);
+  }
+  .legal-hero .meta strong{ color:var(--teal-900); }
+
+  /* ===== legal body layout ===== */
+  .legal-body{ padding:56px 0 100px; }
+  .legal-layout{ display:grid; grid-template-columns:260px 1fr; gap:64px; align-items:start; }
+
+  .legal-toc{
+    position:sticky; top:96px;
+    background:var(--white); border-radius:18px; padding:22px 22px;
+    box-shadow:var(--shadow);
+  }
+  .legal-toc .toc-label{ margin-bottom:12px; display:block; }
+  .legal-toc ol{ list-style:none; counter-reset:toc; }
+  .legal-toc li{ counter-increment:toc; margin-bottom:9px; }
+  .legal-toc a{
+    font-size:0.85rem; color:var(--ink); display:flex; gap:8px; line-height:1.4;
+    transition:color .2s;
+  }
+  .legal-toc a::before{
+    content:counter(toc) "."; color:var(--coral); font-weight:700; flex:0 0 auto;
+  }
+  .legal-toc a:hover{ color:var(--coral); }
+
+  .legal-content h2{
+    font-size:1.5rem; margin-top:46px; margin-bottom:14px;
+    padding-top:6px; scroll-margin-top:96px;
+  }
+  .legal-content section:first-of-type h2{ margin-top:0; }
+  .legal-content h3{ font-size:1.08rem; color:var(--teal-700); margin-top:24px; margin-bottom:8px; }
+  .legal-content p{ margin-bottom:14px; color:#294B46; font-size:0.98rem; }
+  .legal-content ul, .legal-content ol.legal-list{ margin:0 0 16px 22px; color:#294B46; font-size:0.98rem; }
+  .legal-content ul{ list-style:disc; }
+  .legal-content ol.legal-list{ list-style:decimal; }
+  .legal-content li{ margin-bottom:8px; }
+  .legal-content a.inline-link{ color:var(--coral); text-decoration:underline; text-underline-offset:3px; }
+  .legal-content strong{ color:var(--teal-900); }
+
+  .callout{
+    background:var(--foam); border-left:3px solid var(--teal-500);
+    border-radius:10px; padding:16px 20px; margin:20px 0; font-size:0.92rem;
+  }
+  .callout.warn{ background:#FDECE5; border-left-color:var(--coral); }
+
+  .legal-divider{ height:1px; background:rgba(10,61,57,0.1); margin:40px 0; }
+
+  .back-to-top{
+    display:inline-flex; align-items:center; gap:6px; margin-top:48px;
+    font-family:'Manrope',sans-serif; font-weight:600; font-size:0.85rem; color:var(--teal-700);
+  }
+  .back-to-top:hover{ color:var(--coral); }
+
+  /* ===== footer (same as site) ===== */
+  footer{ background:var(--teal-900); color:var(--foam); padding:64px 0 28px; }
+  .footer-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.12); }
+  .footer-brand img{ height:34px; margin-bottom:14px; filter:brightness(0) invert(1); }
+  .footer-brand p{ font-size:0.86rem; color:rgba(231,243,239,0.7); max-width:280px; }
+  .footer-col h4{ font-family:'Manrope',sans-serif; font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--coral-soft); margin-bottom:16px; }
+  .footer-col li{ margin-bottom:10px; }
+  .footer-col a{ font-size:0.9rem; color:rgba(231,243,239,0.85); }
+  .footer-col a:hover{ color:var(--white); }
+  .footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:24px; font-size:0.8rem; color:rgba(231,243,239,0.55); }
+
+  @media (max-width:900px){
+    .legal-layout{ grid-template-columns:1fr; }
+    .legal-toc{ position:static; }
+    .footer-top{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px){
+    .nav-links{ display:none; }
+    .hamburger{ display:block; }
+    .container{ padding:0 22px; }
+    .footer-top{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="siteNav">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Gemini_Generated_Image_bvihajbvihajbvih.png" alt="Coral Cloud Resorts" class="brand-logo">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Accommodations</a></li>
+      <li><a href="dining.html">Dining</a></li>
+      <li><a href="spa.html">Spa</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="#" class="btn btn-coral">Reserve Your Stay</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="legal-hero">
+  <div class="container">
+    <div class="eyebrow">Legal</div>
+    <h1>Terms &amp; Conditions</h1>
+    <div class="meta">
+      <span><strong>Effective:</strong> January 1, 2026</span>
+      <span><strong>Last updated:</strong> August 18, 2026</span>
+      <span><strong>Applies to:</strong> coralcloudresorts.com and all reservations at Coral Cloud Resorts</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BODY ================= -->
+<section class="legal-body">
+  <div class="container legal-layout">
+
+    <!-- TOC -->
+    <nav class="legal-toc" aria-label="Table of contents">
+      <span class="eyebrow toc-label">On this page</span>
+      <ol>
+        <li><a href="#acceptance">Acceptance of Terms</a></li>
+        <li><a href="#reservations">Reservations &amp; Booking</a></li>
+        <li><a href="#payment">Rates &amp; Payment</a></li>
+        <li><a href="#cancellations">Cancellations &amp; Changes</a></li>
+        <li><a href="#checkin">Check-In, Check-Out &amp; Occupancy</a></li>
+        <li><a href="#conduct">Guest Conduct</a></li>
+        <li><a href="#property">Property, Damage &amp; Liability</a></li>
+        <li><a href="#excursions">Excursions &amp; Third-Party Services</a></li>
+        <li><a href="#agent">AI Concierge (Coral Cloud Agent)</a></li>
+        <li><a href="#website">Use of the Website</a></li>
+        <li><a href="#ip">Intellectual Property</a></li>
+        <li><a href="#force-majeure">Force Majeure</a></li>
+        <li><a href="#disputes">Governing Law &amp; Disputes</a></li>
+        <li><a href="#changes">Changes to These Terms</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="legal-content">
+
+      <section id="acceptance">
+        <h2>1. Acceptance of Terms</h2>
+        <p>These Terms &amp; Conditions ("Terms") govern your access to and use of coralcloudresorts.com (the "Site"), and your reservation and stay at any Coral Cloud Resorts property (the "Resort"). By browsing the Site, making a reservation, or checking in as a guest, you agree to be bound by these Terms in full. If you do not agree, please do not use the Site or make a reservation.</p>
+        <p>These Terms are entered into between you ("Guest," "you") and Coral Cloud Resorts ("we," "us," "our"). If you are booking on behalf of a group, you confirm you have authority to bind every member of that group to these Terms.</p>
+      </section>
+
+      <section id="reservations">
+        <h2>2. Reservations &amp; Booking</h2>
+        <p>Reservations may be made through the Site, by telephone, by email, or through the Coral Cloud Agent chat concierge. A reservation is only confirmed once you receive a written confirmation email and, where required, we have received a valid deposit or full payment.</p>
+        <ul>
+          <li>You must be at least 18 years old to make a reservation.</li>
+          <li>All information provided at booking (name, contact details, arrival/departure dates, party size) must be accurate and complete.</li>
+          <li>Room and residence availability shown on the Site is indicative and subject to change until a booking is confirmed in writing.</li>
+          <li>Rates displayed are per residence, per night, in U.S. dollars, unless otherwise stated, and exclude applicable taxes, resort fees, and service charges unless noted as inclusive.</li>
+        </ul>
+      </section>
+
+      <section id="payment">
+        <h2>3. Rates &amp; Payment</h2>
+        <p>A valid credit card is required to guarantee every reservation. Depending on the rate plan selected at booking:</p>
+        <ul>
+          <li><strong>Flexible Rate:</strong> no deposit charged at booking; full balance charged to your card on arrival.</li>
+          <li><strong>Advance Purchase Rate:</strong> full payment charged at the time of booking; non-refundable except as described in Section 4.</li>
+          <li><strong>Extended Stays &amp; Private Estates:</strong> a 25% deposit is charged at booking, with the remaining balance due 30 days prior to arrival.</li>
+        </ul>
+        <p>Local taxes, resort fees, and gratuities are applied in accordance with the rates and policies in effect at the time of your stay and may change without notice for future bookings.</p>
+      </section>
+
+      <section id="cancellations">
+        <h2>4. Cancellations &amp; Changes</h2>
+        <p>Unless a different policy is stated on your confirmation, standard bookings may be cancelled or amended free of charge up to <strong>7 days before arrival</strong>. Cancellations made within 7 days of arrival, or no-shows, will be charged the equivalent of one night's stay per residence booked.</p>
+        <div class="callout">
+          Advance Purchase and peak-season (December 20 – January 5) reservations are non-refundable and non-transferable once confirmed, regardless of the general policy above.
+        </div>
+        <p>To cancel or amend a reservation, contact <a class="inline-link" href="mailto:reservations@coralcloudresorts.com">reservations@coralcloudresorts.com</a> or use the Coral Cloud Agent chat concierge, quoting your confirmation number.</p>
+      </section>
+
+      <section id="checkin">
+        <h2>5. Check-In, Check-Out &amp; Occupancy</h2>
+        <p>Standard check-in is from <strong>3:00 PM</strong> and check-out is by <strong>11:00 AM</strong> local island time. Early check-in and late check-out are subject to availability and may incur an additional charge.</p>
+        <p>Each residence has a stated maximum occupancy, inclusive of children and infants. Exceeding the stated occupancy without prior written approval may result in denied entry, relocation, or an additional charge, at the Resort's discretion.</p>
+        <p>A valid government-issued photo ID and the credit card used at booking (or an approved alternative) are required at check-in.</p>
+      </section>
+
+      <section id="conduct">
+        <h2>6. Guest Conduct</h2>
+        <p>We want every guest and staff member to enjoy a safe, respectful environment. The Resort reserves the right to refuse service, deny check-in, or remove any guest — without refund — for conduct that includes but is not limited to:</p>
+        <ul>
+          <li>Threatening, abusive, or harassing behavior toward staff, other guests, or wildlife;</li>
+          <li>Illegal activity of any kind on Resort premises;</li>
+          <li>Violation of posted safety rules for pools, reef access, watercraft, or excursions;</li>
+          <li>Smoking in non-designated areas, including all guest residences; and</li>
+          <li>Bringing unauthorized pets or animals onto the property (service animals are welcome; please notify us in advance).</li>
+        </ul>
+      </section>
+
+      <section id="property">
+        <h2>7. Property, Damage &amp; Liability</h2>
+        <p>You are responsible for any loss or damage to Resort property, furnishings, or equipment caused by you or members of your party during your stay, beyond normal wear and tear. Reasonable repair or replacement costs may be charged to the card on file after your departure, with an itemized explanation provided.</p>
+        <p>To the fullest extent permitted by law, Coral Cloud Resorts is not liable for indirect, incidental, or consequential damages arising from your stay, including loss of personal property, except where such liability cannot be excluded under applicable law (for example, in cases of gross negligence or willful misconduct on our part).</p>
+        <p>We strongly recommend all guests obtain travel insurance covering trip cancellation, medical expenses, and personal belongings prior to arrival.</p>
+      </section>
+
+      <section id="excursions">
+        <h2>8. Excursions &amp; Third-Party Services</h2>
+        <p>Certain activities — including dive excursions, boat charters, spa treatments by visiting practitioners, and off-property tours — may be operated by independent third parties. While we select partners carefully, these providers are not employees or agents of Coral Cloud Resorts, and their own terms, waivers, and cancellation policies apply in addition to these Terms.</p>
+      </section>
+
+      <section id="agent">
+        <h2>9. AI Concierge (Coral Cloud Agent)</h2>
+        <p>The Site includes an AI-assisted chat concierge ("Coral Cloud Agent") to help with questions, recommendations, and reservation assistance. Responses are generated automatically and, while we aim for accuracy, they are provided for convenience only and do not constitute a binding offer, quote, or contractual commitment.</p>
+        <p>Any booking, rate, or policy detail discussed with the Coral Cloud Agent is subject to written confirmation before it becomes binding. If anything the Agent tells you conflicts with these Terms or a written confirmation, the written confirmation controls.</p>
+      </section>
+
+      <section id="website">
+        <h2>10. Use of the Website</h2>
+        <p>You agree not to misuse the Site, including by attempting to gain unauthorized access to any system, scraping content at scale, introducing malicious code, or using the Site for any unlawful purpose. We may suspend or restrict access to the Site, without notice, to protect its security, integrity, or availability.</p>
+      </section>
+
+      <section id="ip">
+        <h2>11. Intellectual Property</h2>
+        <p>All content on the Site — including text, photography, logos, and design — is owned by or licensed to Coral Cloud Resorts and is protected by copyright and trademark law. You may view and share Site content for personal, non-commercial purposes only; any other reproduction requires our prior written consent.</p>
+      </section>
+
+      <section id="force-majeure">
+        <h2>12. Force Majeure</h2>
+        <p>Coral Cloud Resorts will not be liable for any failure or delay in performance caused by events beyond our reasonable control, including severe weather, natural disaster, government action, pandemic, labor disputes, or infrastructure failure. Where such an event materially affects your stay, we will work with you in good faith on rebooking or an appropriate credit, in line with the specific circumstances.</p>
+      </section>
+
+      <section id="disputes">
+        <h2>13. Governing Law &amp; Disputes</h2>
+        <p>These Terms are governed by the laws of the jurisdiction in which Coral Cloud Resorts' parent company is incorporated, without regard to conflict-of-law principles. Any dispute arising from these Terms or your stay will first be addressed through good-faith negotiation; if unresolved, it will be submitted to binding arbitration or the courts of competent jurisdiction as specified in your booking confirmation.</p>
+      </section>
+
+      <section id="changes">
+        <h2>14. Changes to These Terms</h2>
+        <p>We may update these Terms from time to time to reflect changes in our operations, offerings, or legal requirements. The "Last updated" date at the top of this page reflects the most recent revision. Material changes will be highlighted on this page; continued use of the Site after changes take effect constitutes acceptance of the revised Terms.</p>
+      </section>
+
+      <div class="legal-divider"></div>
+
+      <section id="contact">
+        <h2>15. Contact Us</h2>
+        <p>Questions about these Terms can be directed to:</p>
+        <p>
+          Coral Cloud Resorts<br>
+          <a class="inline-link" href="mailto:reservations@coralcloudresorts.com">reservations@coralcloudresorts.com</a><br>
+          +1 (800) 555-0142<br>
+          Coral Cloud Atoll, South Pacific
+        </p>
+        <p style="margin-top:24px; font-size:0.82rem; color:var(--teal-700);">Coral Cloud Resorts is a fictitious resort brand used for demonstration purposes; these Terms are provided as a realistic content example and are not a legally binding document for an actual property.</p>
+      </section>
+
+      <a href="#top" class="back-to-top">↑ Back to top</a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Coral Cloud Resorts">
+        <p>A private coral atoll resort with fifteen residences, set between open ocean and still lagoon water.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Stay</h4>
+        <ul>
+          <li><a href="rooms.html#overwater">Overwater &amp; Lagoon</a></li>
+          <li><a href="rooms.html#beachfront">Beachfront &amp; Garden</a></li>
+          <li><a href="rooms.html#penthouse">Penthouse &amp; Wellness</a></li>
+          <li><a href="rooms.html#estates">Grand Estates</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resort</h4>
+        <ul>
+          <li><a href="dining.html">Dining</a></li>
+          <li><a href="spa.html">Spa &amp; Wellness</a></li>
+          <li><a href="experiences.html">Island Experiences</a></li>
+          <li><a href="#">Reserve Your Stay</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="privacypolicy.html">Privacy Policy</a></li>
+          <li><a href="#">reservations@coralcloudresorts.com</a></li>
+          <li><a href="#">+1 (800) 555-0142</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Coral Cloud Resorts. All rights reserved.</span>
+      <span>A fictitious resort brand, built for demonstration purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Coral Cloud Concierge chat widget — one shared file, include on every page -->
+<script src="/Coral-Cloud-Resorts/coralChatWidget.js" defer></script>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
