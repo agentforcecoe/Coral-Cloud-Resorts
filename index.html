@@ -187,6 +187,153 @@
   .hamburger span{width:26px; height:2px; background:var(--white); transition:.3s;}
   .nav.scrolled .hamburger span{background:var(--teal-900);}
 
+  /* ================= AGENTFORCE CHAT WIDGET ================= */
+  .cc-chat-ring{ position:relative; display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+  .cc-chat-ring::before{
+    content:''; position:absolute; inset:-6px; border-radius:50%;
+    background:linear-gradient(135deg, var(--coral), var(--gold));
+    opacity:.5; filter:blur(7px);
+    animation:cc-breathe 2.6s var(--ease) infinite;
+  }
+  .cc-chat-ring .cc-core{
+    position:relative; border-radius:50%;
+    background:linear-gradient(135deg, var(--coral), var(--gold));
+    display:flex; align-items:center; justify-content:center; color:#fff;
+    box-shadow:var(--shadow);
+  }
+  @keyframes cc-breathe{
+    0%,100%{ transform:scale(.9); opacity:.32; }
+    50%{ transform:scale(1.16); opacity:.6; }
+  }
+  @media (prefers-reduced-motion: reduce){ .cc-chat-ring::before{ animation:none; } }
+
+  #cc-chat-bar{
+    position:fixed; bottom:26px; left:50%; transform:translateX(-50%);
+    width:min(560px, 90vw);
+    display:flex; align-items:center; gap:14px;
+    background:rgba(251,244,232,.86);
+    backdrop-filter:blur(16px) saturate(160%);
+    -webkit-backdrop-filter:blur(16px) saturate(160%);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:999px;
+    padding:10px 12px 10px 18px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    z-index:9998;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  #cc-chat-bar:hover{ transform:translateX(-50%) translateY(-3px); }
+  #cc-chat-bar .cc-chat-ring{ width:34px; height:34px; }
+  #cc-chat-bar .cc-core{ width:34px; height:34px; font-size:15px; }
+  #cc-chat-bar .cc-text{ flex:1; text-align:left; }
+  #cc-chat-bar .cc-eyebrow{ font-family:'Manrope',sans-serif; font-weight:700; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--coral); }
+  #cc-chat-bar .cc-prompt{ font-family:'Fraunces',serif; font-size:1rem; color:var(--teal-900); }
+  #cc-chat-bar .cc-send{
+    flex:0 0 auto; width:36px; height:36px; border-radius:50%;
+    background:var(--teal-900); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .25s;
+  }
+  #cc-chat-bar:hover .cc-send{ background:var(--teal-700); }
+  #cc-chat-bar .cc-dismiss{
+    flex:0 0 auto; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--teal-600); opacity:.6; font-size:14px;
+  }
+  #cc-chat-bar .cc-dismiss:hover{ background:var(--foam); opacity:1; }
+
+  #cc-chat-icon{
+    position:fixed; bottom:26px; right:26px;
+    width:64px; height:64px; display:none; z-index:9998; cursor:pointer;
+  }
+  #cc-chat-icon .cc-chat-ring{ width:64px; height:64px; }
+  #cc-chat-icon .cc-core{ width:64px; height:64px; font-size:26px; transition:transform .2s var(--ease); }
+  #cc-chat-icon:hover .cc-core{ transform:scale(1.06); }
+
+  #cc-chat-overlay{
+    position:fixed; inset:0;
+    background:rgba(11,46,42,.55);
+    backdrop-filter:blur(2px);
+    display:none;
+    z-index:9999;
+    opacity:0; transition:opacity .25s var(--ease), background .3s ease;
+  }
+  #cc-chat-overlay.cc-open{ opacity:1; }
+  /* docked mode: no dark backdrop, page stays interactive behind the mini window */
+  #cc-chat-overlay.cc-docked{
+    background:transparent;
+    backdrop-filter:none;
+    pointer-events:none;
+  }
+
+  #cc-chat-panel{
+    position:fixed;
+    top:5vh; left:50%;
+    width:min(940px, 90vw);
+    height:90vh;
+    background:var(--white);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    display:flex; flex-direction:column; overflow:hidden;
+    transform:translateX(-50%) scale(.96) translateY(10px);
+    pointer-events:auto;
+    transition:transform .32s var(--ease), width .32s var(--ease), height .32s var(--ease),
+               top .32s var(--ease), left .32s var(--ease), right .32s var(--ease), bottom .32s var(--ease),
+               border-radius .32s var(--ease);
+  }
+  #cc-chat-overlay.cc-open #cc-chat-panel{ transform:translateX(-50%) scale(1) translateY(0); }
+
+  /* docked mode: compact window anchored bottom-right, like a familiar chat widget */
+  #cc-chat-overlay.cc-docked #cc-chat-panel{
+    top:auto; left:auto;
+    bottom:26px; right:26px;
+    width:388px; max-width:92vw;
+    height:600px; max-height:75vh;
+    border-radius:20px;
+    transform:translateX(0) scale(1) translateY(0);
+  }
+  #cc-chat-overlay.cc-docked.cc-open #cc-chat-panel{ transform:translateX(0) scale(1) translateY(0); }
+
+  #cc-chat-header{
+    display:flex; align-items:center; justify-content:flex-end; gap:4px;
+    padding:8px 10px;
+    background:linear-gradient(120deg, var(--teal-900), var(--teal-700));
+    color:#fff; flex:0 0 auto;
+    box-shadow:inset 0 -1px 0 rgba(255,255,255,.1);
+  }
+  #cc-chat-header .cc-icon-btn{
+    width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:#fff; font-size:15px;
+    transition:transform .15s ease;
+  }
+  #cc-chat-header .cc-icon-btn:hover{ background:rgba(255,255,255,.16); }
+  #cc-chat-header .cc-icon-btn:active{ transform:scale(.9); }
+
+  /* expand (restore-to-center) button only makes sense while docked */
+  .cc-expand-btn{ display:none; }
+  #cc-chat-overlay.cc-docked .cc-expand-btn{ display:flex; }
+  #cc-chat-overlay.cc-docked #cc-minimize{ display:none; }
+  #cc-chat-overlay.cc-docked #cc-chat-header{ cursor:pointer; }
+
+  #cc-chat-mount{ flex:1; min-height:0; background:var(--sand); position:relative; }
+  #cc-chat-mount .cc-placeholder{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:8px; color:var(--teal-600); font-family:'Manrope',sans-serif; font-size:.9rem; padding:24px; text-align:center;
+    background:var(--sand);
+    transition:opacity .3s ease;
+    pointer-events:none;
+  }
+
+  @media (max-width:640px){
+    #cc-chat-bar{ bottom:16px; width:92vw; padding:8px 8px 8px 14px; }
+    #cc-chat-panel{ max-width:100%; max-height:100%; border-radius:0; }
+    #cc-chat-overlay.cc-docked #cc-chat-panel{
+      bottom:0; right:0; width:100vw; max-width:100vw; height:70vh; max-height:70vh; border-radius:20px 20px 0 0;
+    }
+  }
+
   /* ================= HERO ================= */
   .hero{
     position:relative;
@@ -737,8 +884,199 @@
   </div>
 </footer>
 
-<!-- Coral Cloud Concierge chat widget — one shared file, include on every page -->
-<script src="/coral-chat-widget.js" defer></script>
+<!-- ================= AGENTFORCE CHAT WIDGET (custom shell) ================= -->
 
+<!-- STATE 1: floating invite bar -->
+<div id="cc-chat-bar">
+  <div class="cc-chat-ring"><div class="cc-core">✦</div></div>
+  <div class="cc-text">
+    <div class="cc-eyebrow">Concierge</div>
+    <div class="cc-prompt">Ask about your stay…</div>
+  </div>
+  <div class="cc-send">➤</div>
+  <div class="cc-dismiss" id="cc-collapse-to-icon" title="Minimize">✕</div>
+</div>
+
+<!-- STATE 2: minimized bottom-right icon -->
+<div id="cc-chat-icon" title="Chat with the concierge">
+  <div class="cc-chat-ring"><div class="cc-core">✦</div></div>
+</div>
+
+<!-- STATE 3: full-page centered chat overlay -->
+<div id="cc-chat-overlay">
+  <div id="cc-chat-panel">
+    <div id="cc-chat-header">
+      <div class="cc-icon-btn cc-expand-btn" id="cc-expand" title="Expand to full view">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      </div>
+      <div class="cc-icon-btn" id="cc-minimize" title="Minimize to corner">–</div>
+      <div class="cc-icon-btn" id="cc-close" title="Close">✕</div>
+    </div>
+    <div id="cc-chat-mount">
+      <div class="cc-placeholder">Loading your concierge…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var bar = document.getElementById('cc-chat-bar');
+    var icon = document.getElementById('cc-chat-icon');
+    var overlay = document.getElementById('cc-chat-overlay');
+    var header = document.getElementById('cc-chat-header');
+
+    function hideOverlay(){
+      overlay.classList.remove('cc-open');
+      overlay.style.visibility = 'hidden';
+      overlay.style.pointerEvents = 'none';
+    }
+
+    // pre-chat invite bar (nothing open yet)
+    function showBar(){
+      bar.style.display = 'flex';
+      icon.style.display = 'none';
+      overlay.classList.remove('cc-docked');
+      hideOverlay();
+    }
+    // fully closed — just the round launcher icon, bottom-right
+    function showIcon(){
+      bar.style.display = 'none';
+      icon.style.display = 'block';
+      overlay.classList.remove('cc-docked');
+      hideOverlay();
+    }
+    // centered, full-size conversation
+    function showFullPage(){
+      bar.style.display = 'none';
+      icon.style.display = 'none';
+      overlay.classList.remove('cc-docked');
+      overlay.style.visibility = 'visible';
+      overlay.style.pointerEvents = 'auto';
+      requestAnimationFrame(function(){ overlay.classList.add('cc-open'); });
+    }
+    // "minimized" — small window docked bottom-right, page stays usable behind it
+    function showDocked(){
+      bar.style.display = 'none';
+      icon.style.display = 'none';
+      overlay.classList.add('cc-docked');
+      overlay.style.visibility = 'visible';
+      overlay.style.pointerEvents = 'none'; // backdrop is transparent + click-through
+      requestAnimationFrame(function(){ overlay.classList.add('cc-open'); });
+    }
+
+    bar.addEventListener('click', function(e){
+      if (e.target.id === 'cc-collapse-to-icon') return;
+      showFullPage();
+    });
+    document.getElementById('cc-collapse-to-icon').addEventListener('click', function(e){
+      e.stopPropagation();
+      showIcon();
+    });
+    icon.addEventListener('click', showFullPage);
+    document.getElementById('cc-close').addEventListener('click', function(){
+      // End the underlying session too, not just hide our panel — uses the
+      // documented embeddedservice_bootstrap.userVerificationAPI.clearSession()
+      // (NOT "utilAPI.clearSession" — that method doesn't exist).
+      try {
+        if (window.embeddedservice_bootstrap && embeddedservice_bootstrap.userVerificationAPI) {
+          embeddedservice_bootstrap.userVerificationAPI.clearSession();
+        }
+      } catch (err) { /* widget not ready yet — nothing to clear */ }
+      showIcon();
+    });
+    document.getElementById('cc-minimize').addEventListener('click', showDocked);
+    document.getElementById('cc-expand').addEventListener('click', showFullPage);
+
+    // if the visitor (or agent) ends the chat from the native menu itself,
+    // fall our own UI back to the launcher icon so the two stay in sync
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(){
+      showIcon();
+    });
+
+    // while docked, clicking anywhere on the header (not its buttons) restores full view
+    header.addEventListener('click', function(e){
+      if (!overlay.classList.contains('cc-docked')) return;
+      if (e.target.closest('.cc-icon-btn')) return;
+      showFullPage();
+    });
+
+    // start hidden (visibility, not display:none) so the inline-mode
+    // conversation mounted inside #cc-chat-mount keeps real dimensions
+    overlay.style.display = 'flex';
+    hideOverlay();
+    showBar();
+
+    // Remove our loading placeholder once Salesforce confirms the
+    // conversation is actually ready — otherwise it sits on top of
+    // the real chat content forever.
+    window.addEventListener('onEmbeddedMessagingReady', function(){
+      var ph = document.querySelector('#cc-chat-mount .cc-placeholder');
+      if (ph) { ph.style.opacity = '0'; setTimeout(function(){ ph.remove(); }, 300); }
+    });
+  })();
+</script>
+
+<script>
+  // Nav scroll state + logo swap
+  const nav = document.getElementById('siteNav');
+  const brandLogo = document.getElementById('brandLogo');
+  const LOGO_DEFAULT = 'https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Gemini_Generated_Image_bvihajbvihajbvih.png';
+  const LOGO_SCROLLED = 'https://ik.imagekit.io/r0ogw01pg/Coral%20Cloud%20Room%20Images/Coral_Cloud_Resort%20Logo.webp';
+  let navIsScrolled = false;
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle('scrolled', scrolled);
+    if(scrolled !== navIsScrolled){
+      navIsScrolled = scrolled;
+      brandLogo.style.opacity = '0';
+      setTimeout(() => {
+        brandLogo.src = scrolled ? LOGO_SCROLLED : LOGO_DEFAULT;
+        brandLogo.style.opacity = '1';
+      }, 150);
+    }
+  });
+
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<!--Agent Script-->
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			// Render the real conversation inside our themed panel instead of a floating window
+			embeddedservice_bootstrap.settings.displayMode = 'inline';
+			embeddedservice_bootstrap.settings.targetElement = document.getElementById('cc-chat-mount');
+
+			embeddedservice_bootstrap.init(
+				'00DKa00000Uxd6c',
+				'Coral_Cloud_Agent_Agentforce_COE_Hospitality',
+				'https://ap1763032291393.my.site.com/ESWCoralCloudAgentAgen1786514087670',
+				{
+					scrt2URL: 'https://ap1763032291393.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://ap1763032291393.my.site.com/ESWCoralCloudAgentAgen1786514087670/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+<!--Agent Script-->
 </body>
 </html>
